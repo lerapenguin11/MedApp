@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="input_background">#F6F6F9</color>
+    <color name="input_placeholdrer_tex">#A9ABB7</color>
+    <color name="text_dark_primary">#14142B</color>
+    <color name="text_dark_secondary">#828796</color>
+    <color name="accent_bright_primary">#FFA800</color>
+    <color name="accent_bright_secondary">#20FFC700</color>
+    <color name="accent_dark_primary">#0D72FF</color>
+    <color name="text_light_primary">#FFFFFF</color>
+    <color name="accent_primary">#100D72FF</color>
 </resources>
