@@ -2,4 +2,9 @@
     <string name="app_name">Med App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="auth">Авторизация</string>
+    <string name="email">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="enter">Войти</string>
+    <string name="registration"><u>Нет аккаунта? Зарегистрироваться</u></string>
 </resources>
