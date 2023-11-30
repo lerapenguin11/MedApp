@@ -7,4 +7,7 @@
     <string name="password">Пароль</string>
     <string name="enter">Войти</string>
     <string name="registration"><u>Нет аккаунта? Зарегистрироваться</u></string>
+    <string name="register">Регистрация</string>
+    <string name="password_repeat">Повторите пароль</string>
+    <string name="sing_up">Зарегистрироваться</string>
 </resources>

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/input_background"
-    tools:context=".presentation.AuthorizationFragment">
+    tools:context=".RegisterFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,10 +23,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/title_auth"
+            android:id="@+id/title_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/auth"
+            android:text="@string/register"
             style="@style/TextHeardMedium24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,21 +34,21 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_email"
+            style="@style/EditText"
             android:layout_width="0dp"
             android:layout_height="52dp"
             app:boxStrokeWidth="0dp"
-            style="@style/EditText"
-            app:boxStrokeWidthFocused="0dp"
             android:layout_marginTop="32dp"
+            app:boxStrokeWidthFocused="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_auth">
+            app:layout_constraintTop_toBottomOf="@+id/title_register">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
+                style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/EditText"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,11 +74,32 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_password_repeat"
+            style="@style/EditText"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            app:boxStrokeWidth="0dp"
+            android:layout_marginTop="8dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_repeat"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_repeat"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
-            android:id="@+id/bt_enter"
+            android:id="@+id/bt_sing_up"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="@string/enter"
+            android:text="@string/sing_up"
             style="@style/ButtonText"
             android:textAllCaps="false"
             android:layout_marginTop="32dp"
@@ -86,19 +107,19 @@
             android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_input_password" />
+            app:layout_constraintTop_toBottomOf="@+id/text_input_password_repeat" />
 
         <TextView
-            android:id="@+id/tv_registration"
+            android:id="@+id/tv_sing_up"
+            style="@style/TextUnderlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/registration"
-            style="@style/TextUnderlined"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/accent_dark_primary"
             android:gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/registration"
+            android:textColor="@color/accent_dark_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_enter" />
+            app:layout_constraintTop_toBottomOf="@+id/bt_sing_up" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
