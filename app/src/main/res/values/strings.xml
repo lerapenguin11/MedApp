@@ -29,4 +29,9 @@
     <string name="text_patronymic">Отчество</string>
     <string name="text_date_of_birth">Дата рождения</string>
     <string name="text_diagnosis">Диагноз</string>
+    <string name="text_change_info">Изменить информацию</string>
+    <string name="text_analyzes">Анализы</string>
+    <string name="text_date_last_analysis">Дата последнего анализа</string>
+    <string name="text_add_analyzes">Добавить анализы</string>
+    <string name="text_save">Сохранить</string>
 </resources>
