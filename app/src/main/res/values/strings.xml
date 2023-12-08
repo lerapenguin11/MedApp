@@ -62,4 +62,8 @@
     <string name="text_pct">Тромбокрит (PCT)</string>
     <string name="text_pdv">Распр. тромб. по объему (PDV)</string>
     <string name="text_immune_status">Иммунный статус</string>
+    <string name="text_detail_info">Подробная информация</string>
+    <string name="text_more_detailed">Подробнее</string>
+    <string name="text_recommendations">Рекомендации</string>
+    <string name="text_desc_recomendation">на основе последнего анализа</string>
 </resources>
