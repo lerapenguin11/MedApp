@@ -66,4 +66,7 @@
     <string name="text_more_detailed">Подробнее</string>
     <string name="text_recommendations">Рекомендации</string>
     <string name="text_desc_recomendation">на основе последнего анализа</string>
+    <string name="text_analyzes_">Анализы</string>
+    <string name="text_date_analyzes">Дата анализа</string>
+    <string name="text_enter_data">Внести данные</string>
 </resources>
