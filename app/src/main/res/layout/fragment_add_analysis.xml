@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/input_background"
+    tools:context=".presentation.AddAnalysisFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_change_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_change_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ScreenHeader"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/text_add_analysis" />
+
+        <ImageView
+            android:id="@+id/ic_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:src="@drawable/ic_arrow"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_card"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_change_info">
+
+        <TextView
+            android:id="@+id/title_hematological_status"
+            style="@style/SectionHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/text_hematological_status"
+            app:layout_constraintBottom_toBottomOf="@+id/bt_arrow_hematological_status"
+            app:layout_constraintEnd_toStartOf="@+id/bt_arrow_hematological_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bt_arrow_hematological_status" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bt_arrow_hematological_status"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_arrow_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/ic_arrow_hematological_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_hematological_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/title_hematological_status"
+            tools:layout_editor_absoluteX="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_indicator"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_indicator"
+                    android:textColor="@color/text_dark_primary" />
+
+                <TextView
+                    android:id="@+id/tv_meaning"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:text="@string/text_meaning"
+                    android:textColor="@color/text_dark_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_leukocyte"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/leukocyte" />
+
+                <EditText
+                    android:id="@+id/et_input_leukocyte"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/_10e9"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_lymphocytes"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_lymphocytes" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_input_lymphocytes_percentage"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:hint="@string/_10e9"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/et_input_lymphocytes_liter"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:hint="@string/percentage"
+                        android:inputType="number" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_monocytes"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_monocytes" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_input_monocytes_percentage"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:hint="@string/_10e9"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/et_input_monocytes_liter"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:hint="@string/percentage"
+                        android:inputType="number" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_neutrophils"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_neutrophils" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_input_neutrophils_percentage"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:hint="@string/_10e9"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/et_input_neutrophils_liter"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:hint="@string/percentage"
+                        android:inputType="number" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_eosinophils"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_eosinophils" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_input_eosinophils_percentage"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:hint="@string/_10e9"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/et_input_eosinophils_liter"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:hint="@string/percentage"
+                        android:inputType="number" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_basophils"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_basophils" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.2"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_input_basophils_percentage"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:hint="@string/_10e9"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/et_input_basophils_liter"
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:hint="@string/percentage"
+                        android:inputType="number" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_hemoglobin"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_hemoglobin" />
+
+                <EditText
+                    android:id="@+id/et_input_hemoglobin"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/r"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_hematocrit"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_hematocrit" />
+
+                <EditText
+                    android:id="@+id/et_input_hematocrit"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/percentage"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_platelets"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_platelets" />
+
+                <EditText
+                    android:id="@+id/et_input_platelets"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/_10e9"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_erythrocyte"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_erythrocyte" />
+
+                <EditText
+                    android:id="@+id/et_input_erythrocyte"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/_10e12"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_mcv"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/mcv" />
+
+                <EditText
+                    android:id="@+id/et_input_mcv"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/fl"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_mch"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/mch" />
+
+                <EditText
+                    android:id="@+id/et_input_mch"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/pg"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_mchc"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/mchc" />
+
+                <EditText
+                    android:id="@+id/et_input_mchc"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/r"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_rdw_cv"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_rdw_cv" />
+
+                <EditText
+                    android:id="@+id/et_input_rdw_cv"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/percentage"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_mpv"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_mpv" />
+
+                <EditText
+                    android:id="@+id/et_input_mpv"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/fl"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_pct"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_pct" />
+
+                <EditText
+                    android:id="@+id/et_input_pct"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/percentage"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_pdv"
+                    style="@style/InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_pdv" />
+
+                <EditText
+                    android:id="@+id/et_input_pdv"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center"
+                    android:hint="@string/percentage"
+                    android:inputType="number" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_card"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+        <TextView
+            android:id="@+id/title_immune_status"
+            style="@style/SectionHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/text_immune_status"
+            app:layout_constraintBottom_toBottomOf="@+id/bt_arrow_immune_status"
+            app:layout_constraintEnd_toStartOf="@+id/bt_arrow_immune_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bt_arrow_immune_status" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bt_arrow_immune_status"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_arrow_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/ic_arrow_immune_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
+
+        <TextView
+            android:id="@+id/title_cytokine_status"
+            style="@style/SectionHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Цитокиновый статус"
+            app:layout_constraintBottom_toBottomOf="@+id/bt_arrow_cytokine_status"
+            app:layout_constraintEnd_toStartOf="@+id/bt_arrow_cytokine_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bt_arrow_cytokine_status" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bt_arrow_cytokine_status"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_arrow_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/ic_arrow_cytokine_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:elevation="5dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/bt_save"
+            style="@style/ButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_bt"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/text_save"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
