@@ -4,9 +4,9 @@ import com.example.data.api.model.patient.PatientModel
 import com.example.domain.entity.Patient
 
 class PatientApiResponseMapper {
-    fun toPatientList(resp: PatientModel): List<Patient> {
-        val patientList = arrayListOf<Patient>()
-        for (i in resp) {
+    fun toPatientList(response: PatientModel): List<Patient> {
+        var list = arrayListOf<Patient>()
+        for (i in response){
             val age = i.age
             val createdAt = i.createdAt
             val deletedAt = i.deletedAt
@@ -19,20 +19,21 @@ class PatientApiResponseMapper {
             val middleName = i.middleName
             val updatedAt = i.updatedAt
 
-            val item = Patient(
+            val patient = Patient(
                 age = age, createdAt = createdAt,
                 deletedAt = deletedAt,
                 diagnosis = diagnosis,
                 docNumber = docNumber,
                 docSeries = docSeries,
-            firstName = firstName,
-            id = id,
-            lastName = lastName,
-            middleName = middleName,
-            updatedAt = updatedAt)
+                firstName = firstName,
+                id = id,
+                lastName = lastName,
+                middleName = middleName,
+                updatedAt = updatedAt
+                )
 
-            patientList.add(item)
+            list.add(patient)
         }
-        return patientList
+        return list
     }
 }

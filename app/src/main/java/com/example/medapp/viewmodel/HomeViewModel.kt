@@ -14,7 +14,7 @@ class HomeViewModel(
     : ViewModel()
 {
     private val _patient = MutableLiveData<List<Patient>?>()
-    val patients: MutableLiveData<List<Patient>?> get() = _patient
+    val patients: LiveData<List<Patient>?> get() = _patient
 
     private val _errorPatient = MutableLiveData<String>()
     val errorPatient: LiveData<String> = _errorPatient

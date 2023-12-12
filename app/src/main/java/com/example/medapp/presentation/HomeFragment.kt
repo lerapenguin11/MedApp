@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.example.medapp.databinding.FragmentHomeBinding
+import com.example.medapp.presentation.adapter.PatientAdapter
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,6 +26,7 @@ class HomeFragment : Fragment() {
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel by viewModel<HomeViewModel>()
+    private val adapter =  PatientAdapter()
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -35,22 +38,33 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        homeViewModel.getPatient()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        homeViewModel.getPatient()
+        setOnClickListenerAddPatient()
+        setPatientRecyclerView()
 
+
+        return binding.root
+    }
+
+    private fun setPatientRecyclerView() {
+        homeViewModel.patients.observe(viewLifecycleOwner, Observer { patient ->
+            adapter.submitList(patient)
+        })
+        binding.rvPatients.adapter = adapter
+    }
+
+    private fun setOnClickListenerAddPatient() {
         binding.btAddPatient.setOnClickListener {
             replaceFragmentMain(AddPatientFragment())
         }
-
-        return binding.root
     }
 
     companion object {
