@@ -1,6 +1,6 @@
 package com.example.domain.entity
 
-data class Patient(
+data class Patients(
     val age: Any?,
     val createdAt: String,
     val deletedAt: Any?,

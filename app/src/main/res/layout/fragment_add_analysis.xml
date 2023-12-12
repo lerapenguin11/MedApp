@@ -49,6 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="1dp"
             android:text="@string/text_hematological_status"
             app:layout_constraintBottom_toBottomOf="@+id/bt_arrow_hematological_status"
             app:layout_constraintEnd_toStartOf="@+id/bt_arrow_hematological_status"
