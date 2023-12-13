@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/text_date_of_birth"
-                android:inputType="date" />
+                android:inputType="datetime" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -157,6 +157,48 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_diagnosis"
                 android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_passport_number"
+            style="@style/EditText"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            app:boxStrokeWidth="0dp"
+            android:layout_marginTop="8dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_diagnosis">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_passport_number"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/passport_number"
+                android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_passport_series"
+            style="@style/EditText"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            app:boxStrokeWidth="0dp"
+            android:layout_marginTop="8dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_passport_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_passport_series"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/passport_series"
+                android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
