@@ -19,3 +19,4 @@ fun replaceFragmentMain(fr: Fragment, aSt: Boolean = true) {
             ).commit()
     }
 }
+

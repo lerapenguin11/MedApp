@@ -1,6 +1,7 @@
 package com.example.medapp.di
 
 import com.example.domain.usecase.GetAddPatientUseCase
+import com.example.domain.usecase.GetPatientIdUseCase
 import com.example.domain.usecase.GetPatientListUseCase
 import org.koin.dsl.module
 
@@ -11,6 +12,10 @@ val domainModule = module {
     ) }
 
     factory<GetAddPatientUseCase> { GetAddPatientUseCase(
+        repository = get()
+    ) }
+
+    factory<GetPatientIdUseCase> { GetPatientIdUseCase(
         repository = get()
     ) }
 }

@@ -1,8 +1,10 @@
 package com.example.data.mappers
 
+import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
 import com.example.data.api.model.patient.PatientModel
 import com.example.domain.entity.AddPatient
+import com.example.domain.entity.NewPatientId
 import com.example.domain.entity.Patients
 
 class PatientApiResponseMapper {
@@ -48,6 +50,22 @@ class PatientApiResponseMapper {
             firstName = patient.firstName,
             lastName = patient.lastName,
             middleName = patient.middleName,
+        )
+    }
+
+    fun toNewPatientId(patientId: NewPatientIdModel) : NewPatientId{
+        return NewPatientId(
+            age = patientId.age,
+            createdAt = patientId.createdAt,
+            deletedAt = patientId.deletedAt,
+            diagnosis = patientId.diagnosis,
+            docNumber = patientId.docNumber,
+            docSeries = patientId.docSeries,
+            firstName = patientId.firstName,
+            id = patientId.id,
+            lastName = patientId.lastName,
+            middleName = patientId.middleName,
+            updatedAt = patientId.updatedAt
         )
     }
 }

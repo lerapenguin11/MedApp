@@ -1,20 +1,16 @@
 package com.example.medapp.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.common.ResultMed
-import com.example.domain.entity.AddPatient
 import com.example.domain.entity.NewPatientId
-import com.example.domain.usecase.GetAddPatientUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import com.example.domain.usecase.GetPatientIdUseCase
 import kotlinx.coroutines.launch
 
-class AddPatientViewModel(
-    private val getAddPatientUseCase: GetAddPatientUseCase
+class ChangeInformationViewModel(
+    private val getPatientIdUseCase: GetPatientIdUseCase
 ) : ViewModel()
 {
     private val _patient = MutableLiveData<NewPatientId?>()
@@ -23,15 +19,15 @@ class AddPatientViewModel(
     private val _errorPatient = MutableLiveData<String>()
     val errorPatient: LiveData<String> = _errorPatient
 
-    fun addPatient(patient: AddPatient) {
+    fun getPatientId(id : String) {
         viewModelScope.launch {
-            when (val response = getAddPatientUseCase.invoke(patient)) {
+            when (val patientIdResult = getPatientIdUseCase.invoke(id = id)) {
                 is ResultMed.Success -> {
-                    _patient.value = response.data
+                    _patient.value = patientIdResult.data
                 }
 
                 is ResultMed.Error -> {
-                    _errorPatient.value = response.exception.message
+                    _errorPatient.postValue(patientIdResult.exception.message)
                 }
             }
         }
