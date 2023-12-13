@@ -10,6 +10,9 @@ import com.example.medapp.databinding.FragmentHomeBinding
 import com.example.medapp.presentation.adapter.PatientAdapter
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.HomeViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 // TODO: Rename parameter arguments, choose names that match

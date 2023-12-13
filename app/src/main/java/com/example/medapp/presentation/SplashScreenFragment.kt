@@ -2,6 +2,8 @@ package com.example.medapp.presentation
 
 import android.animation.Animator
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,19 +26,10 @@ class SplashScreenFragment : Fragment() {
     ): View? {
         _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
 
-        binding.titleSplash.animate().translationX(1400f).setDuration(1000).setStartDelay(4000)
-
-        binding.anim.animate().translationX(1400f).setDuration(1000).setStartDelay(4000)
-            .setListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator) {}
-                override fun onAnimationEnd(animation: Animator) {
-                    //TODO дописать
-                    replaceFragmentMain(AuthorizationFragment())
-                }
-
-                override fun onAnimationCancel(animation: Animator) {}
-                override fun onAnimationRepeat(animation: Animator) {}
-            })
+        //TODO дописать
+        Handler(Looper.getMainLooper()).postDelayed({
+            replaceFragmentMain(AuthorizationFragment())
+        }, 3000)
 
         return binding.root
     }

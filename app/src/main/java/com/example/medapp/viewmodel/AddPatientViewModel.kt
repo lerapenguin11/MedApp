@@ -16,7 +16,7 @@ class AddPatientViewModel(
 {
 
     fun addPatient(patient: AddPatient) {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch {
             when (val response = getAddPatientUseCase.invoke(patient)) {
                 is ResultMed.Success<*> -> {
                     Log.d("ADD PATIENT: ", response.data.toString())

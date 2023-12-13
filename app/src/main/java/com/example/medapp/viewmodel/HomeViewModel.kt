@@ -22,7 +22,7 @@ class HomeViewModel(
     val errorPatient: LiveData<String> = _errorPatient
 
     fun getPatient() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             when (val patientResult = getPatientListUseCase.invoke()) {
                 is ResultMed.Success -> {
                     _patient.value = patientResult.data
