@@ -2,10 +2,10 @@ package com.example.domain.entity.patient
 
 data class AddPatient(
     val age: Any?,
-    val diagnosis: Any?,
-    val docNumber: Any?,
-    val docSeries: Any?,
+    val diagnosis: String?,
+    val docNumber: Int?,
+    val docSeries: Int?,
     val firstName: String,
     val lastName: String,
-    val middleName: Any?
+    val middleName: String?
 )

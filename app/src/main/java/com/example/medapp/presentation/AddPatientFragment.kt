@@ -56,11 +56,14 @@ class AddPatientFragment : Fragment() {
 
     private fun readingDataEditText() {
         addPatientViewModel.addPatient(
-            AddPatient(age = null,
-            diagnosis = null, docNumber = null, docSeries = null,
-            firstName = binding.etNamePatient.text.toString(),
-            lastName = binding.etSurnamePatient.text.toString(),
-            middleName = null)
+            AddPatient(
+                age = null,
+                diagnosis = binding.etDiagnosis.text.toString(),
+                docNumber = binding.etPassportNumber.textDirection.toInt(),
+                docSeries = binding.etPassportSeries.textDirection.toInt(),
+                firstName = binding.etNamePatient.text.toString(),
+                lastName = binding.etSurnamePatient.text.toString(),
+                middleName = binding.etPatronymicPatient.text.toString())
         )
     }
 
