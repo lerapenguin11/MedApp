@@ -17,4 +17,5 @@
     <color name="accent_dark_primary">#0D72FF</color>
     <color name="text_light_primary">#FFFFFF</color>
     <color name="accent_primary">#100D72FF</color>
+    <color name="shimmer_placeholder">#dddddd</color>
 </resources>

@@ -33,10 +33,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        shimmerEffectPlaceholder()
         setOnClickListenerAddPatient()
         setPatientRecyclerView()
         setOnClickListenerPatient()
         return binding.root
+    }
+
+    private fun shimmerEffectPlaceholder() {
+        binding.shimmerLayout.startShimmer()
     }
 
     private fun setOnClickListenerPatient() {
@@ -54,8 +59,12 @@ class HomeFragment : Fragment() {
         adapter =  PatientAdapter()
         homeViewModel.patients.observe(viewLifecycleOwner, Observer { patient ->
             adapter.submitList(patient)
+
         })
         binding.rvPatients.adapter = adapter
+        binding.shimmerLayout.stopShimmer()
+        binding.shimmerLayout.visibility = View.GONE
+        binding.rvPatients.visibility = View.VISIBLE
     }
 
     private fun setOnClickListenerAddPatient() {
@@ -68,6 +77,16 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         binding.rvPatients.adapter = null
         _binding = null
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.shimmerLayout.stopShimmer()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerLayout.startShimmer()
     }
 
     companion object {
