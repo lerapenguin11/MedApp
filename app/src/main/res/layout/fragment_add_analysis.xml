@@ -102,7 +102,7 @@
                         android:layout_marginTop="16dp"
                         android:hint="@string/_01_01_1990"
                         android:inputType="date"
-                        app:mask="__.__.____"
+                        app:mask="##.##.####"
                         android:paddingStart="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
