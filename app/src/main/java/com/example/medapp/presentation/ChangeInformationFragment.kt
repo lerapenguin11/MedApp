@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentChangeInformationBinding
+import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.ChangeInformationViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,6 +40,10 @@ class ChangeInformationFragment : Fragment() {
     private fun setOnClickListener() {
         binding.btSave.setOnClickListener {
             launchFragment(HomeFragment())
+        }
+        //TODO проверить
+        binding.btAddAnalyxes.setOnClickListener {
+            replaceFragmentMain(AddAnalysisFragment())
         }
     }
 
