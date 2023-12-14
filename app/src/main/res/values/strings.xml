@@ -92,5 +92,5 @@
     <string name="absorption_activity_monocytes">Поглотительная активность моноцитов</string>
     <string name="cytokine_status">Цитокиновый статус</string>
     <string name="text_date_analysis">Дата выполнения анализа</string>
-    <string name="_01_01_1990">01/01/1990</string>
+    <string name="_01_01_1990">01.01.1990</string>
 </resources>
