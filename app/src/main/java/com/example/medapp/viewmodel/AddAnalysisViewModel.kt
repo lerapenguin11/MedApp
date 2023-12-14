@@ -10,11 +10,13 @@ import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
 import kotlinx.coroutines.launch
 
 class AddAnalysisViewModel(
     private val getAddAnalysisUseCase: GetAddAnalysisUseCase,
-    private val getAddHematologicalStatusUseCase: GetAddHematologicalStatusUseCase
+    private val getAddHematologicalStatusUseCase: GetAddHematologicalStatusUseCase,
+    private val getUpdateAnalysisDateUseCase: GetUpdateAnalysisDateUseCase
 ) : ViewModel()
 {
     private val _analysis = MutableLiveData<Analysis?>()
@@ -48,6 +50,22 @@ class AddAnalysisViewModel(
                 }
                 is ResultMed.Error -> {
                     Log.d("AddHematologicalStatusError: ",
+                        response.exception.message.toString())
+                }
+            }
+        }
+    }
+
+    fun getUpdateAnalysisDate(date : String, idPatient : String,
+                              idAnalysis : String){
+        viewModelScope.launch {
+            when (val response = getUpdateAnalysisDateUseCase.invoke(date = date,
+                                    idAnalysis = idAnalysis, idPatient = idPatient)) {
+                is ResultMed.Success -> {
+                    Log.d("UpdateAnalysisDate: ", response.data.toString())
+                }
+                is ResultMed.Error -> {
+                    Log.d("UpdateAnalysisDateError: ",
                         response.exception.message.toString())
                 }
             }

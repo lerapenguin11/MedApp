@@ -11,4 +11,8 @@ interface AnalysisRepository {
                 (idPatient : String,
                  idAnalysis : String,
                  status : HematologicalStatus) : ResultMed<HematologicalStatus>
+    suspend fun getUpdateAnalysisDate(
+        date : String,
+        idPatient : String,
+        idAnalysis : String) : ResultMed<Analysis>
 }

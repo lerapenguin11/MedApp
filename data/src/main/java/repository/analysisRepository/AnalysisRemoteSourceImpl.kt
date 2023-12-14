@@ -46,4 +46,21 @@ class AnalysisRemoteSourceImpl(
                 return@withContext ResultMed.Error(e)
             }
         }
+
+    override suspend fun getUpdateAnalysisDate(date: String, idPatient : String,
+                                               idAnalysis : String): ResultMed<Analysis> =
+        withContext(Dispatchers.IO) {
+            try {
+                val response = service.getUpdateAnalysisDate(date = date, patientId = idPatient,
+                    analysisId = idAnalysis)
+                if (response.isSuccessful) {
+
+                    return@withContext ResultMed.Success(mapper.toAnalysisModel(response.body()!!))
+                } else {
+                    return@withContext ResultMed.Error(Exception(response.message()))
+                }
+            } catch (e: Exception) {
+                return@withContext ResultMed.Error(e)
+            }
+        }
 }

@@ -59,12 +59,12 @@ class HomeFragment : Fragment() {
         adapter =  PatientAdapter()
         homeViewModel.patients.observe(viewLifecycleOwner, Observer { patient ->
             adapter.submitList(patient)
+            binding.shimmerLayout.stopShimmer()
+            binding.shimmerLayout.visibility = View.GONE
+            binding.rvPatients.visibility = View.VISIBLE
 
         })
         binding.rvPatients.adapter = adapter
-        binding.shimmerLayout.stopShimmer()
-        binding.shimmerLayout.visibility = View.GONE
-        binding.rvPatients.visibility = View.VISIBLE
     }
 
     private fun setOnClickListenerAddPatient() {

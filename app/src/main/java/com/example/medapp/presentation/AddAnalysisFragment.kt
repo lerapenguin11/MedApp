@@ -56,9 +56,18 @@ class AddAnalysisFragment : Fragment() {
     private fun setOnClickListener() {
         binding.btSave.setOnClickListener {
             saveHematologicalStatus()
+            saveDateCompletion()
             launchFragment(HomeFragment())
         }
         binding.icExit.setOnClickListener { replaceFragmentMain(ChangeInformationFragment()) }
+    }
+
+    private fun saveDateCompletion() {
+        addAnalysisViewModel.getUpdateAnalysisDate(
+            idAnalysis = idAnalysis.toString(),
+            idPatient = idPatient.toString(),
+            date = binding.etInputDateAnalysis.text.toString()
+        )
     }
 
     private fun saveHematologicalStatus() {

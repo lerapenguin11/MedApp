@@ -19,4 +19,10 @@ class AnalysisRepositoryImpl(
         return remoteSource.getAddHematologicalStatus(idPatient = idPatient,
         idAnalysis = idAnalysis, status = status)
     }
+
+    override suspend fun getUpdateAnalysisDate(date: String, idPatient : String,
+                                               idAnalysis : String): ResultMed<Analysis> {
+        return remoteSource.getUpdateAnalysisDate(date = date,
+            idAnalysis = idAnalysis, idPatient = idPatient)
+    }
 }

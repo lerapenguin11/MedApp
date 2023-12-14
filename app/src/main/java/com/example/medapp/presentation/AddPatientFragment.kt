@@ -37,8 +37,9 @@ class AddPatientFragment : Fragment() {
 
     private fun receivingPatientId() {
         addPatientViewModel.patientId.observe(viewLifecycleOwner, Observer {
-            if (it?.id != -1){
-                idPatient = it?.id.toString()
+            println("ID: ${it?.id}")
+            if (it?.id != null){
+                idPatient = it.id.toString()
                 val transaction = activity?.supportFragmentManager?.beginTransaction()
                 transaction?.replace(R.id.main_layout, newInstancePatientId(id = idPatient))
                 transaction?.commit()
@@ -59,8 +60,8 @@ class AddPatientFragment : Fragment() {
             AddPatient(
                 birthDateStr = binding.etDateOfBirth.text.toString(),
                 diagnosis = binding.etDiagnosis.text.toString(),
-                docNumber = binding.etPassportNumber.textDirection.toInt(),
-                docSeries = binding.etPassportSeries.textDirection.toInt(),
+                docNumber = binding.etPassportNumber.text.toString(),
+                docSeries = binding.etPassportSeries.text.toString(),
                 firstName = binding.etNamePatient.text.toString(),
                 lastName = binding.etSurnamePatient.text.toString(),
                 middleName = binding.etPatronymicPatient.text.toString())
