@@ -1,5 +1,6 @@
 package com.example.data.api
 
+import com.example.data.api.model.analysis.AnalysisModel
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
 import com.example.data.api.model.patient.PatientModel
@@ -16,4 +17,7 @@ interface MedApi {
 
     @GET("/patient/{patientId}")
     suspend fun getNewPatientId(@Path("patientId") patientId: String): Response<NewPatientIdModel>
+
+    @POST("/patient/{patientId}/analysis")
+    suspend fun getNewAnalysis(@Path("patientId") patientId: String) : Response<AnalysisModel>
 }

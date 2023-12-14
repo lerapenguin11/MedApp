@@ -43,7 +43,14 @@ class ChangeInformationFragment : Fragment() {
         }
         //TODO проверить
         binding.btAddAnalyxes.setOnClickListener {
-            replaceFragmentMain(AddAnalysisFragment())
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            idPatient?.let { it1 -> ChangeInformationFragment.newInstancePatientId(id = it1) }
+                ?.let { it2 ->
+                    transaction?.replace(R.id.main_layout,
+                        it2
+                    )
+                }
+            transaction?.commit()
         }
     }
 
@@ -74,5 +81,12 @@ class ChangeInformationFragment : Fragment() {
     companion object {
         private const val BUNDLE_PATIENT_ID = "patient_id"
         private const val DATE_LAST_ANALYSIS = "нет"
+
+        fun newInstancePatientId(id : String) =
+            AddAnalysisFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ChangeInformationFragment.BUNDLE_PATIENT_ID, id)
+                }
+            }
     }
 }

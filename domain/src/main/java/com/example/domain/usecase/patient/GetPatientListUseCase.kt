@@ -1,4 +1,4 @@
-package com.example.domain.usecase
+package com.example.domain.usecase.patient
 
 import com.example.domain.repository.PatientRepository
 

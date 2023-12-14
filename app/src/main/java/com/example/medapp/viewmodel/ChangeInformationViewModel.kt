@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.common.ResultMed
 import com.example.domain.entity.NewPatientId
-import com.example.domain.usecase.GetPatientIdUseCase
+import com.example.domain.usecase.patient.GetPatientIdUseCase
 import kotlinx.coroutines.launch
 
 class ChangeInformationViewModel(

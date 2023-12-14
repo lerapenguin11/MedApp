@@ -6,13 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.common.ResultMed
 import com.example.domain.entity.Patients
-import com.example.domain.usecase.GetPatientListUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import com.example.domain.usecase.patient.GetPatientListUseCase
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val getPatientListUseCase: GetPatientListUseCase)
+    private val getPatientListUseCase: GetPatientListUseCase
+)
     : ViewModel()
 {
     private val _patient = MutableLiveData<List<Patients>?>()

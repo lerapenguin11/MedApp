@@ -11,6 +11,9 @@ import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAddAnalysisBinding
 import com.example.medapp.databinding.FragmentAddPatientBinding
 import com.example.medapp.utilits.replaceFragmentMain
+import com.example.medapp.viewmodel.AddAnalysisViewModel
+import com.example.medapp.viewmodel.ChangeInformationViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddAnalysisFragment : Fragment() {
     private var _binding : FragmentAddAnalysisBinding? = null
@@ -19,12 +22,17 @@ class AddAnalysisFragment : Fragment() {
     private var checkHematologicalStatus = true
     private var checkImmuneStatus = true
     private var checkCytokineStatus = true
+    private var idPatient: String? = null
+    private val addAnalysisViewModel by viewModel<AddAnalysisViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
+            arguments?.let {
+                idPatient = it.getString(BUNDLE_PATIENT_ID)
+            }
         }
+        idPatient?.let { addAnalysisViewModel.getAddAnalysis(it) }
     }
 
     override fun onCreateView(
@@ -88,6 +96,6 @@ class AddAnalysisFragment : Fragment() {
     }
 
     companion object {
-
+        private const val BUNDLE_PATIENT_ID = "patient_id"
     }
 }

@@ -1,5 +1,6 @@
 package com.example.medapp
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.medapp.databinding.ActivityMainBinding
@@ -15,5 +16,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         APP_ACTIVITY = this
         replaceFragmentMain(SplashScreenFragment())
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
     }
 }
