@@ -71,21 +71,21 @@ class AddAnalysisFragment : Fragment() {
 
     private fun textEditTextHematological() : HematologicalStatus{
         return HematologicalStatus(
-            wbc = binding.etInputLeukocyte.textDirection.toDouble(),
-            lymf = binding.etInputLymphocytesPercentage.textDirection.toDouble(),
-            neu = binding.etInputMonocytesPercentage.textDirection.toDouble(),
-            eos = binding.etInputEosinophilsPercentage.textDirection.toDouble(),
-            bas = binding.etInputBasophilsPercentage.textDirection.toDouble(),
-            hgb = binding.etInputHemoglobin.textDirection.toDouble(),
-            hct = binding.etInputHematocrit.textDirection.toDouble(),
-            plt = binding.etInputPlatelets.textDirection.toDouble(),
-            rbc = binding.etInputErythrocyte.textDirection.toDouble(),
-            mvc = binding.etInputMcv.textDirection.toDouble(),
-            mch = binding.etInputMch.textDirection.toDouble(),
-            rdwcv = binding.etInputRdwCv.textDirection.toDouble(),
-            mpv = binding.etInputMpv.textDirection.toDouble(),
-            pct = binding.etInputPct.textDirection.toDouble(),
-            pdv = binding.etInputPdv.textDirection.toDouble()
+            wbc = binding.etInputLeukocyte.text.toString().toDouble(),
+            lymf = binding.etInputLymphocytesPercentage.text.toString().toDouble(),
+            neu = binding.etInputMonocytesPercentage.text.toString().toDouble(),
+            eos = binding.etInputEosinophilsPercentage.text.toString().toDouble(),
+            bas = binding.etInputBasophilsPercentage.text.toString().toDouble(),
+            hgb = binding.etInputHemoglobin.text.toString().toDouble(),
+            hct = binding.etInputHematocrit.text.toString().toDouble(),
+            plt = binding.etInputPlatelets.text.toString().toDouble(),
+            rbc = binding.etInputErythrocyte.text.toString().toDouble(),
+            mvc = binding.etInputMcv.text.toString().toDouble(),
+            mch = binding.etInputMch.text.toString().toDouble(),
+            rdwcv = binding.etInputRdwCv.text.toString().toDouble(),
+            mpv = binding.etInputMpv.text.toString().toDouble(),
+            pct = binding.etInputPct.text.toString().toDouble(),
+            pdv = binding.etInputPdv.text.toString().toDouble()
         )
     }
 

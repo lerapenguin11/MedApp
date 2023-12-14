@@ -210,7 +210,7 @@
                             android:layout_weight="2.2"
                             android:gravity="center"
                             android:hint="@string/_10e9"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
                     </LinearLayout>
 
                     <LinearLayout
