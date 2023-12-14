@@ -24,10 +24,14 @@ class PatientAdapter : ListAdapter<Patients, PatientViewHolder>(
     override fun onBindViewHolder(holder: PatientViewHolder, position: Int) {
         val patient = getItem(position)
         holder.name.setText("${patient.lastName} ${patient.firstName} ${patient.middleName}")
-        holder.diagnosis.text = patient.diagnosis
-        holder.dateBirth.text = patient.birthDateStr
+        holder.diagnosis.text = patient?.diagnosis ?: CONST_STRING_NO
+        holder.dateBirth.text = patient?.birthDateStr ?: CONST_STRING_NO
         holder.itemView.setOnClickListener {
             onPatientClickListener?.invoke(patient)
         }
+    }
+
+    companion object{
+        const val CONST_STRING_NO = "нет"
     }
 }
