@@ -10,12 +10,6 @@ import retrofit2.http.*
 
 interface MedApi {
 
-    /*POST /patient/:patientId/analysis/:analysisId/status/:statusName
-    cytokine, hematological, immune
-
-    PUT /patient/:patientId/analysis/:analysisId
-*/
-
     @GET("patients")
     suspend fun getPatient(): Response<PatientModel>
 
@@ -28,15 +22,15 @@ interface MedApi {
     @POST("patient/{patientId}/analysis")
     suspend fun getNewAnalysis(@Path("patientId") patientId: String) : Response<AnalysisModel>
 
-    @POST("/patient/{patientId}/analysis/{analysisId}/status/hematological")
+    @POST("patient/{patientId}/analysis/{analysisId}/status/hematological")
     suspend fun getAddHematologicalStatus(
         @Path("patientId") patientId: String,
         @Path("analysisId") analysisId : String,
         @Body status : HematologicalStatusModel) : Response<HematologicalStatusModel>
 
-    @PUT("/patient/{patientId}/analysis/{analysisId}")
+    @PUT("patient/{patientId}/analysis/{analysisId}")
     suspend fun getUpdateAnalysisDate(
-        @Body date : String,
+        @Body date : AnalysisModel,
         @Path("patientId") patientId: String,
         @Path("analysisId") analysisId : String
     ) : Response<AnalysisModel>

@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
+import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAddAnalysisBinding
-import com.example.medapp.databinding.FragmentAddPatientBinding
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.AddAnalysisViewModel
-import com.example.medapp.viewmodel.ChangeInformationViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddAnalysisFragment : Fragment() {
@@ -24,15 +23,18 @@ class AddAnalysisFragment : Fragment() {
     private var checkHematologicalStatus = true
     private var checkImmuneStatus = true
     private var checkCytokineStatus = true
-    private var idPatient: String? = null
+    private var idPatient: String = ""
     private val addAnalysisViewModel by viewModel<AddAnalysisViewModel>()
-    private var idAnalysis = -1
+    private var idAnalysis : Int = -1
+    private var cytokineStatusId : Int? = null
+    private var hematologicalStatusId : Int? = null
+    private var immuneStatusId : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             arguments?.let {
-                idPatient = it.getString(BUNDLE_PATIENT_ID)
+                idPatient = it.getString(BUNDLE_PATIENT_ID).toString()
             }
         }
         idPatient?.let { addAnalysisViewModel.getAddAnalysis(it) }
@@ -43,14 +45,22 @@ class AddAnalysisFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddAnalysisBinding.inflate(inflater, container, false)
-        addAnalysisViewModel.analysis.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                idAnalysis = it.id
-            }
-        })
+        getDataAnalysis()
         collapseExpandBlockInput()
         setOnClickListener()
         return binding.root
+    }
+
+    private fun getDataAnalysis() {
+        addAnalysisViewModel.analysis.observe(viewLifecycleOwner, Observer {dataAnalysis->
+            dataAnalysis?.id
+            if (dataAnalysis != null) {
+                idAnalysis = dataAnalysis.id
+                cytokineStatusId = dataAnalysis.cytokineStatusId
+                hematologicalStatusId = dataAnalysis.hematologicalStatusId
+                immuneStatusId = dataAnalysis.immuneStatusId
+            }
+        })
     }
 
     private fun setOnClickListener() {
@@ -65,8 +75,15 @@ class AddAnalysisFragment : Fragment() {
     private fun saveDateCompletion() {
         addAnalysisViewModel.getUpdateAnalysisDate(
             idAnalysis = idAnalysis.toString(),
-            idPatient = idPatient.toString(),
-            date = binding.etInputDateAnalysis.text.toString()
+            idPatient = idPatient,
+            date = Analysis(
+                id = idAnalysis,
+                patientId = idPatient.toInt(),
+                executionDateStr = binding.etInputDateAnalysis.text.toString(),
+                cytokineStatusId = cytokineStatusId,
+                immuneStatusId = immuneStatusId,
+                hematologicalStatusId = hematologicalStatusId
+            )
         )
     }
 

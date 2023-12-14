@@ -56,8 +56,9 @@ class AddAnalysisViewModel(
         }
     }
 
-    fun getUpdateAnalysisDate(date : String, idPatient : String,
-                              idAnalysis : String){
+    fun getUpdateAnalysisDate(
+        date: Analysis, idPatient: String,
+        idAnalysis: String){
         viewModelScope.launch {
             when (val response = getUpdateAnalysisDateUseCase.invoke(date = date,
                                     idAnalysis = idAnalysis, idPatient = idPatient)) {

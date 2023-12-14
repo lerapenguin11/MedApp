@@ -47,11 +47,11 @@ class AnalysisRemoteSourceImpl(
             }
         }
 
-    override suspend fun getUpdateAnalysisDate(date: String, idPatient : String,
+    override suspend fun getUpdateAnalysisDate(date: Analysis, idPatient : String,
                                                idAnalysis : String): ResultMed<Analysis> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getUpdateAnalysisDate(date = date, patientId = idPatient,
+                val response = service.getUpdateAnalysisDate(date = mapper.toAnalysis(date), patientId = idPatient,
                     analysisId = idAnalysis)
                 if (response.isSuccessful) {
 

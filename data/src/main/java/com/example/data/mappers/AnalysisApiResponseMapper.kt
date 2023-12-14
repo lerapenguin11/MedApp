@@ -18,6 +18,17 @@ class AnalysisApiResponseMapper {
         )
     }
 
+    fun toAnalysis(response : Analysis) : AnalysisModel {
+        return AnalysisModel(
+            id = response.id,
+            patientId = response.patientId?.toInt() ?: -1,
+            cytokineStatusId = response.cytokineStatusId,
+            hematologicalStatusId = response.hematologicalStatusId,
+            immuneStatusId = response.immuneStatusId,
+            executionDateStr = response.executionDateStr
+        )
+    }
+
     fun toHematologicalStatusModel(response: HematologicalStatusModel) : HematologicalStatus{
         return HematologicalStatus(
             wbc = response.wbc,
