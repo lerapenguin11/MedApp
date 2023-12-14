@@ -58,7 +58,7 @@ class PatientApiResponseMapper {
             age = patientId.age,
             createdAt = patientId.createdAt,
             deletedAt = patientId.deletedAt,
-            diagnosis = patientId.diagnosis,
+            diagnosis = patientId?.diagnosis,
             docNumber = patientId.docNumber,
             docSeries = patientId.docSeries,
             firstName = patientId.firstName,

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import com.example.medapp.R
 import com.example.medapp.databinding.FragmentHomeBinding
 import com.example.medapp.presentation.adapter.PatientAdapter
 import com.example.medapp.utilits.replaceFragmentMain
@@ -32,11 +33,21 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         setOnClickListenerAddPatient()
         setPatientRecyclerView()
-
+        setOnClickListenerPatient()
         return binding.root
+    }
+
+    private fun setOnClickListenerPatient() {
+        adapter.onPatientClickListener = {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(
+                R.id.main_layout,
+                newInstancePatientId(id = it.id.toString())
+            )
+            transaction?.commit()
+        }
     }
 
     private fun setPatientRecyclerView() {
@@ -57,5 +68,16 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         binding.rvPatients.adapter = null
         _binding = null
+    }
+
+    companion object {
+        private const val BUNDLE_PATIENT_ID = "patient_id"
+
+        fun newInstancePatientId(id : String) =
+            DetailedInformationFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_PATIENT_ID, id)
+                }
+            }
     }
 }

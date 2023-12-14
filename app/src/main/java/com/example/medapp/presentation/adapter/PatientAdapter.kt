@@ -12,6 +12,8 @@ import com.example.medapp.R
 class PatientAdapter : ListAdapter<Patients, PatientViewHolder>(
     PatientItemDiffCallback())
 {
+    var onPatientClickListener : ((Patients) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card_patient, parent, false)
 
@@ -20,9 +22,12 @@ class PatientAdapter : ListAdapter<Patients, PatientViewHolder>(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PatientViewHolder, position: Int) {
-        val payment = getItem(position)
-        holder.name.setText("${payment.lastName} ${payment.firstName} ${payment.middleName}")
-        holder.diagnosis.text = payment.diagnosis.toString()
-        holder.dateBirth.text = payment.age.toString()
+        val patient = getItem(position)
+        holder.name.setText("${patient.lastName} ${patient.firstName} ${patient.middleName}")
+        holder.diagnosis.text = patient.diagnosis.toString()
+        holder.dateBirth.text = patient.age.toString()
+        holder.itemView.setOnClickListener {
+            onPatientClickListener?.invoke(patient)
+        }
     }
 }

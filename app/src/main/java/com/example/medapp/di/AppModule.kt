@@ -5,10 +5,7 @@ import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
 import com.example.domain.usecase.patient.GetPatientListUseCase
-import com.example.medapp.viewmodel.AddAnalysisViewModel
-import com.example.medapp.viewmodel.AddPatientViewModel
-import com.example.medapp.viewmodel.ChangeInformationViewModel
-import com.example.medapp.viewmodel.HomeViewModel
+import com.example.medapp.viewmodel.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -35,6 +32,12 @@ val appModule = module {
         AddAnalysisViewModel(
             getAddAnalysisUseCase = GetAddAnalysisUseCase(get()),
             getAddHematologicalStatusUseCase = GetAddHematologicalStatusUseCase(get())
+        )
+    }
+
+    viewModel<DetailedInfoViewModel> {
+        DetailedInfoViewModel(
+            getPatientIdUseCase = GetPatientIdUseCase(get())
         )
     }
 }
