@@ -1,5 +1,6 @@
 package com.example.medapp
 
+import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,10 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         APP_ACTIVITY = this
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED)
         replaceFragmentMain(SplashScreenFragment())
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
     }
 }
