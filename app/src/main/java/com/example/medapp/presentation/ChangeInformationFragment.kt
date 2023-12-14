@@ -31,10 +31,15 @@ class ChangeInformationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentChangeInformationBinding.inflate(inflater, container, false)
+        shimmerEffectPlaceholder()
         initCard()
         setOnClickListener()
 
         return binding.root
+    }
+
+    private fun shimmerEffectPlaceholder() {
+        binding.shimmerLayout.startShimmer()
     }
 
     private fun setOnClickListener() {
@@ -54,6 +59,16 @@ class ChangeInformationFragment : Fragment() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        binding.shimmerLayout.stopShimmer()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerLayout.startShimmer()
+    }
+
     private fun launchFragment(fragment: Fragment){
         fragmentManager?.popBackStack()
         fragmentManager?.beginTransaction()
@@ -68,8 +83,11 @@ class ChangeInformationFragment : Fragment() {
             binding.tvPatronymicPatient.text = patient?.middleName.toString()
             binding.tvSurnamePatient.text = patient?.lastName
             binding.tvDiagnosis.text = patient?.diagnosis.toString()
-            binding.tvDatePatient.text = patient?.age.toString()
+            binding.tvDatePatient.text = patient?.birthDateStr.toString()
             binding.tvDateLastAnalysis.text = DATE_LAST_ANALYSIS
+            binding.shimmerLayout.stopShimmer()
+            binding.shimmerLayout.visibility = View.GONE
+            binding.blockChangeInfo.visibility = View.VISIBLE
         })
     }
 

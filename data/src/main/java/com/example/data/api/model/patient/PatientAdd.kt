@@ -1,7 +1,7 @@
 package com.example.data.api.model.patient
 
 data class PatientAdd(
-    val age: Any?,
+    val birthDateStr : String,
     val diagnosis: Any?,
     val docNumber: Any?,
     val docSeries: Any?,

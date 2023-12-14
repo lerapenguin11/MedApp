@@ -3,15 +3,15 @@ package com.example.data.api.model.patient
 class PatientModel : ArrayList<PatientModelItem>()
 
 data class PatientModelItem(
-    val age: Any,
+    val birthDateStr : String?,
     val createdAt: String,
-    val deletedAt: Any,
-    val diagnosis: Any,
-    val docNumber: Any,
-    val docSeries: Any,
+    val deletedAt: Int?,
+    val diagnosis: String?,
+    val docNumber: Int?,
+    val docSeries: Int?,
     val firstName: String,
     val id: Int,
     val lastName: String,
-    val middleName: Any,
+    val middleName: String?,
     val updatedAt: String
 )

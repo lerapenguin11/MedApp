@@ -19,10 +19,10 @@ interface MedApi {
     @POST("patient")
     suspend fun getAddPatient(@Body requestBody: PatientAdd) : Response<NewPatientIdModel>
 
-    @GET("/patient/{patientId}")
+    @GET("patient/{patientId}")
     suspend fun getNewPatientId(@Path("patientId") patientId: String): Response<NewPatientIdModel>
 
-    @POST("/patient/{patientId}/analysis")
+    @POST("patient/{patientId}/analysis")
     suspend fun getNewAnalysis(@Path("patientId") patientId: String) : Response<AnalysisModel>
 
     @POST("/patient/{patientId}/analysis/{analysisId}/status/hematological")

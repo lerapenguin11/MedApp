@@ -54,7 +54,7 @@ class DetailedInformationFragment : Fragment() {
             binding.tvSurnamePatient.text = patient?.lastName
             binding.tvNamePatient.text = patient?.firstName
             binding.tvPatronymicPatient.text = patient?.middleName
-            binding.tvDatePatient.text = patient?.age.toString()
+            binding.tvDatePatient.text = patient?.birthDateStr.toString()
             binding.tvDiagnosis.text = patient?.diagnosis
         })
     }

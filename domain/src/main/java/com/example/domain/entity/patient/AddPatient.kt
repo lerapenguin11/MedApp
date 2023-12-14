@@ -1,7 +1,7 @@
 package com.example.domain.entity.patient
 
 data class AddPatient(
-    val age: Any?,
+    val birthDateStr : String,
     val diagnosis: String?,
     val docNumber: Int?,
     val docSeries: Int?,

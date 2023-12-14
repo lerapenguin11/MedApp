@@ -1,12 +1,12 @@
 package com.example.data.api.model.patient
 
 data class NewPatientIdModel(
-    val age: Any?,
+    val birthDateStr : String,
     val createdAt: String,
-    val deletedAt: Any?,
+    val deletedAt: String,
     val diagnosis: String?,
-    val docNumber: Any?,
-    val docSeries: Int?,
+    val docNumber: Int,
+    val docSeries: Int,
     val firstName: String,
     val id: Int,
     val lastName: String,

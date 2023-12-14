@@ -11,7 +11,7 @@ class PatientApiResponseMapper {
     fun toPatientList(response: PatientModel): List<Patients> {
         var list = arrayListOf<Patients>()
         for (i in response){
-            val age = i.age
+            val age = i.birthDateStr
             val createdAt = i.createdAt
             val deletedAt = i.deletedAt
             val diagnosis = i.diagnosis
@@ -24,7 +24,7 @@ class PatientApiResponseMapper {
             val updatedAt = i.updatedAt
 
             val patient = Patients(
-                age = age, createdAt = createdAt,
+                birthDateStr = age, createdAt = createdAt,
                 deletedAt = deletedAt,
                 diagnosis = diagnosis,
                 docNumber = docNumber,
@@ -43,7 +43,7 @@ class PatientApiResponseMapper {
 
     fun toPatientAdd(patient: AddPatient) : PatientAdd{
         return PatientAdd(
-            age = patient.age,
+            birthDateStr = patient.birthDateStr,
             diagnosis = patient.diagnosis,
             docNumber = patient.docNumber,
             docSeries = patient.docSeries,
@@ -55,10 +55,10 @@ class PatientApiResponseMapper {
 
     fun toNewPatientId(patientId: NewPatientIdModel) : NewPatientId {
         return NewPatientId(
-            age = patientId.age,
+            birthDateStr = patientId.birthDateStr,
             createdAt = patientId.createdAt,
             deletedAt = patientId.deletedAt,
-            diagnosis = patientId?.diagnosis,
+            diagnosis = patientId.diagnosis,
             docNumber = patientId.docNumber,
             docSeries = patientId.docSeries,
             firstName = patientId.firstName,

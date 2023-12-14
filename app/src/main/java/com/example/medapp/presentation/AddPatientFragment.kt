@@ -57,7 +57,7 @@ class AddPatientFragment : Fragment() {
     private fun readingDataEditText() {
         addPatientViewModel.addPatient(
             AddPatient(
-                age = null,
+                birthDateStr = binding.etDateOfBirth.text.toString(),
                 diagnosis = binding.etDiagnosis.text.toString(),
                 docNumber = binding.etPassportNumber.textDirection.toInt(),
                 docSeries = binding.etPassportSeries.textDirection.toInt(),

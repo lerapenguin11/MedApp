@@ -13,7 +13,8 @@ class AnalysisApiResponseMapper {
             patientId = response.patientId,
             cytokineStatusId = response.cytokineStatusId,
             hematologicalStatusId = response.hematologicalStatusId,
-            immuneStatusId = response.immuneStatusId
+            immuneStatusId = response.immuneStatusId,
+            executionDateStr = response.executionDateStr
         )
     }
 
