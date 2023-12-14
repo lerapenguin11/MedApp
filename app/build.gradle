@@ -76,4 +76,8 @@ dependencies {
     implementation "io.insert-koin:koin-android:$koin_version"
     // Koin Android Scope features
     implementation "io.insert-koin:koin-core:$koin_version"
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+
+
 }

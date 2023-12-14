@@ -61,6 +61,11 @@ class ChangeInformationFragment : Fragment() {
         })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
         private const val BUNDLE_PATIENT_ID = "patient_id"
         private const val DATE_LAST_ANALYSIS = "нет"
