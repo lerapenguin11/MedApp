@@ -1,4 +1,4 @@
-package com.example.domain.entity
+package com.example.domain.entity.analysis
 
 data class Analysis(
     val id: Int,

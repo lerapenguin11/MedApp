@@ -1,6 +1,7 @@
 package com.example.data.api
 
 import com.example.data.api.model.analysis.AnalysisModel
+import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
 import com.example.data.api.model.patient.PatientModel
@@ -8,6 +9,9 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface MedApi {
+
+    /*POST /patient/:patientId/analysis/:analysisId/status/:statusName
+    cytokine, hematological, immune*/
 
     @GET("patients")
     suspend fun getPatient(): Response<PatientModel>
@@ -20,4 +24,10 @@ interface MedApi {
 
     @POST("/patient/{patientId}/analysis")
     suspend fun getNewAnalysis(@Path("patientId") patientId: String) : Response<AnalysisModel>
+
+    @POST("/patient/{patientId}/analysis/{analysisId}/status/hematological")
+    suspend fun getAddHematologicalStatus(
+        @Path("patientId") patientId: String,
+        @Path("analysisId") analysisId : String,
+        @Body status : HematologicalStatusModel) : Response<HematologicalStatusModel>
 }

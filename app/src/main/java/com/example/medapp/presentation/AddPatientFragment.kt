@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import com.example.domain.entity.AddPatient
+import com.example.domain.entity.patient.AddPatient
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAddPatientBinding
 import com.example.medapp.viewmodel.AddPatientViewModel
@@ -55,11 +55,13 @@ class AddPatientFragment : Fragment() {
     }
 
     private fun readingDataEditText() {
-        addPatientViewModel.addPatient(AddPatient(age = null,
+        addPatientViewModel.addPatient(
+            AddPatient(age = null,
             diagnosis = null, docNumber = null, docSeries = null,
             firstName = binding.etNamePatient.text.toString(),
             lastName = binding.etSurnamePatient.text.toString(),
-            middleName = null))
+            middleName = null)
+        )
     }
 
     companion object {

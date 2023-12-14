@@ -3,7 +3,7 @@ package com.example.medapp.presentation.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.domain.entity.Patients
+import com.example.domain.entity.patient.Patients
 import com.example.medapp.presentation.adapter.diffCallback.PatientItemDiffCallback
 import com.example.medapp.presentation.adapter.viewholder.PatientViewHolder
 import androidx.recyclerview.widget.ListAdapter

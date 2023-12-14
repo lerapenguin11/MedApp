@@ -3,7 +3,8 @@ package repository.analysisRepository
 import com.example.data.api.MedApi
 import com.example.data.mappers.AnalysisApiResponseMapper
 import com.example.domain.common.ResultMed
-import com.example.domain.entity.Analysis
+import com.example.domain.entity.analysis.Analysis
+import com.example.domain.entity.analysis.HematologicalStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -18,6 +19,26 @@ class AnalysisRemoteSourceImpl(
                 if (response.isSuccessful) {
 
                     return@withContext ResultMed.Success(mapper.toAnalysisModel(response.body()!!))
+                } else {
+                    return@withContext ResultMed.Error(Exception(response.message()))
+                }
+            } catch (e: Exception) {
+                return@withContext ResultMed.Error(e)
+            }
+        }
+
+    override suspend fun getAddHematologicalStatus(
+        idPatient: String,
+        idAnalysis: String, status : HematologicalStatus
+    ): ResultMed<HematologicalStatus> =
+        withContext(Dispatchers.IO) {
+            try {
+                val response = service.getAddHematologicalStatus(patientId = idPatient,
+                                                            analysisId = idAnalysis,
+                                        status = mapper.toHematologicalStatus(status))
+                if (response.isSuccessful) {
+
+                    return@withContext ResultMed.Success(mapper.toHematologicalStatusModel(response.body()!!))
                 } else {
                     return@withContext ResultMed.Error(Exception(response.message()))
                 }

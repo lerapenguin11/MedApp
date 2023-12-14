@@ -1,9 +1,9 @@
 package repository.patientRepository
 
 import com.example.domain.common.ResultMed
-import com.example.domain.entity.AddPatient
-import com.example.domain.entity.NewPatientId
-import com.example.domain.entity.Patients
+import com.example.domain.entity.patient.AddPatient
+import com.example.domain.entity.patient.NewPatientId
+import com.example.domain.entity.patient.Patients
 
 interface PatientRemoteSource{
 

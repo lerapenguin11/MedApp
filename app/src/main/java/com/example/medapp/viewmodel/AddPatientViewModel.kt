@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.common.ResultMed
-import com.example.domain.entity.AddPatient
-import com.example.domain.entity.NewPatientId
+import com.example.domain.entity.patient.AddPatient
+import com.example.domain.entity.patient.NewPatientId
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import kotlinx.coroutines.launch
 

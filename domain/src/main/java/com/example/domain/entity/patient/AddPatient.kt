@@ -1,4 +1,4 @@
-package com.example.domain.entity
+package com.example.domain.entity.patient
 
 data class AddPatient(
     val age: Any?,

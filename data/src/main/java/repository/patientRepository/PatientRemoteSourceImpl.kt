@@ -3,9 +3,9 @@ package repository.patientRepository
 import com.example.data.api.MedApi
 import com.example.data.mappers.PatientApiResponseMapper
 import com.example.domain.common.ResultMed
-import com.example.domain.entity.AddPatient
-import com.example.domain.entity.NewPatientId
-import com.example.domain.entity.Patients
+import com.example.domain.entity.patient.AddPatient
+import com.example.domain.entity.patient.NewPatientId
+import com.example.domain.entity.patient.Patients
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

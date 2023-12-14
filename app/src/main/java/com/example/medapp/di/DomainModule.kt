@@ -1,6 +1,7 @@
 package com.example.medapp.di
 
 import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
+import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
 import com.example.domain.usecase.patient.GetPatientListUseCase
@@ -21,6 +22,10 @@ val domainModule = module {
     ) }
 
     factory<GetAddAnalysisUseCase> { GetAddAnalysisUseCase(
+        repository = get()
+    ) }
+
+    factory<GetAddHematologicalStatusUseCase> { GetAddHematologicalStatusUseCase(
         repository = get()
     ) }
 }
