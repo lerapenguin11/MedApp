@@ -1,7 +1,7 @@
 package com.example.domain.entity.patient
 
 data class NewPatientId(
-    val birthDateStr : String,
+    val birthDateStr : String?,
     val createdAt: String,
     val deletedAt: String?,
     val diagnosis: String?,

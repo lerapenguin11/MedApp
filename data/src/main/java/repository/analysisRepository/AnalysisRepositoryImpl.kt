@@ -2,6 +2,7 @@ package repository.analysisRepository
 
 import com.example.domain.common.ResultMed
 import com.example.domain.entity.analysis.Analysis
+import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.repository.AnalysisRepository
 
@@ -24,5 +25,9 @@ class AnalysisRepositoryImpl(
                                                idAnalysis : String): ResultMed<Analysis> {
         return remoteSource.getUpdateAnalysisDate(date = date,
             idAnalysis = idAnalysis, idPatient = idPatient)
+    }
+
+    override suspend fun getAnalysisList(patientId: String): ResultMed<List<AnalysisList>> {
+        return remoteSource.getAnalysisList(patientId = patientId)
     }
 }

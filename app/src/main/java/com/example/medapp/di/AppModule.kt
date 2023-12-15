@@ -2,6 +2,7 @@ package com.example.medapp.di
 
 import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
@@ -39,7 +40,8 @@ val appModule = module {
 
     viewModel<DetailedInfoViewModel> {
         DetailedInfoViewModel(
-            getPatientIdUseCase = GetPatientIdUseCase(get())
+            getPatientIdUseCase = GetPatientIdUseCase(get()),
+            getAnalysisListUseCase = GetAnalysisListUseCase(get())
         )
     }
 }

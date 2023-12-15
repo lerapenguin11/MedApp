@@ -1,9 +1,13 @@
 package com.example.data.mappers
 
+import com.example.data.api.model.analysis.AnalysisListModel
 import com.example.data.api.model.analysis.AnalysisModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
+import com.example.data.api.model.patient.PatientModel
 import com.example.domain.entity.analysis.Analysis
+import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.HematologicalStatus
+import com.example.domain.entity.patient.Patients
 
 class AnalysisApiResponseMapper {
 
@@ -67,5 +71,21 @@ class AnalysisApiResponseMapper {
             pct = response.pct,
             pdv = response.pdv
         )
+    }
+
+    fun toAnalysisListModel(response: AnalysisListModel): List<AnalysisList> {
+        var list = arrayListOf<AnalysisList>()
+        for (i in response){
+            val executionDateStr = i.executionDateStr
+            val id = i.id
+            val patientId = i.patientId
+            val analysis = AnalysisList(
+                id = id,
+                executionDateStr = executionDateStr,
+                patientId = patientId
+            )
+            list.add(analysis)
+        }
+        return list
     }
 }
