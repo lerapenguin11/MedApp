@@ -31,6 +31,8 @@ class PatientAdapter : ListAdapter<Patients, PatientViewHolder>(
         }
     }
 
+
+
     companion object{
         const val CONST_STRING_NO = "нет"
     }

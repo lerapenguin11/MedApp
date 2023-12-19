@@ -8,13 +8,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentHomeBinding
+import com.example.medapp.presentation.adapter.BottomSpaceItemDecoration
 import com.example.medapp.presentation.adapter.PatientAdapter
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.HomeViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -57,6 +54,8 @@ class HomeFragment : Fragment() {
 
     private fun setPatientRecyclerView() {
         adapter =  PatientAdapter()
+        val bottomSpaceItemDecoration =
+            BottomSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.bottom_space))
         homeViewModel.patients.observe(viewLifecycleOwner, Observer { patient ->
             adapter.submitList(patient)
             binding.shimmerLayout.stopShimmer()
@@ -65,6 +64,7 @@ class HomeFragment : Fragment() {
 
         })
         binding.rvPatients.adapter = adapter
+        binding.rvPatients.addItemDecoration(bottomSpaceItemDecoration)
     }
 
     private fun setOnClickListenerAddPatient() {
