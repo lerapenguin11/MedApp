@@ -98,7 +98,7 @@ class ChangeInformationFragment : Fragment() {
 
     companion object {
         private const val BUNDLE_PATIENT_ID = "patient_id"
-        private const val DATE_LAST_ANALYSIS = "нет"
+        private const val DATE_LAST_ANALYSIS = "Нет"
 
         fun newInstancePatientId(id : String) =
             AddAnalysisFragment().apply {

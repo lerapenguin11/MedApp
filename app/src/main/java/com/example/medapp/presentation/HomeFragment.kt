@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
             transaction?.replace(
                 R.id.main_layout,
                 newInstancePatientId(id = it.id.toString())
-            )
+            )?.addToBackStack(null)
             transaction?.commit()
         }
     }
