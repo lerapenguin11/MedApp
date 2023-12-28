@@ -1,19 +1,19 @@
 package com.example.domain.entity.analysis
 
 data class HematologicalStatus(
-    val wbc: Double,
-    val lymf: Double,
-    val neu: Double,
-    val eos: Double,
     val bas: Double,
-    val hgb: Double,
+    val eos: Double,
     val hct: Double,
+    val hgb: Any,
+    val lymf: Double,
+    val mch: Double,
+    val mpv: Double,
+    val mvc: Double,
+    val neu: Double,
+    val pct: Double,
+    val pdv: Double,
     val plt: Double,
     val rbc: Double,
-    val mvc: Double,
-    val mch: Double,
     val rdwcv: Double,
-    val mpv: Double,
-    val pct: Double,
-    val pdv: Double
+    val wbc: Double
 )

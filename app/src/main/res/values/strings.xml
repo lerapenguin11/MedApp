@@ -95,4 +95,5 @@
     <string name="text_date_analysis">Дата выполнения анализа</string>
     <string name="_01_01_1990">01.01.1990</string>
     <string name="error_input">Данные не заполненны</string>
+    <string name="text_cytokine_status">Цитокиновый статус</string>
 </resources>

@@ -6,6 +6,7 @@ import com.example.domain.common.ResultMed
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.HematologicalStatus
+import com.example.domain.entity.analysis.ImmuneStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -72,6 +73,27 @@ class AnalysisRemoteSourceImpl(
                 if (response.isSuccessful) {
 
                     return@withContext ResultMed.Success(mapper.toAnalysisListModel(response.body()!!))
+                } else {
+                    return@withContext ResultMed.Error(Exception(response.message()))
+                }
+            } catch (e: Exception) {
+                return@withContext ResultMed.Error(e)
+            }
+        }
+
+    override suspend fun getAddImmuneStatus(
+        idPatient: String,
+        idAnalysis: String,
+        status: ImmuneStatus
+    ): ResultMed<ImmuneStatus> =
+        withContext(Dispatchers.IO) {
+            try {
+                val response = service.getAddImmuneStatus(patientId = idPatient,
+                    analysisId = idAnalysis,
+                    status = mapper.toImmuneStatus(status))
+                if (response.isSuccessful) {
+
+                    return@withContext ResultMed.Success(mapper.toImmuneStatusModel(response.body()!!))
                 } else {
                     return@withContext ResultMed.Error(Exception(response.message()))
                 }

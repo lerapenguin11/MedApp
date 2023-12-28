@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.HematologicalStatus
+import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAddAnalysisBinding
 import com.example.medapp.utilits.replaceFragmentMain
@@ -37,7 +38,7 @@ class AddAnalysisFragment : Fragment() {
                 idPatient = it.getString(BUNDLE_PATIENT_ID).toString()
             }
         }
-        idPatient?.let { addAnalysisViewModel.getAddAnalysis(it) }
+        idPatient.let { addAnalysisViewModel.getAddAnalysis(it) }
     }
 
     override fun onCreateView(
@@ -66,10 +67,50 @@ class AddAnalysisFragment : Fragment() {
     private fun setOnClickListener() {
         binding.btSave.setOnClickListener {
             saveHematologicalStatus()
+            saveImmuneStatus()
             saveDateCompletion()
             launchFragment(HomeFragment())
         }
         binding.icExit.setOnClickListener { replaceFragmentMain(ChangeInformationFragment()) }
+    }
+
+    private fun saveImmuneStatus() {
+        idPatient.let {
+            addAnalysisViewModel.getImmuneStatus(
+                patientId = it,
+                analysisId = idAnalysis.toString(),
+                status = textEditTextImmuneStatus()) }
+    }
+
+    private fun textEditTextImmuneStatus(): ImmuneStatus {
+        return ImmuneStatus(
+            activated_t_cells = binding.etInputActivatedTCells.text.toString().toDouble(),
+            activated_t_cells_expressing_il2 =
+            binding.etInputActivatedTCellsExpressingLitr.text.toString().toDouble(),
+            cd3_p_cd4_p_cd3_p_cd8_p_ratio = binding.etInputRatio.text.toString().toDouble(),
+            circulating_immune_complexes =
+            binding.etInputCirculatingImmuneComplexes.text.toString().toDouble(),
+            common_b_lymphocytes = binding.etInputCommonBLymphocytes.text.toString().toDouble(),
+            common_nk_cells = binding.etInputCommonNkCellsLitr.text.toString().toDouble(),
+            common_t_lymphocytes = binding.etInputCommonLymphocytes.text.toString().toDouble(),
+            cytokine_producing_nk_cells =
+            binding.etInputNkCytokineProducingCells.text.toString().toDouble(),
+            cytolytic_nk_cells = binding.etInputNkCellsCytolytic.text.toString().toDouble(),
+            hct_test_spontaneous = binding.etInputHCTTestSpontaneous.text.toString().toDouble(),
+            hct_test_stimulated = binding.etInputHCTTestStimulated.text.toString().toDouble(),
+            leukocytes_bactericidal_activity =
+            binding.etInputBactericidalActivityLeukocytes.text.toString().toDouble(),
+            lga = binding.etInputIga.text.toString().toDouble(),
+            lgg = binding.etInputIgg.text.toString().toDouble(),
+            lgm = binding.etInputIgm.text.toString().toDouble(),
+            monocytes_absorption_activity =
+            binding.etInputAbsorptionActivityMonocytesLitr.text.toString().toDouble(),
+            neutrophil_absorption_activity =
+            binding.etInputAbsorptionActivityNeutrophilsLitr.text.toString().toDouble(),
+            t_cytotoxic_lymphocytes = binding.textCytotoxicLymphocytes.text.toString().toDouble(),
+            t_helpers = binding.etInputHelpersLitr.text.toString().toDouble(),
+            tnk_cells = binding.etInputTnkCellsLitr.text.toString().toDouble()
+        )
     }
 
     private fun saveDateCompletion() {
@@ -118,7 +159,7 @@ class AddAnalysisFragment : Fragment() {
     private fun collapseExpandBlockInput() {
         binding.btArrowDateAnalize.setOnClickListener {
             checkDateAnalysis = replacementArrow(binding.icArrowDateAnalysis, checkDateAnalysis,
-            binding.blockDateAnalysis)
+                binding.blockDateAnalysis)
         }
         binding.btArrowHematologicalStatus.setOnClickListener {
             checkHematologicalStatus = replacementArrow(binding.icArrowHematologicalStatus,

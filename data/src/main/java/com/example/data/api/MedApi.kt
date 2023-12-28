@@ -3,6 +3,7 @@ package com.example.data.api
 import com.example.data.api.model.analysis.AnalysisListModel
 import com.example.data.api.model.analysis.AnalysisModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
+import com.example.data.api.model.analysis.ImmuneStatusModel
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
 import com.example.data.api.model.patient.PatientModel
@@ -29,6 +30,14 @@ interface MedApi {
         @Path("patientId") patientId: String,
         @Path("analysisId") analysisId : String,
         @Body status : HematologicalStatusModel) : Response<HematologicalStatusModel>
+
+    @POST("patient/{patientId}/analysis/{analysisId}/status/immune")
+    suspend fun getAddImmuneStatus(
+        @Path("patientId") patientId: String,
+        @Path("analysisId") analysisId : String,
+        @Body status : ImmuneStatusModel) : Response<ImmuneStatusModel>
+
+    //TODO создание статуса
 
     @PUT("patient/{patientId}/analysis/{analysisId}")
     suspend fun getUpdateAnalysisDate(
