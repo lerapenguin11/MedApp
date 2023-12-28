@@ -59,13 +59,13 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/bt_add_patient"
+            android:id="@+id/bt_add_analysis"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/bg_bt"
             android:foreground="?android:attr/selectableItemBackground"
-            android:text="@string/text_enter_data"
+            android:text="@string/text_add_analysis"
             android:textAllCaps="false"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"

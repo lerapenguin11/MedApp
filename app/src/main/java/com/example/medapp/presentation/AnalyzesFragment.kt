@@ -41,6 +41,20 @@ class AnalyzesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewAnalysis()
+        setOnClickListenerBtAddAnalysis()
+    }
+
+    private fun setOnClickListenerBtAddAnalysis() {
+        binding.btAddAnalysis.setOnClickListener {
+            if (idPatient != null){
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstancePatientId(id = idPatient!!)
+                )?.addToBackStack(null)
+                transaction?.commit()
+            }
+        }
     }
 
     private fun setRecyclerViewAnalysis() {
@@ -61,5 +75,12 @@ class AnalyzesFragment : Fragment() {
 
     companion object {
         private const val BUNDLE_PATIENT_ID = "patient_id"
+
+        fun newInstancePatientId(id : String) =
+            AddAnalysisFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_PATIENT_ID, id)
+                }
+            }
     }
 }

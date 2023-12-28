@@ -72,7 +72,11 @@ class DetailedInformationFragment : Fragment() {
             binding.tvDiagnosis.text = patient?.diagnosis
         })
         detailedInfoViewModel.analysisList.observe(viewLifecycleOwner, Observer {
-            binding.tvDateLastAnalysis.text = it?.last()?.executionDateStr
+            if (it?.last()?.executionDateStr == null){
+                binding.tvDateLastAnalysis.text = CONST_DATE_LAST_ANALYSIS
+            } else{
+                binding.tvDateLastAnalysis.text = it?.last()?.executionDateStr
+            }
         })
         binding.shimmerLayout.stopShimmer()
         binding.shimmerLayout.visibility = View.GONE
@@ -100,6 +104,7 @@ class DetailedInformationFragment : Fragment() {
 
     companion object {
         private const val BUNDLE_PATIENT_ID = "patient_id"
+        private const val CONST_DATE_LAST_ANALYSIS = "Нет"
 
         fun newInstancePatientId(id : String) =
             AnalyzesFragment().apply {
