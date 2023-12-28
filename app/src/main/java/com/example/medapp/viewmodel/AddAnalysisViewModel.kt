@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.common.ResultMed
 import com.example.domain.entity.analysis.Analysis
+import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
+import com.example.domain.usecase.analysis.GetAddCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
@@ -19,7 +21,8 @@ class AddAnalysisViewModel(
     private val getAddAnalysisUseCase: GetAddAnalysisUseCase,
     private val getAddHematologicalStatusUseCase: GetAddHematologicalStatusUseCase,
     private val getUpdateAnalysisDateUseCase: GetUpdateAnalysisDateUseCase,
-    private val getAddImmuneStatusUseCase: GetAddImmuneStatusUseCase
+    private val getAddImmuneStatusUseCase: GetAddImmuneStatusUseCase,
+    private val getAddCytokineStatusUseCase: GetAddCytokineStatusUseCase
 ) : ViewModel()
 {
     private val _analysis = MutableLiveData<Analysis?>()
@@ -65,6 +68,24 @@ class AddAnalysisViewModel(
         status : ImmuneStatus) {
         viewModelScope.launch {
             when (val response = getAddImmuneStatusUseCase.invoke(idPatient = patientId,
+                idAnalysis = analysisId, status = status)) {
+                is ResultMed.Success -> {
+                    Log.d("AddHematologicalStatus: ", response.data.toString())
+                }
+                is ResultMed.Error -> {
+                    Log.d("AddHematologicalStatusError: ",
+                        response.exception.message.toString())
+                }
+            }
+        }
+    }
+
+    fun getCytokineStatus(
+        patientId: String,
+        analysisId : String,
+        status : CytokineStatus) {
+        viewModelScope.launch {
+            when (val response = getAddCytokineStatusUseCase.invoke(idPatient = patientId,
                 idAnalysis = analysisId, status = status)) {
                 is ResultMed.Success -> {
                     Log.d("AddHematologicalStatus: ", response.data.toString())

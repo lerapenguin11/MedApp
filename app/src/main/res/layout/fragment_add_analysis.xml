@@ -743,7 +743,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/bt_arrow_immune_status">
 
                     <LinearLayout
@@ -1503,9 +1503,325 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:visibility="visible"
                     app:layout_constraintTop_toBottomOf="@+id/bt_arrow_cytokine_status"
                     tools:layout_editor_absoluteX="16dp">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_indicator_cyt"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/text_indicator"
+                            android:textColor="@color/text_dark_primary" />
+
+                        <TextView
+                            android:id="@+id/tv_meaning_cyt"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.2"
+                            android:gravity="center"
+                            android:text="@string/text_meaning"
+                            android:textColor="@color/text_dark_primary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_ifny_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny" />
+
+                        <EditText
+                            android:id="@+id/et_input_cd3_ifny_stimulated"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_ifny_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny_" />
+
+                        <EditText
+                            android:id="@+id/et_input_cd3_ifny_spontaneous"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_tnny_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_tnfa" />
+
+                        <EditText
+                            android:id="@+id/et_input_cd3_tnny_stimulated"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_tnny_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_tnfa_" />
+
+                        <EditText
+                            android:id="@+id/et_input_cd3_tnny_spontaneous"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL2_tnny_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il2" />
+
+                        <EditText
+                            android:id="@+id/et_input_IL2_tnny_stimulated"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL2_tnny_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il2_" />
+
+                        <EditText
+                            android:id="@+id/et_input_IL2_tnny_spontaneous"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL4_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il4" />
+
+                        <EditText
+                            android:id="@+id/et_input_IL4_stimulated"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL4_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il4_" />
+
+                        <EditText
+                            android:id="@+id/et_input_IL4_spontaneous"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IFNy_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny__" />
+
+                        <EditText
+                            android:id="@+id/et_input_IFNy_stimulated"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IFNy_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny___" />
+
+                        <EditText
+                            android:id="@+id/et_input_IFNy_spontaneous"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:hint="@string/_10e9"
+                            android:layout_weight="2.2"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

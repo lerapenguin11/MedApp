@@ -3,6 +3,7 @@ package repository.analysisRepository
 import com.example.domain.common.ResultMed
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
+import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 
@@ -24,4 +25,9 @@ interface AnalysisRemoteSource {
                  idAnalysis : String,
                  status : ImmuneStatus
     ) : ResultMed<ImmuneStatus>
+    suspend fun getAddCytokineStatus
+                (idPatient : String,
+                 idAnalysis : String,
+                 status : CytokineStatus
+    ) : ResultMed<CytokineStatus>
 }

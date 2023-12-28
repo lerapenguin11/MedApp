@@ -3,6 +3,7 @@ package repository.analysisRepository
 import com.example.domain.common.ResultMed
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
+import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.domain.repository.AnalysisRepository
@@ -28,6 +29,17 @@ class AnalysisRepositoryImpl(
         status: ImmuneStatus
     ): ResultMed<ImmuneStatus> {
         return remoteSource.getAddImmuneStatus(
+            idPatient = idPatient,
+            idAnalysis = idAnalysis,
+            status = status)
+    }
+
+    override suspend fun getAddCytokineStatus(
+        idPatient: String,
+        idAnalysis: String,
+        status: CytokineStatus
+    ): ResultMed<CytokineStatus> {
+        return remoteSource.getAddCytokineStatus(
             idPatient = idPatient,
             idAnalysis = idAnalysis,
             status = status)

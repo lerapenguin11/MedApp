@@ -2,10 +2,12 @@ package com.example.data.mappers
 
 import com.example.data.api.model.analysis.AnalysisListModel
 import com.example.data.api.model.analysis.AnalysisModel
+import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
+import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 
@@ -98,6 +100,21 @@ class AnalysisApiResponseMapper {
         )
     }
 
+    fun toCytokineStatus(response: CytokineStatus) : CytokineStatusModel{
+        return CytokineStatusModel(
+            cd3_m_ifny_spontaneous = response.cd3_m_ifny_spontaneous ,
+            cd3_m_ifny_stimulated = response.cd3_m_ifny_stimulated,
+            cd3_p_ifny_spontaneous = response.cd3_p_ifny_spontaneous,
+            cd3_p_ifny_stimulated = response.cd3_p_ifny_stimulated,
+            cd3_p_il2_spontaneous = response.cd3_p_il4_spontaneous,
+            cd3_p_il2_stimulated = response.cd3_p_il2_stimulated,
+            cd3_p_il4_spontaneous = response.cd3_p_il2_spontaneous,
+            cd3_p_il4_stimulated = response.cd3_p_il4_stimulated,
+            cd3_p_tnfa_spontaneous = response.cd3_p_tnfa_spontaneous,
+            cd3_p_tnfa_stimulated = response.cd3_p_tnfa_stimulated
+        )
+    }
+
     fun toAnalysisListModel(response: AnalysisListModel): List<AnalysisList> {
         var list = arrayListOf<AnalysisList>()
         for (i in response){
@@ -136,6 +153,21 @@ class AnalysisApiResponseMapper {
             t_cytotoxic_lymphocytes = response.t_cytotoxic_lymphocytes,
             t_helpers = response.t_helpers,
             tnk_cells = response.tnk_cells
+        )
+    }
+
+    fun toCytokineStatusModel(response : CytokineStatusModel): CytokineStatus {
+        return CytokineStatus(
+            cd3_m_ifny_spontaneous = response.cd3_m_ifny_spontaneous ,
+            cd3_m_ifny_stimulated = response.cd3_m_ifny_stimulated,
+            cd3_p_ifny_spontaneous = response.cd3_p_ifny_spontaneous,
+            cd3_p_ifny_stimulated = response.cd3_p_ifny_stimulated,
+            cd3_p_il2_spontaneous = response.cd3_p_il4_spontaneous,
+            cd3_p_il2_stimulated = response.cd3_p_il2_stimulated,
+            cd3_p_il4_spontaneous = response.cd3_p_il2_spontaneous,
+            cd3_p_il4_stimulated = response.cd3_p_il4_stimulated,
+            cd3_p_tnfa_spontaneous = response.cd3_p_tnfa_spontaneous,
+            cd3_p_tnfa_stimulated = response.cd3_p_tnfa_stimulated
         )
     }
 }

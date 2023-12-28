@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import com.example.domain.entity.analysis.Analysis
+import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.medapp.R
@@ -44,7 +45,7 @@ class AddAnalysisFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddAnalysisBinding.inflate(inflater, container, false)
         getDataAnalysis()
         collapseExpandBlockInput()
@@ -69,9 +70,33 @@ class AddAnalysisFragment : Fragment() {
             saveHematologicalStatus()
             saveImmuneStatus()
             saveDateCompletion()
+            saveCytokineStatus()
             launchFragment(HomeFragment())
         }
         binding.icExit.setOnClickListener { replaceFragmentMain(ChangeInformationFragment()) }
+    }
+
+    private fun saveCytokineStatus() {
+        idPatient.let {
+            addAnalysisViewModel.getCytokineStatus(
+                patientId = it,
+                analysisId = idAnalysis.toString(),
+                status = textEditTextCytokineStatus()) }
+    }
+
+    private fun textEditTextCytokineStatus(): CytokineStatus {
+        return CytokineStatus(
+            cd3_m_ifny_spontaneous = binding.etInputIFNySpontaneous.text.toString().toDouble() ,
+            cd3_m_ifny_stimulated = binding.etInputIFNyStimulated.text.toString().toDouble(),
+            cd3_p_ifny_spontaneous = binding.etInputCd3IfnySpontaneous.text.toString().toDouble(),
+            cd3_p_ifny_stimulated = binding.etInputCd3IfnyStimulated.text.toString().toDouble(),
+            cd3_p_il2_spontaneous = binding.etInputIL2TnnySpontaneous.text.toString().toDouble(),
+            cd3_p_il2_stimulated = binding.etInputIL2TnnyStimulated.text.toString().toDouble(),
+            cd3_p_il4_spontaneous = binding.etInputIL4Spontaneous.text.toString().toDouble(),
+            cd3_p_il4_stimulated = binding.etInputIL4Stimulated.text.toString().toDouble(),
+            cd3_p_tnfa_spontaneous = binding.etInputCd3TnnySpontaneous.text.toString().toDouble(),
+            cd3_p_tnfa_stimulated = binding.etInputCd3TnnyStimulated.text.toString().toDouble()
+        )
     }
 
     private fun saveImmuneStatus() {

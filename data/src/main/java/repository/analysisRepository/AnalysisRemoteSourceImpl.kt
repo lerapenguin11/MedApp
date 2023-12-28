@@ -5,6 +5,7 @@ import com.example.data.mappers.AnalysisApiResponseMapper
 import com.example.domain.common.ResultMed
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
+import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 import kotlinx.coroutines.Dispatchers
@@ -94,6 +95,27 @@ class AnalysisRemoteSourceImpl(
                 if (response.isSuccessful) {
 
                     return@withContext ResultMed.Success(mapper.toImmuneStatusModel(response.body()!!))
+                } else {
+                    return@withContext ResultMed.Error(Exception(response.message()))
+                }
+            } catch (e: Exception) {
+                return@withContext ResultMed.Error(e)
+            }
+        }
+
+    override suspend fun getAddCytokineStatus(
+        idPatient: String,
+        idAnalysis: String,
+        status: CytokineStatus
+    ): ResultMed<CytokineStatus> =
+        withContext(Dispatchers.IO) {
+            try {
+                val response = service.getAddCytokinStatus(patientId = idPatient,
+                    analysisId = idAnalysis,
+                    status = mapper.toCytokineStatus(status))
+                if (response.isSuccessful) {
+
+                    return@withContext ResultMed.Success(mapper.toCytokineStatusModel(response.body()!!))
                 } else {
                     return@withContext ResultMed.Error(Exception(response.message()))
                 }

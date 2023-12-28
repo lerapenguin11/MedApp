@@ -2,6 +2,7 @@ package com.example.data.api
 
 import com.example.data.api.model.analysis.AnalysisListModel
 import com.example.data.api.model.analysis.AnalysisModel
+import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
 import com.example.data.api.model.patient.NewPatientIdModel
@@ -24,7 +25,6 @@ interface MedApi {
     @POST("patient/{patientId}/analysis")
     suspend fun getNewAnalysis(@Path("patientId") patientId: String) : Response<AnalysisModel>
 
-    //TODO создание статуса
     @POST("patient/{patientId}/analysis/{analysisId}/status/hematological")
     suspend fun getAddHematologicalStatus(
         @Path("patientId") patientId: String,
@@ -37,7 +37,12 @@ interface MedApi {
         @Path("analysisId") analysisId : String,
         @Body status : ImmuneStatusModel) : Response<ImmuneStatusModel>
 
-    //TODO создание статуса
+    @POST("patient/{patientId}/analysis/{analysisId}/status/cytokine")
+    suspend fun getAddCytokinStatus(
+        @Path("patientId") patientId: String,
+        @Path("analysisId") analysisId : String,
+        @Body status : CytokineStatusModel) : Response<CytokineStatusModel>
+
 
     @PUT("patient/{patientId}/analysis/{analysisId}")
     suspend fun getUpdateAnalysisDate(

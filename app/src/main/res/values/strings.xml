@@ -96,4 +96,14 @@
     <string name="_01_01_1990">01.01.1990</string>
     <string name="error_input">Данные не заполненны</string>
     <string name="text_cytokine_status">Цитокиновый статус</string>
+    <string name="cd3_ifny">CD3+IFNy+(стимулированный)</string>
+    <string name="cd3_ifny_">CD3+IFNy+(спонтанный)</string>
+    <string name="cd3_tnfa">CD3+TNFa+(стимулированный)</string>
+    <string name="cd3_tnfa_">CD3+TNFa+(спонтанный)</string>
+    <string name="cd3_il2">CD3+IL2+(стимулированный)</string>
+    <string name="cd3_il2_">CD3+IL2+(спонтанный)</string>
+    <string name="cd3_il4">CD3+IL4+(стимулированный)</string>
+    <string name="cd3_il4_">CD3+IL4+(спонтанный)</string>
+    <string name="cd3_ifny__">CD3-IFNy+(стимулированный)</string>
+    <string name="cd3_ifny___">CD3-IFNy+(спонтанный)</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.medapp.di
 
 import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
+import com.example.domain.usecase.analysis.GetAddCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
 import com.example.domain.usecase.analysis.GetAnalysisListUseCase
@@ -36,7 +37,8 @@ val appModule = module {
             getAddAnalysisUseCase = GetAddAnalysisUseCase(get()),
             getAddHematologicalStatusUseCase = GetAddHematologicalStatusUseCase(get()),
             getUpdateAnalysisDateUseCase = GetUpdateAnalysisDateUseCase(get()),
-            getAddImmuneStatusUseCase = GetAddImmuneStatusUseCase(get())
+            getAddImmuneStatusUseCase = GetAddImmuneStatusUseCase(get()),
+            getAddCytokineStatusUseCase = GetAddCytokineStatusUseCase(get())
         )
     }
 
