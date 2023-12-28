@@ -17,12 +17,13 @@ interface MedApi {
     @POST("patient")
     suspend fun getAddPatient(@Body requestBody: PatientAdd) : Response<NewPatientIdModel>
 
-    @GET("patient/{patientId}")
-    suspend fun getNewPatientId(@Path("patientId") patientId: String): Response<NewPatientIdModel>
+    @GET("patient/{id}")
+    suspend fun getNewPatientId(@Path("id") patientId: String): Response<NewPatientIdModel>
 
     @POST("patient/{patientId}/analysis")
     suspend fun getNewAnalysis(@Path("patientId") patientId: String) : Response<AnalysisModel>
 
+    //TODO создание статуса
     @POST("patient/{patientId}/analysis/{analysisId}/status/hematological")
     suspend fun getAddHematologicalStatus(
         @Path("patientId") patientId: String,
@@ -36,8 +37,8 @@ interface MedApi {
         @Path("analysisId") analysisId : String
     ) : Response<AnalysisModel>
 
-    @GET("patient/{patientId}/analyzes")
+    @GET("patient/{id}/analyzes")
     suspend fun getAnalysisList(
-        @Path("patientId") patientId: String
+        @Path("id") patientId: String
     ) : Response<AnalysisListModel>
 }

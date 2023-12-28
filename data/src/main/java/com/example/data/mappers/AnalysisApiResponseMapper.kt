@@ -2,12 +2,9 @@ package com.example.data.mappers
 
 import com.example.data.api.model.analysis.AnalysisListModel
 import com.example.data.api.model.analysis.AnalysisModel
-import com.example.data.api.model.analysis.HematologicalStatusModel
-import com.example.data.api.model.patient.PatientModel
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.HematologicalStatus
-import com.example.domain.entity.patient.Patients
 
 class AnalysisApiResponseMapper {
 

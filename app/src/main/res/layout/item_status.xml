@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/text_indicator"
+        style="@style/InputLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="@string/leukocyte" />
+
+    <EditText
+        android:id="@+id/et_input_meaning"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="2.2"
+        android:gravity="center"
+        android:hint="@string/_10e9"
+        android:inputType="numberDecimal" />
+</LinearLayout>
