@@ -132,7 +132,8 @@ class AddAnalysisFragment : Fragment() {
             binding.etInputAbsorptionActivityMonocytesLitr.text.toString().toDouble(),
             neutrophil_absorption_activity =
             binding.etInputAbsorptionActivityNeutrophilsLitr.text.toString().toDouble(),
-            t_cytotoxic_lymphocytes = binding.textCytotoxicLymphocytes.text.toString().toDouble(),
+            t_cytotoxic_lymphocytes =
+            binding.etInputCytotoxicLymphocytesLitr.text.toString().toDouble(),
             t_helpers = binding.etInputHelpersLitr.text.toString().toDouble(),
             tnk_cells = binding.etInputTnkCellsLitr.text.toString().toDouble()
         )

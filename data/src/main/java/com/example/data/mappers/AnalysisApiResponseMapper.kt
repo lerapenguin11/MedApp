@@ -27,7 +27,7 @@ class AnalysisApiResponseMapper {
     fun toAnalysis(response : Analysis) : AnalysisModel {
         return AnalysisModel(
             id = response.id,
-            patientId = response.patientId?.toInt() ?: -1,
+            patientId = response.patientId.toInt() ?: -1,
             cytokineStatusId = response.cytokineStatusId,
             hematologicalStatusId = response.hematologicalStatusId,
             immuneStatusId = response.immuneStatusId,
