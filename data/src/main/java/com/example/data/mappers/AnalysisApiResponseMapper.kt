@@ -1,173 +1,110 @@
 package com.example.data.mappers
 
-import com.example.data.api.model.analysis.AnalysisListModel
-import com.example.data.api.model.analysis.AnalysisModel
-import com.example.data.api.model.analysis.CytokineStatusModel
-import com.example.data.api.model.analysis.HematologicalStatusModel
-import com.example.data.api.model.analysis.ImmuneStatusModel
-import com.example.domain.entity.analysis.Analysis
-import com.example.domain.entity.analysis.AnalysisList
-import com.example.domain.entity.analysis.CytokineStatus
-import com.example.domain.entity.analysis.HematologicalStatus
-import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.data.api.model.analysis.CytokineStatus
+import com.example.data.api.model.analysis.HematologicalStatus
+import com.example.data.api.model.analysis.ImmuneStatus
+import com.example.data.api.model.analysis.PatientAnalysisListModel
+import com.example.domain.entity.analysis.patientAnalysis.Cytokine
+import com.example.domain.entity.analysis.patientAnalysis.Hematological
+import com.example.domain.entity.analysis.patientAnalysis.Immune
+import com.example.domain.entity.analysis.patientAnalysis.PatientAnalysisList
 
+@Suppress("CAST_NEVER_SUCCEEDS")
 class AnalysisApiResponseMapper {
-
-    fun toAnalysisModel(response : AnalysisModel) : Analysis {
-        return Analysis(
-            id = response.id,
-            patientId = response.patientId,
-            cytokineStatusId = response.cytokineStatusId,
-            hematologicalStatusId = response.hematologicalStatusId,
-            immuneStatusId = response.immuneStatusId,
-            executionDateStr = response.executionDateStr
-        )
-    }
-
-    fun toAnalysis(response : Analysis) : AnalysisModel {
-        return AnalysisModel(
-            id = response.id,
-            patientId = response.patientId.toInt() ?: -1,
-            cytokineStatusId = response.cytokineStatusId,
-            hematologicalStatusId = response.hematologicalStatusId,
-            immuneStatusId = response.immuneStatusId,
-            executionDateStr = response.executionDateStr
-        )
-    }
-
-    fun toHematologicalStatusModel(response: HematologicalStatusModel) : HematologicalStatus{
-        return HematologicalStatus(
-            bas = response.bas,
-            eos = response.eos,
-            hct = response.hct,
-            hgb = response.hgb,
-            lymf = response.lymf,
-            mch = response.mch,
-            mpv = response.mpv,
-            mvc = response.mvc,
-            neu = response.neu,
-            pct = response.pct,
-            pdv = response.pdv,
-            plt = response.plt,
-            rbc = response.rbc,
-            rdwcv = response.rdwcv,
-            wbc = response.wbc
-        )
-    }
-
-    fun toHematologicalStatus(response: HematologicalStatus) : HematologicalStatusModel{
-        return HematologicalStatusModel(
-            bas = response.bas,
-            eos = response.eos,
-            hct = response.hct,
-            hgb = response.hgb,
-            lymf = response.lymf,
-            mch = response.mch,
-            mpv = response.mpv,
-            mvc = response.mvc,
-            neu = response.neu,
-            pct = response.pct,
-            pdv = response.pdv,
-            plt = response.plt,
-            rbc = response.rbc,
-            rdwcv = response.rdwcv,
-            wbc = response.wbc
-        )
-    }
-
-    fun toImmuneStatus(response: ImmuneStatus) : ImmuneStatusModel{
-        return ImmuneStatusModel(
-            activated_t_cells = response.activated_t_cells,
-            activated_t_cells_expressing_il2 = response.activated_t_cells_expressing_il2,
-            cd3_p_cd4_p_cd3_p_cd8_p_ratio = response.cd3_p_cd4_p_cd3_p_cd8_p_ratio,
-            circulating_immune_complexes = response.circulating_immune_complexes,
-            common_b_lymphocytes = response.common_b_lymphocytes,
-            common_nk_cells = response.common_nk_cells,
-            common_t_lymphocytes = response.common_t_lymphocytes ,
-            cytokine_producing_nk_cells = response.cytokine_producing_nk_cells,
-            cytolytic_nk_cells = response.cytolytic_nk_cells,
-            hct_test_spontaneous = response.hct_test_spontaneous,
-            hct_test_stimulated = response.hct_test_stimulated,
-            leukocytes_bactericidal_activity = response.leukocytes_bactericidal_activity,
-            lga = response.lga,
-            lgg = response.lgg,
-            lgm = response.lgm,
-            monocytes_absorption_activity = response.monocytes_absorption_activity,
-            neutrophil_absorption_activity = response.neutrophil_absorption_activity,
-            t_cytotoxic_lymphocytes = response.t_cytotoxic_lymphocytes,
-            t_helpers = response.t_helpers,
-            tnk_cells = response.tnk_cells
-        )
-    }
-
-    fun toCytokineStatus(response: CytokineStatus) : CytokineStatusModel{
-        return CytokineStatusModel(
-            cd3_m_ifny_spontaneous = response.cd3_m_ifny_spontaneous ,
-            cd3_m_ifny_stimulated = response.cd3_m_ifny_stimulated,
-            cd3_p_ifny_spontaneous = response.cd3_p_ifny_spontaneous,
-            cd3_p_ifny_stimulated = response.cd3_p_ifny_stimulated,
-            cd3_p_il2_spontaneous = response.cd3_p_il4_spontaneous,
-            cd3_p_il2_stimulated = response.cd3_p_il2_stimulated,
-            cd3_p_il4_spontaneous = response.cd3_p_il2_spontaneous,
-            cd3_p_il4_stimulated = response.cd3_p_il4_stimulated,
-            cd3_p_tnfa_spontaneous = response.cd3_p_tnfa_spontaneous,
-            cd3_p_tnfa_stimulated = response.cd3_p_tnfa_stimulated
-        )
-    }
-
-    fun toAnalysisListModel(response: AnalysisListModel): List<AnalysisList> {
-        var list = arrayListOf<AnalysisList>()
+    fun toAnalysisListModel(response : PatientAnalysisListModel): List<PatientAnalysisList> {
+        var list = arrayListOf<PatientAnalysisList>()
         for (i in response){
+            val createdAt = i.createdAt
+            val cytokineStatus= i.cytokineStatus
+            val cytokineStatusId = i.cytokineStatusId
+            val deletedAt = i.deletedAt
             val executionDateStr = i.executionDateStr
+            val hematologicalStatus = i.hematologicalStatus
+            val hematologicalStatusId = i.hematologicalStatusId
             val id = i.id
+            val immuneStatus = i.immuneStatus
+            val immuneStatusId = i.immuneStatusId
             val patientId = i.patientId
-            val analysis = AnalysisList(
-                id = id,
+            val updatedAt = i.updatedAt
+            val analysis = PatientAnalysisList(
+                createdAt = createdAt,
+                cytokineStatus = toCytokineStatus(cytokineStatus),
+                cytokineStatusId = cytokineStatusId,
+                deletedAt = deletedAt,
                 executionDateStr = executionDateStr,
-                patientId = patientId
+                hematologicalStatus = toHematological(hematologicalStatus),
+                hematologicalStatusId = hematologicalStatusId,
+                id = id,
+                immuneStatus = toImmune(immuneStatus),
+                immuneStatusId = immuneStatusId,
+                patientId = patientId,
+                updatedAt = updatedAt
             )
             list.add(analysis)
         }
         return list
     }
 
-    fun toImmuneStatusModel(response : ImmuneStatusModel): ImmuneStatus {
-        return ImmuneStatus(
-            activated_t_cells = response.activated_t_cells,
-            activated_t_cells_expressing_il2 = response.activated_t_cells_expressing_il2,
-            cd3_p_cd4_p_cd3_p_cd8_p_ratio = response.cd3_p_cd4_p_cd3_p_cd8_p_ratio,
-            circulating_immune_complexes = response.circulating_immune_complexes,
-            common_b_lymphocytes = response.common_b_lymphocytes,
-            common_nk_cells = response.common_nk_cells,
-            common_t_lymphocytes = response.common_t_lymphocytes ,
-            cytokine_producing_nk_cells = response.cytokine_producing_nk_cells,
-            cytolytic_nk_cells = response.cytolytic_nk_cells,
-            hct_test_spontaneous = response.hct_test_spontaneous,
-            hct_test_stimulated = response.hct_test_stimulated,
-            leukocytes_bactericidal_activity = response.leukocytes_bactericidal_activity,
-            lga = response.lga,
-            lgg = response.lgg,
-            lgm = response.lgm,
-            monocytes_absorption_activity = response.monocytes_absorption_activity,
-            neutrophil_absorption_activity = response.neutrophil_absorption_activity,
-            t_cytotoxic_lymphocytes = response.t_cytotoxic_lymphocytes,
-            t_helpers = response.t_helpers,
-            tnk_cells = response.tnk_cells
+    private fun toImmune(status: ImmuneStatus): Immune {
+        return Immune(
+            activated_t_cells = status.activated_t_cells,
+            activated_t_cells_expressing_il2 = status.activated_t_cells_expressing_il2,
+            cd3_p_cd4_p_cd3_p_cd8_p_ratio = status.cd3_p_cd4_p_cd3_p_cd8_p_ratio,
+            circulating_immune_complexes = status.circulating_immune_complexes,
+            common_b_lymphocytes = status.common_b_lymphocytes,
+            common_nk_cells = status.common_nk_cells,
+            common_t_lymphocytes = status.common_t_lymphocytes ,
+            cytokine_producing_nk_cells = status.cytokine_producing_nk_cells,
+            cytolytic_nk_cells = status.cytolytic_nk_cells,
+            hct_test_spontaneous = status.hct_test_spontaneous,
+            hct_test_stimulated = status.hct_test_stimulated,
+            leukocytes_bactericidal_activity = status.leukocytes_bactericidal_activity,
+            lga = status.lga,
+            lgg = status.lgg,
+            lgm = status.lgm,
+            monocytes_absorption_activity = status.monocytes_absorption_activity,
+            neutrophil_absorption_activity = status.neutrophil_absorption_activity,
+            t_cytotoxic_lymphocytes = status.t_cytotoxic_lymphocytes,
+            t_helpers = status.t_helpers,
+            tnk_cells = status.tnk_cells,
+            id = status.id
         )
     }
 
-    fun toCytokineStatusModel(response : CytokineStatusModel): CytokineStatus {
-        return CytokineStatus(
-            cd3_m_ifny_spontaneous = response.cd3_m_ifny_spontaneous ,
-            cd3_m_ifny_stimulated = response.cd3_m_ifny_stimulated,
-            cd3_p_ifny_spontaneous = response.cd3_p_ifny_spontaneous,
-            cd3_p_ifny_stimulated = response.cd3_p_ifny_stimulated,
-            cd3_p_il2_spontaneous = response.cd3_p_il4_spontaneous,
-            cd3_p_il2_stimulated = response.cd3_p_il2_stimulated,
-            cd3_p_il4_spontaneous = response.cd3_p_il2_spontaneous,
-            cd3_p_il4_stimulated = response.cd3_p_il4_stimulated,
-            cd3_p_tnfa_spontaneous = response.cd3_p_tnfa_spontaneous,
-            cd3_p_tnfa_stimulated = response.cd3_p_tnfa_stimulated
+    private fun toCytokineStatus(status: CytokineStatus): Cytokine {
+        return Cytokine(
+            cd3_m_ifny_spontaneous = status.cd3_m_ifny_spontaneous ,
+            cd3_m_ifny_stimulated = status.cd3_m_ifny_stimulated,
+            cd3_p_ifny_spontaneous = status.cd3_p_ifny_spontaneous,
+            cd3_p_ifny_stimulated = status.cd3_p_ifny_stimulated,
+            cd3_p_il2_spontaneous = status.cd3_p_il4_spontaneous,
+            cd3_p_il2_stimulated = status.cd3_p_il2_stimulated,
+            cd3_p_il4_spontaneous = status.cd3_p_il2_spontaneous,
+            cd3_p_il4_stimulated = status.cd3_p_il4_stimulated,
+            cd3_p_tnfa_spontaneous = status.cd3_p_tnfa_spontaneous,
+            cd3_p_tnfa_stimulated = status.cd3_p_tnfa_stimulated,
+            id = status.id,
+        )
+    }
+
+    private fun toHematological(status: HematologicalStatus): Hematological {
+        return Hematological(
+            bas = status.bas,
+            eos = status.eos,
+            hct = status.hct,
+            hgb = status.hgb,
+            lymf = status.lymf,
+            mch = status.mch,
+            mpv = status.mpv,
+            mvc = status.mvc,
+            neu = status.neu,
+            pct = status.pct,
+            pdv = status.pdv,
+            plt = status.plt,
+            rbc = status.rbc,
+            rdwcv = status.rdwcv,
+            wbc = status.wbc,
+            id = status.id,
         )
     }
 }

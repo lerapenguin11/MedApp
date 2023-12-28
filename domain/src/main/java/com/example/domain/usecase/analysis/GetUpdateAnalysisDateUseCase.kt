@@ -1,10 +1,10 @@
 package com.example.domain.usecase.analysis
 
 import com.example.domain.entity.analysis.Analysis
-import com.example.domain.repository.AnalysisRepository
+import com.example.domain.repository.AddAnalysisRepository
 
 class GetUpdateAnalysisDateUseCase(
-    private val repository: AnalysisRepository)
+    private val repository: AddAnalysisRepository)
 {
     suspend operator fun invoke(
         date : Analysis,

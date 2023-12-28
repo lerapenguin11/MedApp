@@ -38,6 +38,8 @@
         android:id="@+id/rv_analyzes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
         tools:listitem="@layout/item_analyzes"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_analyzes" />

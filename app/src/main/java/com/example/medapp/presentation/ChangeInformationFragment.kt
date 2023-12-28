@@ -103,7 +103,7 @@ class ChangeInformationFragment : Fragment() {
         fun newInstancePatientId(id : String) =
             AddAnalysisFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ChangeInformationFragment.BUNDLE_PATIENT_ID, id)
+                    putString(BUNDLE_PATIENT_ID, id)
                 }
             }
     }

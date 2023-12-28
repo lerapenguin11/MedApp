@@ -5,6 +5,7 @@ import com.example.data.api.model.analysis.AnalysisModel
 import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
+import com.example.data.api.model.analysis.PatientAnalysisListModel
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
 import com.example.data.api.model.patient.PatientModel
@@ -55,4 +56,9 @@ interface MedApi {
     suspend fun getAnalysisList(
         @Path("id") patientId: String
     ) : Response<AnalysisListModel>
+
+    @GET("patient/{id}/analyzes")
+    suspend fun getPatientAnalysisList(
+        @Path("id") patientId: String
+    ) : Response<PatientAnalysisListModel>
 }

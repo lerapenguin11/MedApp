@@ -31,14 +31,28 @@ class DetailedInformationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDetailedInformationBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         shimmerEffectPlaceholder()
         setData()
         setOnClickListenerButton()
-        return binding.root
     }
 
     private fun setOnClickListenerButton() {
         binding.icExit.setOnClickListener { launchFragment(HomeFragment()) }
+        binding.btLearnAboutAnalyses.setOnClickListener {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            idPatient?.let { it1 -> newInstancePatientId(id = it1) }?.let { it2 ->
+                transaction?.replace(
+                    R.id.main_layout,
+                    it2
+                )?.addToBackStack(null)
+            }
+            transaction?.commit()
+        }
     }
 
     private fun launchFragment(fragment: Fragment){
@@ -86,5 +100,12 @@ class DetailedInformationFragment : Fragment() {
 
     companion object {
         private const val BUNDLE_PATIENT_ID = "patient_id"
+
+        fun newInstancePatientId(id : String) =
+            AnalyzesFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_PATIENT_ID, id)
+                }
+            }
     }
 }
