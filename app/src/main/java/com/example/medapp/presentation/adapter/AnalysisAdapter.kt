@@ -11,6 +11,9 @@ import com.example.medapp.presentation.adapter.viewholder.AnalysisViewHolder
 
 class AnalysisAdapter : ListAdapter<PatientAnalysisList, AnalysisViewHolder>(
     AnalysisItemDiffCallback()) {
+
+    var onAnalysisClickListener : ((PatientAnalysisList) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnalysisViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_analyzes, parent, false)
         return AnalysisViewHolder(view)
@@ -21,6 +24,9 @@ class AnalysisAdapter : ListAdapter<PatientAnalysisList, AnalysisViewHolder>(
         val analysis = getItem(position)
         holder.dateAnalysis.text = analysis.executionDateStr
         holder.numberAnalysis.text = "$TEXT_ANALYSIS${analysis.id}"
+        holder.itemView.setOnClickListener {
+            onAnalysisClickListener?.invoke(analysis)
+        }
     }
 
     companion object{

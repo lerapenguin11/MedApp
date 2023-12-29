@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAnalyzesBinding
-import com.example.medapp.databinding.FragmentDetailedInformationBinding
 import com.example.medapp.presentation.adapter.AnalysisAdapter
 import com.example.medapp.presentation.adapter.BottomSpaceItemDecoration
 import com.example.medapp.viewmodel.AnalysisViewModel
-import com.example.medapp.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AnalyzesFragment : Fragment() {
@@ -33,7 +31,7 @@ class AnalyzesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAnalyzesBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,6 +40,32 @@ class AnalyzesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerViewAnalysis()
         setOnClickListenerBtAddAnalysis()
+        setOnClickListenerBackArrow()
+        setOnClickListenerItemAnalysis()
+    }
+
+    private fun setOnClickListenerItemAnalysis() {
+        adapter.onAnalysisClickListener = {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(
+                R.id.main_layout,
+                newInstanceAnalysisId(idAnalysis = it.id, it.patientId.toString())
+            )?.addToBackStack(null)
+            transaction?.commit()
+        }
+    }
+
+    private fun setOnClickListenerBackArrow() {
+        binding.icExit.setOnClickListener {
+            if (idPatient != null){
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstancePatientId(id = idPatient!!)
+                )?.addToBackStack(null)
+                transaction?.commit()
+            }
+        }
     }
 
     private fun setOnClickListenerBtAddAnalysis() {
@@ -50,7 +74,7 @@ class AnalyzesFragment : Fragment() {
                 val transaction = activity?.supportFragmentManager?.beginTransaction()
                 transaction?.replace(
                     R.id.main_layout,
-                    newInstancePatientId(id = idPatient!!)
+                    newInstancePatientIdAddAnalysis(id = idPatient!!)
                 )?.addToBackStack(null)
                 transaction?.commit()
             }
@@ -75,11 +99,27 @@ class AnalyzesFragment : Fragment() {
 
     companion object {
         private const val BUNDLE_PATIENT_ID = "patient_id"
+        private const val BUNDLE_ANALYSIS_ID = "analysis_id"
 
-        fun newInstancePatientId(id : String) =
+        fun newInstancePatientIdAddAnalysis(id : String) =
             AddAnalysisFragment().apply {
                 arguments = Bundle().apply {
                     putString(BUNDLE_PATIENT_ID, id)
+                }
+            }
+
+        fun newInstancePatientId(id : String) =
+            DetailedInformationFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_PATIENT_ID, id)
+                }
+            }
+
+        fun newInstanceAnalysisId(idAnalysis : Int, idPatient : String) =
+            DetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(BUNDLE_ANALYSIS_ID, idAnalysis)
+                    putString(BUNDLE_PATIENT_ID, idPatient)
                 }
             }
     }
