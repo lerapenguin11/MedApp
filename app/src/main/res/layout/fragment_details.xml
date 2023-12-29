@@ -1,0 +1,1719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/input_background"
+    tools:context=".presentation.AddAnalysisFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_change_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_detail"
+            style="@style/ScreenHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/title_detail" />
+
+        <ImageView
+            android:id="@+id/ic_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:src="@drawable/ic_arrow" />
+
+        <ImageView
+            android:id="@+id/ic_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_edit" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_change_info">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:padding="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/title_date_analysis"
+                    style="@style/SectionHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/text_date_analysis"
+                    app:layout_constraintEnd_toStartOf="@+id/bt_arrow_date_analize"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/bt_arrow_date_analize" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bt_arrow_date_analize"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_arrow_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/ic_arrow_date_analysis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/block_date_analysis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/bt_arrow_date_analize">
+
+                    <TextView
+                        android:id="@+id/tv_date_analysis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/ScreenHeader"
+                        android:textColor="@color/accent_dark_primary"
+                        tools:text="29.12.2023" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:padding="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+
+                <TextView
+                    android:id="@+id/title_hematological_status"
+                    style="@style/SectionHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/text_hematological_status"
+                    app:layout_constraintEnd_toStartOf="@+id/bt_arrow_hematological_status"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/bt_arrow_hematological_status" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bt_arrow_hematological_status"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_arrow_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ic_arrow_hematological_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_hematological_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/title_hematological_status"
+                    tools:layout_editor_absoluteX="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_indicator"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/text_indicator"
+                            android:textColor="@color/text_dark_primary" />
+
+                        <TextView
+                            android:id="@+id/tv_meaning"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.2"
+                            android:gravity="center"
+                            android:text="@string/text_meaning"
+                            android:textColor="@color/text_dark_primary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_leukocyte"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/leukocyte" />
+
+                        <TextView
+                            android:id="@+id/tv_leukocyte"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_lymphocytes"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_lymphocytes" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.2"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_lymphocytes_percentage"
+                                style="@style/BodyRegular"
+                                tools:text="0.5"
+                                android:textColor="@color/accent_dark_primary"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_weight="2.2"
+                                android:gravity="center"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_monocytes"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_monocytes" />
+
+                        <TextView
+                            android:id="@+id/tv_monocytes_percentage"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_neutrophils"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_neutrophils" />
+
+                        <TextView
+                            android:id="@+id/tv_neutrophils_percentage"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_eosinophils"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_eosinophils" />
+
+                        <TextView
+                            android:id="@+id/tv_eosinophils_percentage"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_basophils"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_basophils" />
+
+                        <TextView
+                            android:id="@+id/tv_basophils_percentage"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_hemoglobin"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_hemoglobin" />
+
+                        <TextView
+                            android:id="@+id/tv_hemoglobin"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_hematocrit"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_hematocrit" />
+
+                        <TextView
+                            android:id="@+id/tv_hematocrit"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_platelets"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_platelets" />
+
+                        <TextView
+                            android:id="@+id/tv_platelets"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_erythrocyte"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_erythrocyte" />
+
+                        <TextView
+                            android:id="@+id/tv_erythrocyte"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_mcv"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/mcv" />
+
+                        <TextView
+                            android:id="@+id/tv_mcv"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_mch"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/mch" />
+
+                        <TextView
+                            android:id="@+id/tv_mch"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_mchc"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/mchc" />
+
+                        <TextView
+                            android:id="@+id/tv_mchc"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_rdw_cv"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_rdw_cv" />
+
+                        <TextView
+                            android:id="@+id/tv_rdw_cv"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_mpv"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_mpv" />
+
+                        <TextView
+                            android:id="@+id/tv_mpv"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_pct"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_pct" />
+
+                        <TextView
+                            android:id="@+id/tv_pct"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_pdv"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/text_pdv" />
+
+                        <TextView
+                            android:id="@+id/tv_pdv"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_card"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+                <TextView
+                    android:id="@+id/title_immune_status"
+                    style="@style/SectionHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/text_immune_status"
+                    app:layout_constraintBottom_toBottomOf="@+id/bt_arrow_immune_status"
+                    app:layout_constraintEnd_toStartOf="@+id/bt_arrow_immune_status"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/bt_arrow_immune_status" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bt_arrow_immune_status"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_arrow_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/ic_arrow_immune_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/block_immune_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/bt_arrow_immune_status">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_indicator_im"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/text_indicator"
+                            android:textColor="@color/text_dark_primary" />
+
+                        <TextView
+                            android:id="@+id/tv_meaning_im"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.2"
+                            android:gravity="center"
+                            android:text="@string/text_meaning"
+                            android:textColor="@color/text_dark_primary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_common_lymphocytes"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd45_cd3" />
+
+                        <TextView
+                            android:id="@+id/tv_common_lymphocytes"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_common_lymphocytes_b"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/b_cd45_cd19" />
+
+                        <TextView
+                            android:id="@+id/tv_common_b_lymphocytes"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_helpers"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/t_cd45_cd3_cd4" />
+
+                        <TextView
+                            android:id="@+id/tv_helpers_litr"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_ratio"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_cd4_cd3_cd8" />
+
+                        <TextView
+                            android:id="@+id/tv_ratio"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cytotoxic_lymphocytes"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/t_cd45_cd3_cd8" />
+
+                        <TextView
+                            android:id="@+id/tv_cytotoxic_lymphocytes_litr"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_common_nk_cells"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/nk_cd45_cd3_cd16_56" />
+
+                        <TextView
+                            android:id="@+id/tv_common_nk_cells_litr"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_nk_cells_cytolytic"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/nk_cd45_cd3_cd16brightcd56dim" />
+
+                        <TextView
+                            android:id="@+id/tv_nk_cells_cytolytic"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_nk_cytokine_producing_cells"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/nk_cd45_cd3_cd16dim_to_negcd56bright" />
+
+                        <TextView
+                            android:id="@+id/tv_nk_cytokine_producing_cells"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_tnk_cells"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tnk_cd45_cd3_cd16_cd56" />
+
+                        <TextView
+                            android:id="@+id/tv_tnk_cells_litr"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_activated_t_cells"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/t_cd45_cd3_hla_dr" />
+
+                        <TextView
+                            android:id="@+id/tv_activated_t_cells"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_activated_t_cells_expressing"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/t_2_cd45_cd3_cd25" />
+
+                        <TextView
+                            android:id="@+id/tv_activated_t_cells_expressing_litr"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_iga"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/iga" />
+
+                        <TextView
+                            android:id="@+id/tv_iga"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_igg"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/igg" />
+
+                        <TextView
+                            android:id="@+id/tv_igg"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_igm"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/igm" />
+
+                        <TextView
+                            android:id="@+id/tv_igm"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_circulating_immune_complexes"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/circulating_immune_complexes" />
+
+                        <TextView
+                            android:id="@+id/tv_circulating_immune_complexes"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_HCT_test_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/hct" />
+
+                        <TextView
+                            android:id="@+id/tv_HCT_test_spontaneous"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_HCT_test_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/hct_test_stim" />
+
+                        <TextView
+                            android:id="@+id/tv_HCT_test_stimulated"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_bactericidal_activity_leukocytes"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/bactericidal_activity_leukocytes" />
+
+                        <TextView
+                            android:id="@+id/tv_bactericidal_activity_leukocytes"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_absorption_activity_neutrophils"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/absorption_activity_neutrophils" />
+
+
+                        <TextView
+                            android:id="@+id/tv_absorption_activity_neutrophils_litr"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_absorption_activity_monocytes"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/absorption_activity_monocytes" />
+
+                        <TextView
+                            android:id="@+id/tv_absorption_activity_monocytes_litr"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:padding="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
+
+                <TextView
+                    android:id="@+id/title_cytokine_status"
+                    style="@style/SectionHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/cytokine_status"
+                    app:layout_constraintBottom_toBottomOf="@+id/bt_arrow_cytokine_status"
+                    app:layout_constraintEnd_toStartOf="@+id/bt_arrow_cytokine_status"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/bt_arrow_cytokine_status" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bt_arrow_cytokine_status"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_arrow_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/ic_arrow_cytokine_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_bottom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/block_cytokine_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/bt_arrow_cytokine_status"
+                    tools:layout_editor_absoluteX="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_indicator_cyt"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/text_indicator"
+                            android:textColor="@color/text_dark_primary" />
+
+                        <TextView
+                            android:id="@+id/tv_meaning_cyt"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.2"
+                            android:gravity="center"
+                            android:text="@string/text_meaning"
+                            android:textColor="@color/text_dark_primary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_ifny_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny" />
+
+                        <TextView
+                            android:id="@+id/tv_cd3_ifny_stimulated"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_ifny_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny_" />
+
+                        <TextView
+                            android:id="@+id/tv_ifny_spontaneous"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_tnny_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_tnfa" />
+
+                        <TextView
+                            android:id="@+id/tv_cd3_tnny_stimulated"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_cd3_tnny_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_tnfa_" />
+
+                        <TextView
+                            android:id="@+id/tv_cd3_tnny_spontaneous"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL2_tnny_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il2" />
+
+                        <TextView
+                            android:id="@+id/tv_IL2_tnny_stimulated"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL2_tnny_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il2_" />
+
+                        <TextView
+                            android:id="@+id/tv_IL2_tnny_spontaneous"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL4_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il4" />
+
+                        <TextView
+                            android:id="@+id/tv_IL4_stimulated"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IL4_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_il4_" />
+
+                        <TextView
+                            android:id="@+id/tv_IL4_spontaneous"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IFNy_stimulated"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny__" />
+
+                        <TextView
+                            android:id="@+id/tv_IFNy_stimulated"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_IFNy_spontaneous"
+                            style="@style/InputLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/cd3_ifny___" />
+
+                        <TextView
+                            android:id="@+id/tv_IFNy_spontaneous"
+                            style="@style/BodyRegular"
+                            tools:text="0.5"
+                            android:textColor="@color/accent_dark_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_weight="2.2"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:elevation="5dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/bt_save"
+            style="@style/ButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_bt"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/text_view_charts"
+            android:textAllCaps="false"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
