@@ -68,9 +68,9 @@ class AddAnalysisFragment : Fragment() {
     private fun setOnClickListener() {
         binding.btSave.setOnClickListener {
             saveHematologicalStatus()
-            saveImmuneStatus()
+            //saveImmuneStatus()
             saveDateCompletion()
-            saveCytokineStatus()
+            //saveCytokineStatus()
             launchFragment(HomeFragment())
         }
         binding.icExit.setOnClickListener { replaceFragmentMain(ChangeInformationFragment()) }

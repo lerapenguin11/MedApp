@@ -5,6 +5,7 @@ import com.example.data.api.model.analysis.AnalysisModel
 import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
+import com.example.data.api.model.analysis.PatientIdRequest
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.CytokineStatus
@@ -12,6 +13,9 @@ import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 
 class AddAnalysisApiResponseMapper {
+    fun toPatientIdRequest(patientId: String) : PatientIdRequest{
+        return PatientIdRequest(patientId = patientId)
+    }
 
     fun toAnalysisModel(response : AnalysisModel) : Analysis {
         return Analysis(

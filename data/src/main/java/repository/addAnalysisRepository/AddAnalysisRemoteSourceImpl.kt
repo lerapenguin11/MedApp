@@ -18,7 +18,8 @@ class AddAnalysisRemoteSourceImpl(
     override suspend fun getNewAnalysis(idPatient: String): ResultMed<Analysis> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getNewAnalysis(patientId = idPatient)
+                val response = service.getNewAnalysis(
+                    patientId = mapper.toPatientIdRequest(idPatient))
                 if (response.isSuccessful) {
 
                     return@withContext ResultMed.Success(mapper.toAnalysisModel(response.body()!!))
@@ -36,7 +37,7 @@ class AddAnalysisRemoteSourceImpl(
     ): ResultMed<HematologicalStatus> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getAddHematologicalStatus(patientId = idPatient,
+                val response = service.getAddHematologicalStatus(
                                                             analysisId = idAnalysis,
                                         status = mapper.toHematologicalStatus(status))
                 if (response.isSuccessful) {

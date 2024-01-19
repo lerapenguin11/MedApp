@@ -16,7 +16,7 @@ class PatientRemoteSourceImpl(
     override suspend fun getPatientList(): ResultMed<List<Patients>> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getPatient()
+                val response = service.getAllPatient()
                 if (response.isSuccessful) {
 
                     return@withContext ResultMed.Success(mapper.toPatientList(response.body()!!))
@@ -47,7 +47,7 @@ class PatientRemoteSourceImpl(
     override suspend fun getNewPatientId(id: String): ResultMed<NewPatientId> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getNewPatientId(patientId = id)
+                val response = service.getPatientId(patientId = id)
                 if (response.isSuccessful) {
 
                     return@withContext ResultMed.Success(mapper.toNewPatientId(response.body()!!))
