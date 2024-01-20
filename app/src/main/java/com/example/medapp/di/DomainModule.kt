@@ -7,6 +7,7 @@ import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
 import com.example.domain.usecase.analysis.GetAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetPatientAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
+import com.example.domain.usecase.analysis.GetValuesHematologicalStatusUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
 import com.example.domain.usecase.patient.GetPatientListUseCase
@@ -51,6 +52,10 @@ val domainModule = module {
     ) }
 
     factory<GetPatientAnalysisListUseCase> { GetPatientAnalysisListUseCase(
+        repository = get()
+    ) }
+
+    factory<GetValuesHematologicalStatusUseCase> { GetValuesHematologicalStatusUseCase(
         repository = get()
     ) }
 }

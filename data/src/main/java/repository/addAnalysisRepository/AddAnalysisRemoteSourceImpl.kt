@@ -8,6 +8,7 @@ import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -117,6 +118,21 @@ class AddAnalysisRemoteSourceImpl(
                 if (response.isSuccessful) {
 
                     return@withContext ResultMed.Success(mapper.toCytokineStatusModel(response.body()!!))
+                } else {
+                    return@withContext ResultMed.Error(Exception(response.message()))
+                }
+            } catch (e: Exception) {
+                return@withContext ResultMed.Error(e)
+            }
+        }
+
+    override suspend fun getValuesHematologicalStatus(): ResultMed<List<StatusList>> =
+        withContext(Dispatchers.IO) {
+            try {
+                val response = service.getValuesHematologicalStatus()
+                if (response.isSuccessful) {
+
+                    return@withContext ResultMed.Success(mapper.toValuesStatus(response.body()!!))
                 } else {
                     return@withContext ResultMed.Error(Exception(response.message()))
                 }

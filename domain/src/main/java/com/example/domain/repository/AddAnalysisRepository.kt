@@ -6,6 +6,7 @@ import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
 
 interface AddAnalysisRepository {
 
@@ -29,4 +30,6 @@ interface AddAnalysisRepository {
         idAnalysis : String) : ResultMed<Analysis>
 
     suspend fun getAnalysisList(patientId : String): ResultMed<List<AnalysisList>>
+
+    suspend fun getValuesHematologicalStatus() : ResultMed<List<StatusList>>
 }

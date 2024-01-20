@@ -6,6 +6,7 @@ import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
 import com.example.domain.repository.AddAnalysisRepository
 
 class AddAnalysisRepositoryImpl(
@@ -53,5 +54,9 @@ class AddAnalysisRepositoryImpl(
 
     override suspend fun getAnalysisList(patientId: String): ResultMed<List<AnalysisList>> {
         return remoteSource.getAnalysisList(patientId = patientId)
+    }
+
+    override suspend fun getValuesHematologicalStatus(): ResultMed<List<StatusList>> {
+        return remoteSource.getValuesHematologicalStatus()
     }
 }

@@ -14,6 +14,7 @@ import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAddAnalysisBinding
+import com.example.medapp.presentation.adapter.AddStatusAdapter
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.AddAnalysisViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,6 +32,7 @@ class AddAnalysisFragment : Fragment() {
     private var cytokineStatusId : Int? = null
     private var hematologicalStatusId : Int? = null
     private var immuneStatusId : Int? = null
+    private val adapterStatus = AddStatusAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class AddAnalysisFragment : Fragment() {
             }
         }
         idPatient.let { addAnalysisViewModel.getAddAnalysis(it) }
+        addAnalysisViewModel.getStatusHematological()
     }
 
     override fun onCreateView(
@@ -48,9 +51,18 @@ class AddAnalysisFragment : Fragment() {
     ): View {
         _binding = FragmentAddAnalysisBinding.inflate(inflater, container, false)
         getDataAnalysis()
+        setStatusHematologicalRV()
         collapseExpandBlockInput()
         setOnClickListener()
         return binding.root
+    }
+
+    private fun setStatusHematologicalRV() {
+        addAnalysisViewModel.statusHematological.observe(viewLifecycleOwner, Observer {status->
+            adapterStatus.submitList(status)
+        })
+        binding.rvAddHematological.adapter = adapterStatus
+        binding.rvAddHematological.setHasFixedSize(false)
     }
 
     private fun getDataAnalysis() {
@@ -67,7 +79,7 @@ class AddAnalysisFragment : Fragment() {
 
     private fun setOnClickListener() {
         binding.btSave.setOnClickListener {
-            saveHematologicalStatus()
+            //saveHematologicalStatus()
             //saveImmuneStatus()
             saveDateCompletion()
             //saveCytokineStatus()
@@ -76,15 +88,15 @@ class AddAnalysisFragment : Fragment() {
         binding.icExit.setOnClickListener { replaceFragmentMain(ChangeInformationFragment()) }
     }
 
-    private fun saveCytokineStatus() {
+   /* private fun saveCytokineStatus() {
         idPatient.let {
             addAnalysisViewModel.getCytokineStatus(
                 patientId = it,
                 analysisId = idAnalysis.toString(),
                 status = textEditTextCytokineStatus()) }
     }
-
-    private fun textEditTextCytokineStatus(): CytokineStatus {
+*/
+   /* private fun textEditTextCytokineStatus(): CytokineStatus {
         return CytokineStatus(
             cd3_m_ifny_spontaneous = binding.etInputIFNySpontaneous.text.toString().toDouble() ,
             cd3_m_ifny_stimulated = binding.etInputIFNyStimulated.text.toString().toDouble(),
@@ -97,17 +109,17 @@ class AddAnalysisFragment : Fragment() {
             cd3_p_tnfa_spontaneous = binding.etInputCd3TnnySpontaneous.text.toString().toDouble(),
             cd3_p_tnfa_stimulated = binding.etInputCd3TnnyStimulated.text.toString().toDouble()
         )
-    }
+    }*/
 
-    private fun saveImmuneStatus() {
+    /*private fun saveImmuneStatus() {
         idPatient.let {
             addAnalysisViewModel.getImmuneStatus(
                 patientId = it,
                 analysisId = idAnalysis.toString(),
                 status = textEditTextImmuneStatus()) }
-    }
+    }*/
 
-    private fun textEditTextImmuneStatus(): ImmuneStatus {
+    /*private fun textEditTextImmuneStatus(): ImmuneStatus {
         return ImmuneStatus(
             activated_t_cells = binding.etInputActivatedTCells.text.toString().toDouble(),
             activated_t_cells_expressing_il2 =
@@ -137,7 +149,7 @@ class AddAnalysisFragment : Fragment() {
             t_helpers = binding.etInputHelpersLitr.text.toString().toDouble(),
             tnk_cells = binding.etInputTnkCellsLitr.text.toString().toDouble()
         )
-    }
+    }*/
 
     private fun saveDateCompletion() {
         addAnalysisViewModel.getUpdateAnalysisDate(
@@ -154,15 +166,15 @@ class AddAnalysisFragment : Fragment() {
         )
     }
 
-    private fun saveHematologicalStatus() {
+    /*private fun saveHematologicalStatus() {
         idPatient?.let {
             addAnalysisViewModel.getAddHematologicalStatus(
                 patientId = it,
                 analysisId = idAnalysis.toString(),
                 status = textEditTextHematological()) }
-    }
+    }*/
 
-    private fun textEditTextHematological() : HematologicalStatus{
+    /*private fun textEditTextHematological() : HematologicalStatus{
         return HematologicalStatus(
             wbc = binding.etInputLeukocyte.text.toString().toDouble(),
             lymf = binding.etInputLymphocytesPercentage.text.toString().toDouble(),
@@ -180,7 +192,7 @@ class AddAnalysisFragment : Fragment() {
             pct = binding.etInputPct.text.toString().toDouble(),
             pdv = binding.etInputPdv.text.toString().toDouble()
         )
-    }
+    }*/
 
     private fun collapseExpandBlockInput() {
         binding.btArrowDateAnalize.setOnClickListener {

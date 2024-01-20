@@ -7,6 +7,7 @@ import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
 import com.example.data.api.model.analysis.PatientAnalysisListModel
 import com.example.data.api.model.analysis.PatientIdRequest
+import com.example.data.api.model.analysis.StatusListModel
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
 import com.example.data.api.model.patient.PatientModel
@@ -66,7 +67,6 @@ interface MedApi {
         @Path("analysisId") analysisId : String,
         @Body status : CytokineStatusModel) : Response<CytokineStatusModel> //TODO
 
-
     @PUT("patient/{patientId}/analysis/{analysisId}")
     suspend fun getUpdateAnalysisDate(
         @Body date : AnalysisModel,
@@ -83,4 +83,7 @@ interface MedApi {
     suspend fun getPatientAnalysisList(
         @Path("id") patientId: String
     ) : Response<PatientAnalysisListModel> // получение всех анализов
+
+    @GET("analysis/status/template/hematological")
+    suspend fun getValuesHematologicalStatus() : Response<StatusListModel>
 }

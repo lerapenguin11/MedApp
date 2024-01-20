@@ -10,11 +10,13 @@ import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
 import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
 import com.example.domain.usecase.analysis.GetAddCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
+import com.example.domain.usecase.analysis.GetValuesHematologicalStatusUseCase
 import kotlinx.coroutines.launch
 
 class AddAnalysisViewModel(
@@ -22,7 +24,8 @@ class AddAnalysisViewModel(
     private val getAddHematologicalStatusUseCase: GetAddHematologicalStatusUseCase,
     private val getUpdateAnalysisDateUseCase: GetUpdateAnalysisDateUseCase,
     private val getAddImmuneStatusUseCase: GetAddImmuneStatusUseCase,
-    private val getAddCytokineStatusUseCase: GetAddCytokineStatusUseCase
+    private val getAddCytokineStatusUseCase: GetAddCytokineStatusUseCase,
+    private val getValuesHematologicalStatusUseCase: GetValuesHematologicalStatusUseCase
 ) : ViewModel()
 {
     private val _analysis = MutableLiveData<Analysis?>()
@@ -30,6 +33,22 @@ class AddAnalysisViewModel(
 
     private val _errorAnalysis = MutableLiveData<String>()
     val errorAnalysis: LiveData<String> = _errorAnalysis
+
+    private val _statusHematological = MutableLiveData<List<StatusList>?>()
+    val statusHematological: LiveData<List<StatusList>?> get() = _statusHematological
+
+    fun getStatusHematological() {
+        viewModelScope.launch {
+            when (val response = getValuesHematologicalStatusUseCase.invoke()) {
+                is ResultMed.Success -> {
+                    _statusHematological.value = response.data
+                }
+                is ResultMed.Error -> {
+                    _errorAnalysis.value = response.exception.message
+                }
+            }
+        }
+    }
 
     fun getAddAnalysis(patientId: String) {
         viewModelScope.launch {

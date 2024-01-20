@@ -6,11 +6,13 @@ import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
 import com.example.data.api.model.analysis.PatientIdRequest
+import com.example.data.api.model.analysis.StatusListModel
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
 
 class AddAnalysisApiResponseMapper {
     fun toPatientIdRequest(patientId: String) : PatientIdRequest{
@@ -173,5 +175,26 @@ class AddAnalysisApiResponseMapper {
             cd3_p_tnfa_spontaneous = response.cd3_p_tnfa_spontaneous,
             cd3_p_tnfa_stimulated = response.cd3_p_tnfa_stimulated
         )
+    }
+
+    fun toValuesStatus(body: StatusListModel): List<StatusList> {
+        var list = arrayListOf<StatusList>()
+        for (i in body){
+            val fieldMaxValue = i.fieldMaxValue
+            val fieldMinValue = i.fieldMinValue
+            val fieldName = i.fieldName
+            val fieldUnit = i.fieldUnit
+            val fieldTitle = i.fieldTitle
+            list.add(
+                StatusList(
+                fieldMaxValue = fieldMaxValue,
+                fieldMinValue = fieldMinValue,
+                fieldName = fieldName,
+                fieldUnit = fieldUnit,
+                fieldTitle = fieldTitle
+            )
+            )
+        }
+        return list
     }
 }

@@ -6,6 +6,7 @@ import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
 
 interface AddAnalysisRemoteSource {
     suspend fun getNewAnalysis(idPatient : String) : ResultMed<Analysis>
@@ -30,4 +31,6 @@ interface AddAnalysisRemoteSource {
                  idAnalysis : String,
                  status : CytokineStatus
     ) : ResultMed<CytokineStatus>
+
+    suspend fun getValuesHematologicalStatus() : ResultMed<List<StatusList>>
 }
