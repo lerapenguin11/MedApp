@@ -86,4 +86,10 @@ interface MedApi {
 
     @GET("analysis/status/template/hematological")
     suspend fun getValuesHematologicalStatus() : Response<StatusListModel>
+
+    @GET("analysis/status/template/immune")
+    suspend fun getValuesImmuneStatus() : Response<StatusListModel>
+
+    @GET("analysis/status/template/cytokine")
+    suspend fun getValuesCytokinStatus() : Response<StatusListModel>
 }

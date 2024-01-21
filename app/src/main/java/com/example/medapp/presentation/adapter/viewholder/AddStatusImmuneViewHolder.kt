@@ -7,7 +7,7 @@ import com.example.medapp.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-class AddStatusViewHolder(view : View) : RecyclerView.ViewHolder(view)
+class AddStatusImmuneViewHolder (view : View) : RecyclerView.ViewHolder(view)
 {
     val indicator : TextView = view.findViewById(R.id.tv_indicator)
     val meaning : TextInputEditText = view.findViewById(R.id.et_meaning)

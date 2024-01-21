@@ -9,12 +9,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import com.example.domain.entity.analysis.Analysis
-import com.example.domain.entity.analysis.CytokineStatus
-import com.example.domain.entity.analysis.HematologicalStatus
-import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAddAnalysisBinding
-import com.example.medapp.presentation.adapter.AddStatusAdapter
+import com.example.medapp.presentation.adapter.StatusCytokineAdapter
+import com.example.medapp.presentation.adapter.StatusHematologicalAdapter
+import com.example.medapp.presentation.adapter.StatusImmuneAdapter
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.AddAnalysisViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,7 +31,9 @@ class AddAnalysisFragment : Fragment() {
     private var cytokineStatusId : Int? = null
     private var hematologicalStatusId : Int? = null
     private var immuneStatusId : Int? = null
-    private val adapterStatus = AddStatusAdapter()
+    private val adapterHematological = StatusHematologicalAdapter()
+    private val adapterImmune = StatusImmuneAdapter()
+    private val adapterCytokine = StatusCytokineAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,8 @@ class AddAnalysisFragment : Fragment() {
         }
         idPatient.let { addAnalysisViewModel.getAddAnalysis(it) }
         addAnalysisViewModel.getStatusHematological()
+        addAnalysisViewModel.getStatusImmune()
+        addAnalysisViewModel.getStatusCytokine()
     }
 
     override fun onCreateView(
@@ -52,16 +55,34 @@ class AddAnalysisFragment : Fragment() {
         _binding = FragmentAddAnalysisBinding.inflate(inflater, container, false)
         getDataAnalysis()
         setStatusHematologicalRV()
+        setStatusImmuneRV()
+        setStatusCytokineRV()
         collapseExpandBlockInput()
         setOnClickListener()
         return binding.root
     }
 
+    private fun setStatusCytokineRV() {
+        addAnalysisViewModel.statusCytokine.observe(viewLifecycleOwner, Observer {status->
+            adapterCytokine.submitList(status)
+        })
+        binding.rvAddCytokine.adapter = adapterCytokine
+        binding.rvAddCytokine.setHasFixedSize(false)
+    }
+
+    private fun setStatusImmuneRV() {
+        addAnalysisViewModel.statusImmune.observe(viewLifecycleOwner, Observer {status->
+            adapterImmune.submitList(status)
+        })
+        binding.rvAddImmune.adapter = adapterImmune
+        binding.rvAddImmune.setHasFixedSize(false)
+    }
+
     private fun setStatusHematologicalRV() {
         addAnalysisViewModel.statusHematological.observe(viewLifecycleOwner, Observer {status->
-            adapterStatus.submitList(status)
+            adapterHematological.submitList(status)
         })
-        binding.rvAddHematological.adapter = adapterStatus
+        binding.rvAddHematological.adapter = adapterHematological
         binding.rvAddHematological.setHasFixedSize(false)
     }
 
@@ -236,6 +257,9 @@ class AddAnalysisFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvAddImmune.adapter = null
+        binding.rvAddCytokine.adapter = null
+        binding.rvAddHematological.adapter = null
         _binding = null
     }
 

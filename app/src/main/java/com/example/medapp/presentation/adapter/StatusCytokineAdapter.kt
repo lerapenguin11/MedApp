@@ -5,22 +5,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.domain.entity.analysis.StatusList
 import com.example.medapp.R
-import com.example.medapp.presentation.adapter.diffCallback.AddStatusItemDiffCallback
-import com.example.medapp.presentation.adapter.viewholder.AddStatusViewHolder
+import com.example.medapp.presentation.adapter.diffCallback.AddStatusCytokineItemDiffCallback
+import com.example.medapp.presentation.adapter.viewholder.AddStatusCytokineViewHolder
 
-class AddStatusAdapter : ListAdapter<StatusList, AddStatusViewHolder>(
-    AddStatusItemDiffCallback()
-)
+class StatusCytokineAdapter : ListAdapter<StatusList, AddStatusCytokineViewHolder>(
+    AddStatusCytokineItemDiffCallback())
 {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddStatusViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddStatusCytokineViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_input_analysis, parent, false)
-        return AddStatusViewHolder(view)
+        return AddStatusCytokineViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: AddStatusViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AddStatusCytokineViewHolder, position: Int) {
         val status = getItem(position)
         holder.indicator.text = status.fieldTitle
-        holder.meaning.hint = status.fieldMinValue.toString()/*"${status.fieldMinValue}${DASH}${status.fieldMaxValue}"*/
+        holder.meaning.hint = status.fieldMinValue.toString()
         holder.meaning_text.hint = "${status.fieldMinValue}${DASH}${status.fieldMaxValue}"
     }
 

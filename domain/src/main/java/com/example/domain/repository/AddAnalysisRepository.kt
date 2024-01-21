@@ -32,4 +32,8 @@ interface AddAnalysisRepository {
     suspend fun getAnalysisList(patientId : String): ResultMed<List<AnalysisList>>
 
     suspend fun getValuesHematologicalStatus() : ResultMed<List<StatusList>>
+
+    suspend fun getValuesImmuneStatus() : ResultMed<List<StatusList>>
+
+    suspend fun getValuesCytokineStatus() : ResultMed<List<StatusList>>
 }

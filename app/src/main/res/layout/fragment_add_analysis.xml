@@ -277,7 +277,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_add_immune"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false"
                         tools:listitem="@layout/item_input_analysis"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:orientation="vertical"/>
@@ -360,6 +361,15 @@
                             android:text="@string/text_meaning"
                             android:textColor="@color/text_dark_primary" />
                     </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_add_cytokine"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_input_analysis"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="vertical"/>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

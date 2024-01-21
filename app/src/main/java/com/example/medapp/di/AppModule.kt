@@ -7,7 +7,9 @@ import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
 import com.example.domain.usecase.analysis.GetAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetPatientAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
+import com.example.domain.usecase.analysis.GetValuesCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetValuesHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesImmuneStatusUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
 import com.example.domain.usecase.patient.GetPatientListUseCase
@@ -41,7 +43,9 @@ val appModule = module {
             getUpdateAnalysisDateUseCase = GetUpdateAnalysisDateUseCase(get()),
             getAddImmuneStatusUseCase = GetAddImmuneStatusUseCase(get()),
             getAddCytokineStatusUseCase = GetAddCytokineStatusUseCase(get()),
-            getValuesHematologicalStatusUseCase = GetValuesHematologicalStatusUseCase(get())
+            getValuesHematologicalStatusUseCase = GetValuesHematologicalStatusUseCase(get()),
+            getValuesCytokineStatusUseCase = GetValuesCytokineStatusUseCase(get()),
+            getValuesImmuneStatusUseCase = GetValuesImmuneStatusUseCase(get())
         )
     }
 

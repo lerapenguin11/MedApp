@@ -59,4 +59,12 @@ class AddAnalysisRepositoryImpl(
     override suspend fun getValuesHematologicalStatus(): ResultMed<List<StatusList>> {
         return remoteSource.getValuesHematologicalStatus()
     }
+
+    override suspend fun getValuesImmuneStatus(): ResultMed<List<StatusList>> {
+        return remoteSource.getValuesImmuneStatus()
+    }
+
+    override suspend fun getValuesCytokineStatus(): ResultMed<List<StatusList>> {
+        return remoteSource.getValuesCytokineStatus()
+    }
 }

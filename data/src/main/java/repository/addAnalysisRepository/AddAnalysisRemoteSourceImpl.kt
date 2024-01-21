@@ -140,4 +140,34 @@ class AddAnalysisRemoteSourceImpl(
                 return@withContext ResultMed.Error(e)
             }
         }
+
+    override suspend fun getValuesImmuneStatus(): ResultMed<List<StatusList>> =
+        withContext(Dispatchers.IO) {
+            try {
+                val response = service.getValuesImmuneStatus()
+                if (response.isSuccessful) {
+
+                    return@withContext ResultMed.Success(mapper.toValuesStatus(response.body()!!))
+                } else {
+                    return@withContext ResultMed.Error(Exception(response.message()))
+                }
+            } catch (e: Exception) {
+                return@withContext ResultMed.Error(e)
+            }
+        }
+
+    override suspend fun getValuesCytokineStatus(): ResultMed<List<StatusList>> =
+        withContext(Dispatchers.IO) {
+            try {
+                val response = service.getValuesCytokinStatus()
+                if (response.isSuccessful) {
+
+                    return@withContext ResultMed.Success(mapper.toValuesStatus(response.body()!!))
+                } else {
+                    return@withContext ResultMed.Error(Exception(response.message()))
+                }
+            } catch (e: Exception) {
+                return@withContext ResultMed.Error(e)
+            }
+        }
 }
