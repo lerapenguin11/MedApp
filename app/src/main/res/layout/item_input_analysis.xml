@@ -24,7 +24,7 @@
         android:id="@+id/text_input_meaning"
         style="@style/EditText"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="52dp"
         app:boxStrokeWidth="0dp"
         android:layout_weight="2.2"
         app:boxStrokeWidthFocused="0dp"
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:hint="0-500"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

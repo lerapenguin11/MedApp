@@ -22,7 +22,6 @@ class StatusImmuneAdapter : ListAdapter<StatusList, AddStatusImmuneViewHolder>(
     override fun onBindViewHolder(holder: AddStatusImmuneViewHolder, position: Int) {
         val status = getItem(position)
         holder.indicator.text = status.fieldTitle
-        holder.meaning.hint = status.fieldMinValue.toString()
         holder.meaning_text.hint = "${status.fieldMinValue}${DASH}${status.fieldMaxValue}"
     }
 

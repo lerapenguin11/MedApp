@@ -20,7 +20,6 @@ class StatusHematologicalAdapter : ListAdapter<StatusList, AddStatusHematologica
     override fun onBindViewHolder(holder: AddStatusHematologicalViewHolder, position: Int) {
         val status = getItem(position)
         holder.indicator.text = status.fieldTitle
-        holder.meaning.hint = status.fieldMinValue.toString()
         holder.meaning_text.hint = "${status.fieldMinValue}${DASH}${status.fieldMaxValue}"
     }
 
