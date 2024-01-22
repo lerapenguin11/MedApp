@@ -56,12 +56,12 @@ interface MedApi {
 
     @POST("analysis/{id}/status/immune")
     suspend fun getAddImmuneStatus(
-        @Path("analysisId") analysisId : String,
+        @Path("id") analysisId : String,
         @Body status : ImmuneStatusModel) : Response<ImmuneStatusModel> //TODO
 
     @POST("analysis/{id}/status/cytokine")
     suspend fun getAddCytokinStatus(
-        @Path("analysisId") analysisId : String,
+        @Path("id") analysisId : String,
         @Body status : CytokineStatusModel) : Response<CytokineStatusModel> //TODO
 
     @PUT("/analysis/{id}")

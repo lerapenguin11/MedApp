@@ -125,10 +125,10 @@ class AddAnalysisViewModel(
             when (val response = getAddImmuneStatusUseCase.invoke(idPatient = patientId,
                 idAnalysis = analysisId, status = status)) {
                 is ResultMed.Success -> {
-                    Log.d("AddHematologicalStatus: ", response.data.toString())
+                    Log.d("AddImmuneStatusStatus: ", response.data.toString())
                 }
                 is ResultMed.Error -> {
-                    Log.d("AddHematologicalStatusError: ",
+                    Log.d("AddImmuneStatusError: ",
                         response.exception.message.toString())
                 }
             }
@@ -143,10 +143,10 @@ class AddAnalysisViewModel(
             when (val response = getAddCytokineStatusUseCase.invoke(idPatient = patientId,
                 idAnalysis = analysisId, status = status)) {
                 is ResultMed.Success -> {
-                    Log.d("AddHematologicalStatus: ", response.data.toString())
+                    Log.d("AddCytokinStatus: ", response.data.toString())
                 }
                 is ResultMed.Error -> {
-                    Log.d("AddHematologicalStatusError: ",
+                    Log.d("AddCytokinError: ",
                         response.exception.message.toString())
                 }
             }
