@@ -11,6 +11,7 @@ import com.example.data.api.model.analysis.StatusListModel
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
 import com.example.data.api.model.patient.PatientModel
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -88,4 +89,8 @@ interface MedApi {
 
     @GET("analysis/status/template/cytokine")
     suspend fun getValuesCytokinStatus() : Response<StatusListModel>
+
+    @GET("analysis/{analysisId}/graph")
+    @Streaming
+    suspend fun getGraph(@Path("analysisId") analysisId: String) : Response<ResponseBody>
 }

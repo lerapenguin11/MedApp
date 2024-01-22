@@ -109,4 +109,6 @@
     <string name="title_detail">Подробности</string>
     <string name="cd3_cd4_cd3_cd8">Соотношение CD3+CD4+/CD3+CD8+</string>
     <string name="text_view_charts">Посмотреть графики</string>
+    <string name="chart">График</string>
+    <string name="text_shape">Поделиться</string>
 </resources>

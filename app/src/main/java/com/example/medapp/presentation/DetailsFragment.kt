@@ -56,6 +56,20 @@ class DetailsFragment : Fragment() {
         setTextCytokineStatus()
         setTextDate()
         setOnClickListenerBackArrow()
+        setOnClickChartsBt()
+    }
+
+    private fun setOnClickChartsBt() {
+        binding.btOpenCharts.setOnClickListener {
+            if (idAnalysis != null){
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstanceAnalysisId(id = idAnalysis.toString())
+                )?.addToBackStack(null)
+                transaction?.commit()
+            }
+        }
     }
 
     private fun setOnClickListenerBackArrow() {
@@ -191,6 +205,13 @@ class DetailsFragment : Fragment() {
             AnalyzesFragment().apply {
                 arguments = Bundle().apply {
                     putString(BUNDLE_PATIENT_ID, id)
+                }
+            }
+
+        fun newInstanceAnalysisId(id : String) =
+            ChartFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_ANALYSIS_ID, id)
                 }
             }
     }
