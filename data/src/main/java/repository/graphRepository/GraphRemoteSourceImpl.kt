@@ -12,12 +12,12 @@ class GraphRemoteSourceImpl(
     private val service : MedApi)
     : GraphRemoteSource
 {
-    override suspend fun getGraph(analysisId: String): ResultMed<Any> =
+    override suspend fun getGraph(analysisId: String): ResultMed<InputStream> =
         withContext(Dispatchers.IO) {
             try {
                 val response = service.getGraph(analysisId = analysisId)
                 if (response.isSuccessful) {
-                    val responseBody = response.body()
+                    val responseBody = response.body()!!.byteStream()
 
                     return@withContext ResultMed.Success(responseBody)
                 } else {
@@ -26,7 +26,7 @@ class GraphRemoteSourceImpl(
             } catch (e: Exception) {
                 return@withContext ResultMed.Error(e)
             }
-        } as ResultMed<Bitmap>
+        }
 
 
 

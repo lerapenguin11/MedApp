@@ -1,6 +1,7 @@
 package com.example.medapp.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +33,6 @@ class DetailsFragment : Fragment() {
             idAnalysis = it.getInt(BUNDLE_ANALYSIS_ID)
         }
         idPatient?.let { analysisViewModel.getAnalysisList(it) }
-
-        //TODO ПЕРЕПИСАТЬ
-
     }
 
     override fun onCreateView(
@@ -63,6 +61,8 @@ class DetailsFragment : Fragment() {
         binding.btOpenCharts.setOnClickListener {
             if (idAnalysis != null){
                 val transaction = activity?.supportFragmentManager?.beginTransaction()
+                Log.i("ANALYSIS_ID: ", idAnalysis.toString())
+                idAnalysis
                 transaction?.replace(
                     R.id.main_layout,
                     newInstanceAnalysisId(id = idAnalysis.toString())

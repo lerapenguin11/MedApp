@@ -24,9 +24,9 @@ class GraphViewModel(
             when (val graphResult =
                 getGraphUseCase.invoke(analysisId = analysisId)) {
                 is ResultMed.Success -> {
-                    val inputStream = graphResult.data as InputStream
+                    val inputStream = graphResult.data
                     val bitmap = inputStream.let { it1 -> convertInputStreamToBitmap(it1) }
-                    _anyGraph.value = bitmap
+                    _graph.value = bitmap
                 }
 
                 is ResultMed.Error -> {

@@ -11,18 +11,19 @@ import com.example.medapp.R
 import com.example.medapp.databinding.FragmentChartBinding
 import com.example.medapp.databinding.FragmentDetailsBinding
 import com.example.medapp.viewmodel.GraphViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ChartFragment : Fragment() {
-    private var idAnalysis : Int? = null
+    private var idAnalysis : String? = null
     private var _binding : FragmentChartBinding? = null
     private val binding get() = _binding!!
-    private val graphViewModel by viewModels<GraphViewModel>()
+    private val graphViewModel by viewModel<GraphViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            idAnalysis = it.getInt(BUNDLE_ANALYSIS_ID)
+            idAnalysis = it.getString(BUNDLE_ANALYSIS_ID)
         }
         graphViewModel.getGraph(idAnalysis.toString())
     }
