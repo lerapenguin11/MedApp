@@ -88,25 +88,26 @@ class AnalysisApiResponseMapper {
         }
     }
 
-    private fun toHematological(status: Hematological?): Hematological? {
-        return status?.let {
+    private fun toHematological(response: Hematological?): Hematological? {
+        return response?.let {
             Hematological(
-                bas = it.bas,
-                eos = status.eos,
-                hct = status.hct,
-                hgb = status.hgb,
-                lymf = status.lymf,
-                mch = status.mch,
-                mpv = status.mpv,
-                mvc = status.mvc,
-                neu = status.neu,
-                pct = status.pct,
-                pdv = status.pdv,
-                plt = status.plt,
-                rbc = status.rbc,
-                rdwcv = status.rdwcv,
-                wbc = status.wbc,
-                id = status.id,
+                bas = response.bas,
+                eos = response.eos,
+                hct = response.hct,
+                hgb = response.hgb,
+                lymf = response.lymf,
+                mch = response.mch,
+                mpv = response.mpv,
+                neu = response.neu,
+                pct = response.pct,
+                pdv = response.pdv,
+                plt = response.plt,
+                rbc = response.rbc,
+                rdwcv = response.rdwcv,
+                wbc = response.wbc,
+                mchc = response.mchc,
+                mcv = response.mcv,
+                mon = response.mon
             )
         }
     }
