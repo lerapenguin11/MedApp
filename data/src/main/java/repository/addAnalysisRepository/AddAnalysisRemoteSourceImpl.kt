@@ -56,7 +56,7 @@ class AddAnalysisRemoteSourceImpl(
                                                idAnalysis : String): ResultMed<Analysis> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getUpdateAnalysisDate(date = mapper.toAnalysis(date), patientId = idPatient,
+                val response = service.getUpdateAnalysisDate(date = mapper.toAnalysis(date),
                     analysisId = idAnalysis)
                 if (response.isSuccessful) {
 
@@ -91,7 +91,7 @@ class AddAnalysisRemoteSourceImpl(
     ): ResultMed<ImmuneStatus> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getAddImmuneStatus(patientId = idPatient,
+                val response = service.getAddImmuneStatus(
                     analysisId = idAnalysis,
                     status = mapper.toImmuneStatus(status))
                 if (response.isSuccessful) {
@@ -112,7 +112,7 @@ class AddAnalysisRemoteSourceImpl(
     ): ResultMed<CytokineStatus> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getAddCytokinStatus(patientId = idPatient,
+                val response = service.getAddCytokinStatus(
                     analysisId = idAnalysis,
                     status = mapper.toCytokineStatus(status))
                 if (response.isSuccessful) {

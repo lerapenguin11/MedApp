@@ -51,27 +51,23 @@ interface MedApi {
     //POST /analysis/:id/status/:type
     @POST("analysis/{id}/status/hematological")
     suspend fun getAddHematologicalStatus(
-        //@Path("patientId") patientId: String,
         @Path("id") analysisId : String,
         @Body status : HematologicalStatusModel) : Response<HematologicalStatusModel> //TODO ?
 
-    @POST("patient/{patientId}/analysis/{analysisId}/status/immune")
+    @POST("analysis/{id}/status/immune")
     suspend fun getAddImmuneStatus(
-        @Path("patientId") patientId: String,
         @Path("analysisId") analysisId : String,
         @Body status : ImmuneStatusModel) : Response<ImmuneStatusModel> //TODO
 
-    @POST("patient/{patientId}/analysis/{analysisId}/status/cytokine")
+    @POST("analysis/{id}/status/cytokine")
     suspend fun getAddCytokinStatus(
-        @Path("patientId") patientId: String,
         @Path("analysisId") analysisId : String,
         @Body status : CytokineStatusModel) : Response<CytokineStatusModel> //TODO
 
-    @PUT("patient/{patientId}/analysis/{analysisId}")
+    @PUT("/analysis/{id}")
     suspend fun getUpdateAnalysisDate(
         @Body date : AnalysisModel,
-        @Path("patientId") patientId: String,
-        @Path("analysisId") analysisId : String
+        @Path("id") analysisId : String
     ) : Response<AnalysisModel> //TODO
 
     @GET("patient/{id}/analysis")

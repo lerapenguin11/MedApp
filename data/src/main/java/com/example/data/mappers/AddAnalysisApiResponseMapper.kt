@@ -50,14 +50,16 @@ class AddAnalysisApiResponseMapper {
             lymf = response.lymf,
             mch = response.mch,
             mpv = response.mpv,
-            mvc = response.mvc,
             neu = response.neu,
             pct = response.pct,
             pdv = response.pdv,
             plt = response.plt,
             rbc = response.rbc,
             rdwcv = response.rdwcv,
-            wbc = response.wbc
+            wbc = response.wbc,
+            mchc = response.mchc,
+            mcv = response.mcv,
+            mon = response.mon
         )
     }
 
@@ -70,14 +72,16 @@ class AddAnalysisApiResponseMapper {
             lymf = response.lymf,
             mch = response.mch,
             mpv = response.mpv,
-            mvc = response.mvc,
             neu = response.neu,
             pct = response.pct,
             pdv = response.pdv,
             plt = response.plt,
             rbc = response.rbc,
             rdwcv = response.rdwcv,
-            wbc = response.wbc
+            wbc = response.wbc,
+            mchc = response.mchc,
+            mcv = response.mcv,
+            mon = response.mon
         )
     }
 
