@@ -39,6 +39,11 @@ class ChartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setImageGraph()
+        setOnClickListener()
+    }
+
+    private fun setOnClickListener() {
+        binding.icExit.setOnClickListener {  }
     }
 
     private fun setImageGraph() {
