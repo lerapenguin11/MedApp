@@ -8,14 +8,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAddAnalysisBinding
+import com.example.medapp.presentation.adapter.StatusCytokineAdapter
+import com.example.medapp.presentation.adapter.StatusHematologicalAdapter
+import com.example.medapp.presentation.adapter.StatusImmuneAdapter
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.AddAnalysisViewModel
+import com.example.medapp.viewmodel.AnalysisViewModel
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddAnalysisFragment : Fragment() {
@@ -31,6 +38,9 @@ class AddAnalysisFragment : Fragment() {
     private var cytokineStatusId : Int? = null
     private var hematologicalStatusId : Int? = null
     private var immuneStatusId : Int? = null
+    private val adapterHematological = StatusHematologicalAdapter()
+    private val adapterImmune = StatusImmuneAdapter()
+    private val adapterCytokine = StatusCytokineAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +50,9 @@ class AddAnalysisFragment : Fragment() {
             }
         }
         idPatient.let { addAnalysisViewModel.getAddAnalysis(it) }
+        addAnalysisViewModel.getStatusHematological()
+        addAnalysisViewModel.getStatusImmune()
+        addAnalysisViewModel.getStatusCytokine()
     }
 
     override fun onCreateView(
@@ -47,13 +60,59 @@ class AddAnalysisFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddAnalysisBinding.inflate(inflater, container, false)
-        getDataAnalysis()
-        collapseExpandBlockInput()
-        setOnClickListener()
         return binding.root
     }
 
-    private fun getDataAnalysis() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        updateDataAnalysis()
+        setStatusHematologicalRV()
+        setStatusImmuneRV()
+        setStatusCytokineRV()
+        collapseExpandBlockInput()
+        setOnClickListener()
+    }
+
+    private fun isAllEditTextFilled(rv: RecyclerView): Boolean {
+        var result = true
+        for (i in 0 until rv.childCount) {
+            val viewHolder = rv.findViewHolderForAdapterPosition(i) as RecyclerView.ViewHolder
+            val editText = viewHolder.itemView.findViewById<TextInputEditText>(R.id.et_meaning)
+            val meaning_text = viewHolder.itemView.findViewById<TextInputLayout>(R.id.text_input_meaning)
+
+            if (editText.text.toString().isEmpty()) {
+                result = false
+                meaning_text.error = "error"
+            }
+        }
+        return result
+    }
+
+    private fun setStatusCytokineRV() {
+        addAnalysisViewModel.statusCytokine.observe(viewLifecycleOwner, Observer {status->
+            adapterCytokine.submitList(status)
+        })
+        binding.rvAddCytokine.adapter = adapterCytokine
+        binding.rvAddCytokine.setHasFixedSize(false)
+    }
+
+    private fun setStatusImmuneRV() {
+        addAnalysisViewModel.statusImmune.observe(viewLifecycleOwner, Observer {status->
+            adapterImmune.submitList(status)
+        })
+        binding.rvAddImmune.adapter = adapterImmune
+        binding.rvAddImmune.setHasFixedSize(false)
+    }
+
+    private fun setStatusHematologicalRV() {
+        addAnalysisViewModel.statusHematological.observe(viewLifecycleOwner, Observer {status->
+            adapterHematological.submitList(status)
+        })
+        binding.rvAddHematological.adapter = adapterHematological
+        binding.rvAddHematological.setHasFixedSize(false)
+    }
+
+    private fun updateDataAnalysis() {
         addAnalysisViewModel.analysis.observe(viewLifecycleOwner, Observer {dataAnalysis->
             dataAnalysis?.id
             if (dataAnalysis != null) {
@@ -67,13 +126,27 @@ class AddAnalysisFragment : Fragment() {
 
     private fun setOnClickListener() {
         binding.btSave.setOnClickListener {
-            saveHematologicalStatus()
-            saveImmuneStatus()
-            saveDateCompletion()
-            saveCytokineStatus()
-            launchFragment(HomeFragment())
+            if (isAllEditTextFilled(binding.rvAddHematological)
+                &&isAllEditTextFilled(binding.rvAddImmune)
+                &&isAllEditTextFilled(binding.rvAddCytokine)
+                && binding.etInputDateAnalysis.text?.isNotEmpty() == true
+                    ){
+                saveHematologicalStatus()
+                saveImmuneStatus()
+                saveDateCompletion()
+                saveCytokineStatus()
+                launchFragment(HomeFragment())
+            }
         }
         binding.icExit.setOnClickListener { replaceFragmentMain(ChangeInformationFragment()) }
+    }
+
+    private fun saveHematologicalStatus() {
+        idPatient?.let {
+            addAnalysisViewModel.getAddHematologicalStatus(
+                patientId = it,
+                analysisId = idAnalysis.toString(),
+                status = textEditTextHematological()) }
     }
 
     private fun saveCytokineStatus() {
@@ -84,21 +157,6 @@ class AddAnalysisFragment : Fragment() {
                 status = textEditTextCytokineStatus()) }
     }
 
-    private fun textEditTextCytokineStatus(): CytokineStatus {
-        return CytokineStatus(
-            cd3_m_ifny_spontaneous = binding.etInputIFNySpontaneous.text.toString().toDouble() ,
-            cd3_m_ifny_stimulated = binding.etInputIFNyStimulated.text.toString().toDouble(),
-            cd3_p_ifny_spontaneous = binding.etInputCd3IfnySpontaneous.text.toString().toDouble(),
-            cd3_p_ifny_stimulated = binding.etInputCd3IfnyStimulated.text.toString().toDouble(),
-            cd3_p_il2_spontaneous = binding.etInputIL2TnnySpontaneous.text.toString().toDouble(),
-            cd3_p_il2_stimulated = binding.etInputIL2TnnyStimulated.text.toString().toDouble(),
-            cd3_p_il4_spontaneous = binding.etInputIL4Spontaneous.text.toString().toDouble(),
-            cd3_p_il4_stimulated = binding.etInputIL4Stimulated.text.toString().toDouble(),
-            cd3_p_tnfa_spontaneous = binding.etInputCd3TnnySpontaneous.text.toString().toDouble(),
-            cd3_p_tnfa_stimulated = binding.etInputCd3TnnyStimulated.text.toString().toDouble()
-        )
-    }
-
     private fun saveImmuneStatus() {
         idPatient.let {
             addAnalysisViewModel.getImmuneStatus(
@@ -107,35 +165,45 @@ class AddAnalysisFragment : Fragment() {
                 status = textEditTextImmuneStatus()) }
     }
 
+    private fun textEditTextCytokineStatus(): CytokineStatus {
+        val statusList = getTextFromEditText(binding.rvAddCytokine)
+        return CytokineStatus(
+            cd3_m_ifny_spontaneous = statusList[0].toDouble(),
+            cd3_m_ifny_stimulated = statusList[1].toDouble(),
+            cd3_p_il4_spontaneous = statusList[2].toDouble(),
+            cd3_p_il4_stimulated = statusList[3].toDouble(),
+            cd3_p_il2_spontaneous = statusList[4].toDouble(),
+            cd3_p_il2_stimulated = statusList[5].toDouble(),
+            cd3_p_tnfa_spontaneous = statusList[6].toDouble(),
+            cd3_p_tnfa_stimulated = statusList[7].toDouble(),
+            cd3_p_ifny_spontaneous = statusList[8].toDouble(),
+            cd3_p_ifny_stimulated = statusList[9].toDouble()
+        )
+    }
+
     private fun textEditTextImmuneStatus(): ImmuneStatus {
+        val statusList = getTextFromEditText(binding.rvAddImmune)
         return ImmuneStatus(
-            activated_t_cells = binding.etInputActivatedTCells.text.toString().toDouble(),
-            activated_t_cells_expressing_il2 =
-            binding.etInputActivatedTCellsExpressingLitr.text.toString().toDouble(),
-            cd3_p_cd4_p_cd3_p_cd8_p_ratio = binding.etInputRatio.text.toString().toDouble(),
-            circulating_immune_complexes =
-            binding.etInputCirculatingImmuneComplexes.text.toString().toDouble(),
-            common_b_lymphocytes = binding.etInputCommonBLymphocytes.text.toString().toDouble(),
-            common_nk_cells = binding.etInputCommonNkCellsLitr.text.toString().toDouble(),
-            common_t_lymphocytes = binding.etInputCommonLymphocytes.text.toString().toDouble(),
-            cytokine_producing_nk_cells =
-            binding.etInputNkCytokineProducingCells.text.toString().toDouble(),
-            cytolytic_nk_cells = binding.etInputNkCellsCytolytic.text.toString().toDouble(),
-            hct_test_spontaneous = binding.etInputHCTTestSpontaneous.text.toString().toDouble(),
-            hct_test_stimulated = binding.etInputHCTTestStimulated.text.toString().toDouble(),
-            leukocytes_bactericidal_activity =
-            binding.etInputBactericidalActivityLeukocytes.text.toString().toDouble(),
-            lga = binding.etInputIga.text.toString().toDouble(),
-            lgg = binding.etInputIgg.text.toString().toDouble(),
-            lgm = binding.etInputIgm.text.toString().toDouble(),
-            monocytes_absorption_activity =
-            binding.etInputAbsorptionActivityMonocytesLitr.text.toString().toDouble(),
-            neutrophil_absorption_activity =
-            binding.etInputAbsorptionActivityNeutrophilsLitr.text.toString().toDouble(),
-            t_cytotoxic_lymphocytes =
-            binding.etInputCytotoxicLymphocytesLitr.text.toString().toDouble(),
-            t_helpers = binding.etInputHelpersLitr.text.toString().toDouble(),
-            tnk_cells = binding.etInputTnkCellsLitr.text.toString().toDouble()
+            monocytes_absorption_activity = statusList[0].toDouble(),
+            neutrophil_absorption_activity = statusList[1].toDouble(),
+            leukocytes_bactericidal_activity = statusList[2].toDouble(),
+            hct_test_spontaneous = statusList[3].toDouble(),
+            hct_test_stimulated = statusList[4].toDouble(),
+            circulating_immune_complexes = statusList[5].toDouble(),
+            lgm = statusList[6].toDouble(),
+            lga = statusList[7].toDouble(),
+            lgg = statusList[8].toDouble(),
+            activated_t_cells_expressing_il2 = statusList[9].toDouble(),
+            activated_t_cells = statusList[10].toDouble(),
+            tnk_cells = statusList[11].toDouble(),
+            cytokine_producing_nk_cells = statusList[12].toDouble(),
+            cytolytic_nk_cells = statusList[13].toDouble(),
+            common_nk_cells = statusList[14].toDouble(),
+            t_cytotoxic_lymphocytes = statusList[15].toDouble(),
+            cd3_p_cd4_p_cd3_p_cd8_p_ratio = statusList[16].toDouble(),
+            t_helpers = statusList[17].toDouble(),
+            common_b_lymphocytes = statusList[18].toDouble(),
+            common_t_lymphocytes = statusList[19].toDouble()
         )
     }
 
@@ -154,32 +222,37 @@ class AddAnalysisFragment : Fragment() {
         )
     }
 
-    private fun saveHematologicalStatus() {
-        idPatient?.let {
-            addAnalysisViewModel.getAddHematologicalStatus(
-                patientId = it,
-                analysisId = idAnalysis.toString(),
-                status = textEditTextHematological()) }
+    private fun textEditTextHematological() : HematologicalStatus {
+        val statusList = getTextFromEditText(binding.rvAddHematological)
+        return HematologicalStatus(
+            pdv = statusList[0].toDouble(),
+            pct = statusList[1].toDouble(),
+            mpv = statusList[2].toDouble(),
+            rdwcv = statusList[3].toDouble(),
+            mchc = statusList[4].toDouble(),
+            mch = statusList[5].toDouble(),
+            mcv = statusList[6].toDouble(),
+            rbc = statusList[7].toDouble(),
+            plt = statusList[8].toDouble(),
+            hct = statusList[9].toDouble(),
+            hgb = statusList[10].toDouble(),
+            bas = statusList[11].toDouble(),
+            eos = statusList[12].toDouble(),
+            neu = statusList[13].toDouble(),
+            mon = statusList[14].toDouble(),
+            lymf = statusList[15].toDouble(),
+            wbc = statusList[16].toDouble()
+        )
     }
 
-    private fun textEditTextHematological() : HematologicalStatus{
-        return HematologicalStatus(
-            wbc = binding.etInputLeukocyte.text.toString().toDouble(),
-            lymf = binding.etInputLymphocytesPercentage.text.toString().toDouble(),
-            neu = binding.etInputMonocytesPercentage.text.toString().toDouble(),
-            eos = binding.etInputEosinophilsPercentage.text.toString().toDouble(),
-            bas = binding.etInputBasophilsPercentage.text.toString().toDouble(),
-            hgb = binding.etInputHemoglobin.text.toString().toDouble(),
-            hct = binding.etInputHematocrit.text.toString().toDouble(),
-            plt = binding.etInputPlatelets.text.toString().toDouble(),
-            rbc = binding.etInputErythrocyte.text.toString().toDouble(),
-            mvc = binding.etInputMcv.text.toString().toDouble(),
-            mch = binding.etInputMch.text.toString().toDouble(),
-            rdwcv = binding.etInputRdwCv.text.toString().toDouble(),
-            mpv = binding.etInputMpv.text.toString().toDouble(),
-            pct = binding.etInputPct.text.toString().toDouble(),
-            pdv = binding.etInputPdv.text.toString().toDouble()
-        )
+    private fun getTextFromEditText(rv : RecyclerView) : ArrayList<String>{
+        var textList = arrayListOf<String>()
+        for (i in 0 until rv.childCount) {
+            val viewHolder = rv.findViewHolderForAdapterPosition(i) as RecyclerView.ViewHolder
+            val editText = viewHolder.itemView.findViewById<TextInputEditText>(R.id.et_meaning)
+            textList.add(editText.text.toString())
+        }
+        return textList
     }
 
     private fun collapseExpandBlockInput() {
@@ -224,6 +297,9 @@ class AddAnalysisFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvAddImmune.adapter = null
+        binding.rvAddCytokine.adapter = null
+        binding.rvAddHematological.adapter = null
         _binding = null
     }
 

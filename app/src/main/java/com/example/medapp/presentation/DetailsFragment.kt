@@ -1,6 +1,7 @@
 package com.example.medapp.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +33,6 @@ class DetailsFragment : Fragment() {
             idAnalysis = it.getInt(BUNDLE_ANALYSIS_ID)
         }
         idPatient?.let { analysisViewModel.getAnalysisList(it) }
-
-        //TODO ПЕРЕПИСАТЬ
-
     }
 
     override fun onCreateView(
@@ -56,6 +54,35 @@ class DetailsFragment : Fragment() {
         setTextCytokineStatus()
         setTextDate()
         setOnClickListenerBackArrow()
+        setOnClickChartsBt()
+        setUpdateOnClickListener()
+    }
+
+    private fun setUpdateOnClickListener() {
+        binding.icEdit.setOnClickListener {
+            if (idAnalysis != null){
+                fragmentManager?.popBackStack()
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstanceAnalysisIdUpdate(id = idAnalysis.toString())
+                )
+                transaction?.commit()
+            }
+        }
+    }
+
+    private fun setOnClickChartsBt() {
+        binding.btOpenCharts.setOnClickListener {
+            if (idAnalysis != null){
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstanceAnalysisId(id = idAnalysis.toString())
+                )?.addToBackStack(null)
+                transaction?.commit()
+            }
+        }
     }
 
     private fun setOnClickListenerBackArrow() {
@@ -128,14 +155,17 @@ class DetailsFragment : Fragment() {
         analysisViewModel.analysis.observe(viewLifecycleOwner, Observer {analysis->
             binding.tvLeukocyte.text = analysis?.hematologicalStatus?.wbc.toString()
             binding.tvLymphocytesPercentage.text = analysis?.hematologicalStatus?.lymf.toString()
-            binding.tvMonocytesPercentage.text = analysis?.hematologicalStatus?.eos.toString()
-            binding.tvEosinophilsPercentage.text = analysis?.hematologicalStatus?.bas.toString()
+            binding.tvMonocytesPercentage.text = analysis?.hematologicalStatus?.mon.toString()
+            binding.tvNeutrophilsPercentage.text = analysis?.hematologicalStatus?.neu.toString()
+            binding.tvEosinophilsPercentage.text = analysis?.hematologicalStatus?.eos.toString()
+            binding.tvBasophilsPercentage.text = analysis?.hematologicalStatus?.bas.toString()
             binding.tvHemoglobin.text = analysis?.hematologicalStatus?.hgb.toString()
             binding.tvHematocrit.text = analysis?.hematologicalStatus?.hct.toString()
             binding.tvPlatelets.text = analysis?.hematologicalStatus?.plt.toString()
             binding.tvErythrocyte.text = analysis?.hematologicalStatus?.rbc.toString()
-            binding.tvMcv.text = analysis?.hematologicalStatus?.mvc.toString()
+            binding.tvMcv.text = analysis?.hematologicalStatus?.mcv.toString()
             binding.tvMch.text = analysis?.hematologicalStatus?.mch.toString()
+            binding.tvMchc.text = analysis?.hematologicalStatus?.mchc.toString()
             binding.tvRdwCv.text = analysis?.hematologicalStatus?.rdwcv.toString()
             binding.tvMpv.text = analysis?.hematologicalStatus?.mpv.toString()
             binding.tvPct.text = analysis?.hematologicalStatus?.pct.toString()
@@ -188,6 +218,20 @@ class DetailsFragment : Fragment() {
             AnalyzesFragment().apply {
                 arguments = Bundle().apply {
                     putString(BUNDLE_PATIENT_ID, id)
+                }
+            }
+
+        fun newInstanceAnalysisId(id : String) =
+            ChartFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_ANALYSIS_ID, id)
+                }
+            }
+
+        fun newInstanceAnalysisIdUpdate(id : String) =
+            EditFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_ANALYSIS_ID, id)
                 }
             }
     }

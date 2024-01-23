@@ -72,10 +72,12 @@ class DetailedInformationFragment : Fragment() {
             binding.tvDiagnosis.text = patient?.diagnosis
         })
         detailedInfoViewModel.analysisList.observe(viewLifecycleOwner, Observer {
-            if (it?.last()?.executionDateStr == null){
-                binding.tvDateLastAnalysis.text = CONST_DATE_LAST_ANALYSIS
-            } else{
-                binding.tvDateLastAnalysis.text = it?.last()?.executionDateStr
+            if (it != null) {
+                if (it?.last()?.executionDateStr == null || it.isEmpty()){
+                    binding.tvDateLastAnalysis.text = CONST_DATE_LAST_ANALYSIS
+                } else{
+                    binding.tvDateLastAnalysis.text = it.last().executionDateStr
+                }
             }
         })
         binding.shimmerLayout.stopShimmer()

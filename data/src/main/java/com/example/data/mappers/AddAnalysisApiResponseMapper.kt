@@ -5,13 +5,24 @@ import com.example.data.api.model.analysis.AnalysisModel
 import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
+import com.example.data.api.model.analysis.PatientAnalysisListModelItem
+import com.example.data.api.model.analysis.PatientIdRequest
+import com.example.data.api.model.analysis.StatusListModel
 import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.AnalysisList
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
+import com.example.domain.entity.analysis.patientAnalysis.Cytokine
+import com.example.domain.entity.analysis.patientAnalysis.Hematological
+import com.example.domain.entity.analysis.patientAnalysis.Immune
+import com.example.domain.entity.analysis.patientAnalysis.PatientAnalysisList
 
 class AddAnalysisApiResponseMapper {
+    fun toPatientIdRequest(patientId: String) : PatientIdRequest{
+        return PatientIdRequest(patientId = patientId)
+    }
 
     fun toAnalysisModel(response : AnalysisModel) : Analysis {
         return Analysis(
@@ -35,6 +46,23 @@ class AddAnalysisApiResponseMapper {
         )
     }
 
+    fun toAnalysisId(response : PatientAnalysisListModelItem) : PatientAnalysisList {
+        return PatientAnalysisList(
+            id = response.id,
+            patientId = response.patientId,
+            cytokineStatusId = response.cytokineStatusId,
+            hematologicalStatusId = response.hematologicalStatusId,
+            immuneStatusId = response.immuneStatusId,
+            executionDateStr = response.executionDateStr,
+            createdAt = response.createdAt,
+            cytokineStatus = response.cytokineStatus,
+            deletedAt = response.deletedAt,
+            hematologicalStatus = response.hematologicalStatus,
+            immuneStatus = response.immuneStatus,
+            updatedAt = response.updatedAt
+        )
+    }
+
     fun toHematologicalStatusModel(response: HematologicalStatusModel) : HematologicalStatus{
         return HematologicalStatus(
             bas = response.bas,
@@ -44,14 +72,16 @@ class AddAnalysisApiResponseMapper {
             lymf = response.lymf,
             mch = response.mch,
             mpv = response.mpv,
-            mvc = response.mvc,
             neu = response.neu,
             pct = response.pct,
             pdv = response.pdv,
             plt = response.plt,
             rbc = response.rbc,
             rdwcv = response.rdwcv,
-            wbc = response.wbc
+            wbc = response.wbc,
+            mchc = response.mchc,
+            mcv = response.mcv,
+            mon = response.mon
         )
     }
 
@@ -64,14 +94,16 @@ class AddAnalysisApiResponseMapper {
             lymf = response.lymf,
             mch = response.mch,
             mpv = response.mpv,
-            mvc = response.mvc,
             neu = response.neu,
             pct = response.pct,
             pdv = response.pdv,
             plt = response.plt,
             rbc = response.rbc,
             rdwcv = response.rdwcv,
-            wbc = response.wbc
+            wbc = response.wbc,
+            mchc = response.mchc,
+            mcv = response.mcv,
+            mon = response.mon
         )
     }
 
@@ -169,5 +201,26 @@ class AddAnalysisApiResponseMapper {
             cd3_p_tnfa_spontaneous = response.cd3_p_tnfa_spontaneous,
             cd3_p_tnfa_stimulated = response.cd3_p_tnfa_stimulated
         )
+    }
+
+    fun toValuesStatus(body: StatusListModel): List<StatusList> {
+        var list = arrayListOf<StatusList>()
+        for (i in body){
+            val fieldMaxValue = i.fieldMaxValue
+            val fieldMinValue = i.fieldMinValue
+            val fieldName = i.fieldName
+            val fieldUnit = i.fieldUnit
+            val fieldTitle = i.fieldTitle
+            list.add(
+                StatusList(
+                fieldMaxValue = fieldMaxValue,
+                fieldMinValue = fieldMinValue,
+                fieldName = fieldName,
+                fieldUnit = fieldUnit,
+                fieldTitle = fieldTitle
+            )
+            )
+        }
+        return list
     }
 }

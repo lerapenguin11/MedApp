@@ -1702,7 +1702,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/bt_save"
+            android:id="@+id/bt_open_charts"
             style="@style/ButtonText"
             android:layout_width="match_parent"
             android:layout_height="48dp"

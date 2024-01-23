@@ -23,7 +23,7 @@ class DetailedInfoViewModel(
     val errorPatient: LiveData<String> = _errorPatient
 
     private val _analysisList = MutableLiveData<List<AnalysisList>?>()
-    val analysisList: LiveData<List<AnalysisList>?> get() = _analysisList
+    val analysisList: MutableLiveData<List<AnalysisList>?> get() = _analysisList
 
     private val _errorAnalysisList = MutableLiveData<String>()
     val errorAnalysisList: LiveData<String> = _errorAnalysisList

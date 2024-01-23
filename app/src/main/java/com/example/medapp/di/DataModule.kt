@@ -6,6 +6,7 @@ import com.example.data.mappers.AnalysisApiResponseMapper
 import com.example.data.mappers.PatientApiResponseMapper
 import com.example.domain.repository.AddAnalysisRepository
 import com.example.domain.repository.AnalysisRepository
+import com.example.domain.repository.GraphRepository
 import com.example.domain.repository.PatientRepository
 import com.example.medapp.utilits.URL
 import org.koin.dsl.module
@@ -15,9 +16,13 @@ import repository.addAnalysisRepository.AddAnalysisRepositoryImpl
 import repository.analysisRepository.AnalysisRemoteSource
 import repository.analysisRepository.AnalysisRemoteSourceImpl
 import repository.analysisRepository.AnalysisRepositoryImpl
+import repository.graphRepository.GraphRemoteSource
+import repository.graphRepository.GraphRemoteSourceImpl
+import repository.graphRepository.GraphRepositoryImpl
 import repository.patientRepository.PatientRemoteSource
 import repository.patientRepository.PatientRemoteSourceImpl
 import repository.patientRepository.PatientRepositoryImpl
+import kotlin.math.sin
 
 val dataModule = module {
     val networkModule by lazy {
@@ -34,6 +39,9 @@ val dataModule = module {
     single<AnalysisRemoteSource> { AnalysisRemoteSourceImpl(get(), get()) }
     single<AnalysisRepository> { AnalysisRepositoryImpl(get()) }
     single { AnalysisApiResponseMapper() }
+
+    single<GraphRemoteSource> { GraphRemoteSourceImpl(get()) }
+    single<GraphRepository> { GraphRepositoryImpl(get()) }
 
     single { networkModule.createApi(URL) }
 }

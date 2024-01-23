@@ -10,11 +10,15 @@ import com.example.domain.entity.analysis.Analysis
 import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
+import com.example.domain.entity.analysis.StatusList
 import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
 import com.example.domain.usecase.analysis.GetAddCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
+import com.example.domain.usecase.analysis.GetValuesCytokineStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesImmuneStatusUseCase
 import kotlinx.coroutines.launch
 
 class AddAnalysisViewModel(
@@ -22,7 +26,10 @@ class AddAnalysisViewModel(
     private val getAddHematologicalStatusUseCase: GetAddHematologicalStatusUseCase,
     private val getUpdateAnalysisDateUseCase: GetUpdateAnalysisDateUseCase,
     private val getAddImmuneStatusUseCase: GetAddImmuneStatusUseCase,
-    private val getAddCytokineStatusUseCase: GetAddCytokineStatusUseCase
+    private val getAddCytokineStatusUseCase: GetAddCytokineStatusUseCase,
+    private val getValuesHematologicalStatusUseCase: GetValuesHematologicalStatusUseCase,
+    private val getValuesImmuneStatusUseCase: GetValuesImmuneStatusUseCase,
+    private val getValuesCytokineStatusUseCase: GetValuesCytokineStatusUseCase
 ) : ViewModel()
 {
     private val _analysis = MutableLiveData<Analysis?>()
@@ -30,6 +37,54 @@ class AddAnalysisViewModel(
 
     private val _errorAnalysis = MutableLiveData<String>()
     val errorAnalysis: LiveData<String> = _errorAnalysis
+
+    private val _statusHematological = MutableLiveData<List<StatusList>?>()
+    val statusHematological: LiveData<List<StatusList>?> get() = _statusHematological
+
+    private val _statusImmune = MutableLiveData<List<StatusList>?>()
+    val statusImmune: LiveData<List<StatusList>?> get() = _statusImmune
+
+    private val _statusCytokine = MutableLiveData<List<StatusList>?>()
+    val statusCytokine: LiveData<List<StatusList>?> get() = _statusCytokine
+
+    fun getStatusCytokine() {
+        viewModelScope.launch {
+            when (val response = getValuesCytokineStatusUseCase.invoke()) {
+                is ResultMed.Success -> {
+                    _statusCytokine.value = response.data
+                }
+                is ResultMed.Error -> {
+                    _errorAnalysis.value = response.exception.message
+                }
+            }
+        }
+    }
+
+    fun getStatusImmune() {
+        viewModelScope.launch {
+            when (val response = getValuesImmuneStatusUseCase.invoke()) {
+                is ResultMed.Success -> {
+                    _statusImmune.value = response.data
+                }
+                is ResultMed.Error -> {
+                    _errorAnalysis.value = response.exception.message
+                }
+            }
+        }
+    }
+
+    fun getStatusHematological() {
+        viewModelScope.launch {
+            when (val response = getValuesHematologicalStatusUseCase.invoke()) {
+                is ResultMed.Success -> {
+                    _statusHematological.value = response.data
+                }
+                is ResultMed.Error -> {
+                    _errorAnalysis.value = response.exception.message
+                }
+            }
+        }
+    }
 
     fun getAddAnalysis(patientId: String) {
         viewModelScope.launch {
@@ -70,10 +125,10 @@ class AddAnalysisViewModel(
             when (val response = getAddImmuneStatusUseCase.invoke(idPatient = patientId,
                 idAnalysis = analysisId, status = status)) {
                 is ResultMed.Success -> {
-                    Log.d("AddHematologicalStatus: ", response.data.toString())
+                    Log.d("AddImmuneStatusStatus: ", response.data.toString())
                 }
                 is ResultMed.Error -> {
-                    Log.d("AddHematologicalStatusError: ",
+                    Log.d("AddImmuneStatusError: ",
                         response.exception.message.toString())
                 }
             }
@@ -88,10 +143,10 @@ class AddAnalysisViewModel(
             when (val response = getAddCytokineStatusUseCase.invoke(idPatient = patientId,
                 idAnalysis = analysisId, status = status)) {
                 is ResultMed.Success -> {
-                    Log.d("AddHematologicalStatus: ", response.data.toString())
+                    Log.d("AddCytokinStatus: ", response.data.toString())
                 }
                 is ResultMed.Error -> {
-                    Log.d("AddHematologicalStatusError: ",
+                    Log.d("AddCytokinError: ",
                         response.exception.message.toString())
                 }
             }

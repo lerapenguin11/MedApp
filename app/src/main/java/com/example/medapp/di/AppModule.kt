@@ -4,9 +4,17 @@ import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
 import com.example.domain.usecase.analysis.GetAddCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
+import com.example.domain.usecase.analysis.GetAnalysisIdUseCase
 import com.example.domain.usecase.analysis.GetAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetPatientAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
+import com.example.domain.usecase.analysis.GetUpdateCytokineStatusUseCase
+import com.example.domain.usecase.analysis.GetUpdateHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetUpdateImmuneStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesCytokineStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesImmuneStatusUseCase
+import com.example.domain.usecase.graph.GetGraphUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
 import com.example.domain.usecase.patient.GetPatientListUseCase
@@ -39,7 +47,10 @@ val appModule = module {
             getAddHematologicalStatusUseCase = GetAddHematologicalStatusUseCase(get()),
             getUpdateAnalysisDateUseCase = GetUpdateAnalysisDateUseCase(get()),
             getAddImmuneStatusUseCase = GetAddImmuneStatusUseCase(get()),
-            getAddCytokineStatusUseCase = GetAddCytokineStatusUseCase(get())
+            getAddCytokineStatusUseCase = GetAddCytokineStatusUseCase(get()),
+            getValuesHematologicalStatusUseCase = GetValuesHematologicalStatusUseCase(get()),
+            getValuesCytokineStatusUseCase = GetValuesCytokineStatusUseCase(get()),
+            getValuesImmuneStatusUseCase = GetValuesImmuneStatusUseCase(get())
         )
     }
 
@@ -53,6 +64,21 @@ val appModule = module {
     viewModel<AnalysisViewModel> {
         AnalysisViewModel(
             getPatientAnalysisListUseCase = GetPatientAnalysisListUseCase(get())
+        )
+    }
+
+    viewModel<GraphViewModel> {
+        GraphViewModel(
+            getGraphUseCase = GetGraphUseCase(get())
+        )
+    }
+
+    viewModel<EditViewModel> {
+        EditViewModel(
+            getAnalysisIdUseCase = GetAnalysisIdUseCase(get()),
+            getUpdateCytokineStatusUseCase = GetUpdateCytokineStatusUseCase(get()),
+            getUpdateHematologicalStatusUseCase = GetUpdateHematologicalStatusUseCase(get()),
+            getUpdateImmuneStatusUseCase = GetUpdateImmuneStatusUseCase(get())
         )
     }
 }

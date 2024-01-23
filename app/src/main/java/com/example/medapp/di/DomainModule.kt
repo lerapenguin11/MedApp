@@ -4,9 +4,17 @@ import com.example.domain.usecase.analysis.GetAddAnalysisUseCase
 import com.example.domain.usecase.analysis.GetAddCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetAddHematologicalStatusUseCase
 import com.example.domain.usecase.analysis.GetAddImmuneStatusUseCase
+import com.example.domain.usecase.analysis.GetAnalysisIdUseCase
 import com.example.domain.usecase.analysis.GetAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetPatientAnalysisListUseCase
 import com.example.domain.usecase.analysis.GetUpdateAnalysisDateUseCase
+import com.example.domain.usecase.analysis.GetUpdateCytokineStatusUseCase
+import com.example.domain.usecase.analysis.GetUpdateHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetUpdateImmuneStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesCytokineStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesHematologicalStatusUseCase
+import com.example.domain.usecase.analysis.GetValuesImmuneStatusUseCase
+import com.example.domain.usecase.graph.GetGraphUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
 import com.example.domain.usecase.patient.GetPatientListUseCase
@@ -51,6 +59,38 @@ val domainModule = module {
     ) }
 
     factory<GetPatientAnalysisListUseCase> { GetPatientAnalysisListUseCase(
+        repository = get()
+    ) }
+
+    factory<GetValuesHematologicalStatusUseCase> { GetValuesHematologicalStatusUseCase(
+        repository = get()
+    ) }
+
+    factory<GetValuesCytokineStatusUseCase> { GetValuesCytokineStatusUseCase(
+        repository = get()
+    ) }
+
+    factory<GetValuesImmuneStatusUseCase> { GetValuesImmuneStatusUseCase(
+        repository = get()
+    ) }
+
+    factory<GetGraphUseCase> { GetGraphUseCase(
+        repository = get()
+    ) }
+
+    factory<GetUpdateHematologicalStatusUseCase> { GetUpdateHematologicalStatusUseCase(
+        repository = get()
+    ) }
+
+    factory<GetUpdateCytokineStatusUseCase> { GetUpdateCytokineStatusUseCase(
+        repository = get()
+    ) }
+
+    factory<GetUpdateImmuneStatusUseCase> { GetUpdateImmuneStatusUseCase(
+        repository = get()
+    ) }
+
+    factory<GetAnalysisIdUseCase> { GetAnalysisIdUseCase(
         repository = get()
     ) }
 }
