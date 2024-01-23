@@ -5,6 +5,7 @@ import com.example.data.api.model.analysis.AnalysisModel
 import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
+import com.example.data.api.model.analysis.PatientAnalysisListModelItem
 import com.example.data.api.model.analysis.PatientIdRequest
 import com.example.data.api.model.analysis.StatusListModel
 import com.example.domain.entity.analysis.Analysis
@@ -13,6 +14,10 @@ import com.example.domain.entity.analysis.CytokineStatus
 import com.example.domain.entity.analysis.HematologicalStatus
 import com.example.domain.entity.analysis.ImmuneStatus
 import com.example.domain.entity.analysis.StatusList
+import com.example.domain.entity.analysis.patientAnalysis.Cytokine
+import com.example.domain.entity.analysis.patientAnalysis.Hematological
+import com.example.domain.entity.analysis.patientAnalysis.Immune
+import com.example.domain.entity.analysis.patientAnalysis.PatientAnalysisList
 
 class AddAnalysisApiResponseMapper {
     fun toPatientIdRequest(patientId: String) : PatientIdRequest{
@@ -38,6 +43,23 @@ class AddAnalysisApiResponseMapper {
             hematologicalStatusId = response.hematologicalStatusId,
             immuneStatusId = response.immuneStatusId,
             executionDateStr = response.executionDateStr
+        )
+    }
+
+    fun toAnalysisId(response : PatientAnalysisListModelItem) : PatientAnalysisList {
+        return PatientAnalysisList(
+            id = response.id,
+            patientId = response.patientId,
+            cytokineStatusId = response.cytokineStatusId,
+            hematologicalStatusId = response.hematologicalStatusId,
+            immuneStatusId = response.immuneStatusId,
+            executionDateStr = response.executionDateStr,
+            createdAt = response.createdAt,
+            cytokineStatus = response.cytokineStatus,
+            deletedAt = response.deletedAt,
+            hematologicalStatus = response.hematologicalStatus,
+            immuneStatus = response.immuneStatus,
+            updatedAt = response.updatedAt
         )
     }
 

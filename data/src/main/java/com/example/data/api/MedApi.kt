@@ -6,6 +6,7 @@ import com.example.data.api.model.analysis.CytokineStatusModel
 import com.example.data.api.model.analysis.HematologicalStatusModel
 import com.example.data.api.model.analysis.ImmuneStatusModel
 import com.example.data.api.model.analysis.PatientAnalysisListModel
+import com.example.data.api.model.analysis.PatientAnalysisListModelItem
 import com.example.data.api.model.analysis.PatientIdRequest
 import com.example.data.api.model.analysis.StatusListModel
 import com.example.data.api.model.patient.NewPatientIdModel
@@ -93,4 +94,27 @@ interface MedApi {
     @GET("analysis/{analysisId}/graph")
     @Streaming
     suspend fun getGraph(@Path("analysisId") analysisId: String) : Response<ResponseBody>
+
+    @PUT("analysis/{id}/status/hematological")
+    suspend fun updateHematological(
+        @Path("id") analysisId: String,
+        @Body status : HematologicalStatusModel
+    ) : Response<HematologicalStatusModel>
+
+    @PUT("analysis/{id}/status/immune")
+    suspend fun updateImmune(
+        @Path("id") analysisId: String,
+        @Body status : ImmuneStatusModel
+    ) : Response<ImmuneStatusModel>
+
+    @PUT("analysis/{id}/status/cytokine")
+    suspend fun updateCytokine(
+        @Path("id") analysisId: String,
+        @Body status : CytokineStatusModel
+    ) : Response<CytokineStatusModel>
+
+    @GET("analysis/{id}")
+    suspend fun getAnalysisId(
+        @Path("id") analysisId : String
+    ) : Response<PatientAnalysisListModelItem>
 }

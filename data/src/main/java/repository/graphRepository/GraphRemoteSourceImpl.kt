@@ -16,7 +16,7 @@ class GraphRemoteSourceImpl(
         withContext(Dispatchers.IO) {
             try {
                 val response = service.getGraph(analysisId = analysisId)
-                if (response.isSuccessful) {
+                if (response.isSuccessful && response.body()!=null) {
                     val responseBody = response.body()!!.byteStream()
 
                     return@withContext ResultMed.Success(responseBody)

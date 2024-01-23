@@ -55,14 +55,27 @@ class DetailsFragment : Fragment() {
         setTextDate()
         setOnClickListenerBackArrow()
         setOnClickChartsBt()
+        setUpdateOnClickListener()
+    }
+
+    private fun setUpdateOnClickListener() {
+        binding.icEdit.setOnClickListener {
+            if (idAnalysis != null){
+                fragmentManager?.popBackStack()
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstanceAnalysisIdUpdate(id = idAnalysis.toString())
+                )
+                transaction?.commit()
+            }
+        }
     }
 
     private fun setOnClickChartsBt() {
         binding.btOpenCharts.setOnClickListener {
             if (idAnalysis != null){
                 val transaction = activity?.supportFragmentManager?.beginTransaction()
-                Log.i("ANALYSIS_ID: ", idAnalysis.toString())
-                idAnalysis
                 transaction?.replace(
                     R.id.main_layout,
                     newInstanceAnalysisId(id = idAnalysis.toString())
@@ -210,6 +223,13 @@ class DetailsFragment : Fragment() {
 
         fun newInstanceAnalysisId(id : String) =
             ChartFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_ANALYSIS_ID, id)
+                }
+            }
+
+        fun newInstanceAnalysisIdUpdate(id : String) =
+            EditFragment().apply {
                 arguments = Bundle().apply {
                     putString(BUNDLE_ANALYSIS_ID, id)
                 }

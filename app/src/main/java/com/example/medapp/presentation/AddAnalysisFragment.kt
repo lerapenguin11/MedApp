@@ -20,6 +20,7 @@ import com.example.medapp.presentation.adapter.StatusHematologicalAdapter
 import com.example.medapp.presentation.adapter.StatusImmuneAdapter
 import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.AddAnalysisViewModel
+import com.example.medapp.viewmodel.AnalysisViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel

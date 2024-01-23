@@ -111,4 +111,5 @@
     <string name="text_view_charts">Посмотреть графики</string>
     <string name="chart">График</string>
     <string name="text_shape">Поделиться</string>
+    <string name="text_edit">Редактировать</string>
 </resources>

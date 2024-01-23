@@ -4,7 +4,7 @@ data class Hematological(
     val bas: Double,
     val eos: Double,
     val hct: Double,
-    val hgb: Any,
+    val hgb: Double,
     val lymf: Double,
     val mch: Double,
     val mpv: Double,

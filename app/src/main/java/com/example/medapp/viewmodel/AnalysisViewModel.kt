@@ -60,4 +60,8 @@ class AnalysisViewModel(
             }
         }
     }
+
+    fun nullAnalysis(){
+        _analysis.value = null
+    }
 }
