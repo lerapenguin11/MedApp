@@ -8,11 +8,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.home_presentation.ui.HomeFragment
 import com.example.medapp.databinding.FragmentSplashScreenBinding
-import com.example.medapp.utilits.replaceFragmentMain
+import com.example.navigation.Navigator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @SuppressLint("CustomSplashScreen")
+@AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
+    @Inject
+    lateinit var navigator: Navigator
     private var _binding : FragmentSplashScreenBinding? = null
     private val binding get() = _binding!!
 
@@ -24,10 +30,15 @@ class SplashScreenFragment : Fragment() {
 
         //TODO дописать
         Handler(Looper.getMainLooper()).postDelayed({
-            replaceFragmentMain(AuthorizationFragment())
+            navigateToNextFragment()
+            //replaceFragmentMain(AuthorizationFragment())
         }, 3000)
 
         return binding.root
+    }
+
+    private fun navigateToNextFragment() {
+        navigator.navigateToFragment(HomeFragment())
     }
 
     override fun onDestroyView() {

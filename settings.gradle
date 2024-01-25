@@ -17,3 +17,12 @@ rootProject.name = "MedApp"
 include ':app'
 include ':data'
 include ':domain'
+
+include ':feature_auth:auth_data'
+include ':feature_auth:auth_domain'
+include ':feature_auth:auth_presentation'
+include ':feature_home:home_data'
+include ':feature_home:home_domain'
+include ':feature_home:home_presentation'
+include ':common:common_utils'
+include ':navigation'

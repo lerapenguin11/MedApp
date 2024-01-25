@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.example.home_presentation'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures{
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(":common:common_utils")
+    implementation project(':navigation')
+
+    implementation Deps.core
+    implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
+    implementation Deps.appCompat
+    implementation Deps.androidMaterial
+    testImplementation TestImplementation.junit
+    androidTestImplementation AndroidTestImplementation.junit
+    androidTestImplementation AndroidTestImplementation.espresso
+    implementation Deps.constraintLayout
+    implementation Deps.fragment
+    implementation Libraries.facebook_shimmer
+    implementation DaggerHilt.hilt
+    kapt DaggerHilt.hiltAndroidCompiler
+    kapt DaggerHilt.hiltCompiler
+}

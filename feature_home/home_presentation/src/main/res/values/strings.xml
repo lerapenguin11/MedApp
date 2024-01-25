@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">Главная</string>
+    <string name="search_bd">Поиск по базе пациентов</string>
+    <string name="add_passient">Добавить пациента</string>
+    <string name="fcs">Фамилия Имя Отчество</string>
+    <string name="passport_series">Серия</string>
+    <string name="passport_number">Номер</string>
+    <string name="search">Поиск</string>
+    <string name="diagnosis">Диагноз</string>
+    <string name="date_birth">Дата рождения</string>
+</resources>

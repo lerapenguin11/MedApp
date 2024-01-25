@@ -14,7 +14,7 @@ import com.example.medapp.utilits.replaceFragmentMain
 import com.example.medapp.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragmentOld : Fragment() {
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel by viewModel<HomeViewModel>()

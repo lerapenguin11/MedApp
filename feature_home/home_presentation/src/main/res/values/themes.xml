@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ScreenHeader" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_dark_primary</item>
+    </style>
+
+    <style name="SectionHeader" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_dark_primary</item>
+    </style>
+
+    <style name="EditText" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:textColorHint">@color/input_placeholdrer_tex</item>
+        <item name="android:textSize">16sp</item>
+        <item name="hintTextColor">@color/input_placeholdrer_tex</item>
+        <item name="colorControlActivated">@color/text_dark_primary</item>
+        <item name="colorControlHighlight">@color/text_dark_primary</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/text_dark_primary</item>
+        <item name="colorControlNormal">@color/text_dark_primary</item>
+    </style>
+
+    <style name="ButtonTextTransparent" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/accent_dark_primary</item>
+    </style>
+
+    <style name="ButtonText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BadgeText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/accent_bright_primary</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="InputLabel" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_dark_secondary</item>
+    </style>
+
+    <style name="BodyRegular" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_dark_primary</item>
+    </style>
+</resources>

@@ -1,12 +1,10 @@
 package com.example.medapp.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.medapp.R
 import com.example.medapp.databinding.FragmentAuthorizationBinding
 import com.example.medapp.utilits.replaceFragmentMain
 
@@ -42,7 +40,7 @@ class AuthorizationFragment : Fragment() {
         _binding = FragmentAuthorizationBinding.inflate(inflater, container, false)
 
         binding.btEnter.setOnClickListener {
-            replaceFragmentMain(HomeFragment())
+            replaceFragmentMain(HomeFragmentOld())
         }
         // Inflate the layout for this fragment
         return binding.root

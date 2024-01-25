@@ -42,7 +42,7 @@ class DetailedInformationFragment : Fragment() {
     }
 
     private fun setOnClickListenerButton() {
-        binding.icExit.setOnClickListener { launchFragment(HomeFragment()) }
+        binding.icExit.setOnClickListener { launchFragment(HomeFragmentOld()) }
         binding.btLearnAboutAnalyses.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             idPatient?.let { it1 -> newInstancePatientId(id = it1) }?.let { it2 ->

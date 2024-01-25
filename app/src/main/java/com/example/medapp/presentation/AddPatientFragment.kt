@@ -47,7 +47,7 @@ class AddPatientFragment : Fragment() {
             readingDataEditText()
             receivingPatientId()
         }
-        binding.icExit.setOnClickListener {launchFragment(HomeFragment())}
+        binding.icExit.setOnClickListener {launchFragment(HomeFragmentOld())}
     }
 
     private fun receivingPatientId() {
