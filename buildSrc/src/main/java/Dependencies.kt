@@ -29,6 +29,7 @@ object Versions {
     const val santalu_maskara = "1.0.0"
     const val photoView = "2.3.0"
     const val zoomage = "1.3.1"
+    const val kotlin_bom = "1.8.0"
 }
 
 object Libraries{
@@ -47,6 +48,7 @@ object Deps {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+    const val kotlin_bom = "org.jetbrains.kotlin:kotlin-bom:${Versions.kotlin_bom}"
 }
 
 object TestImplementation {
