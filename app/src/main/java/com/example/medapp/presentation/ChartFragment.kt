@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentChartBinding
-import com.example.medapp.databinding.FragmentDetailsBinding
 import com.example.medapp.viewmodel.GraphViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,6 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ChartFragment : Fragment() {
     private var idAnalysis : String? = null
     private var _binding : FragmentChartBinding? = null
+    private var codeCell = -1
     private val binding get() = _binding!!
     private val graphViewModel by viewModel<GraphViewModel>()
 
@@ -24,8 +23,9 @@ class ChartFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             idAnalysis = it.getString(BUNDLE_ANALYSIS_ID)
+            codeCell = it.getInt(BUNDLE_CODE)
         }
-        graphViewModel.getGraph(idAnalysis.toString())
+        graphViewModel.getGraphTCell(idAnalysis.toString())
     }
 
     override fun onCreateView(
@@ -43,14 +43,51 @@ class ChartFragment : Fragment() {
     }
 
     private fun setOnClickListener() {
-        binding.icExit.setOnClickListener {  }
+        binding.icExit.setOnClickListener {
+            if (idAnalysis != null){
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                fragmentManager?.popBackStack()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstanceAnalysisId(
+                        id = idAnalysis.toString(),
+                    )
+                )?.addToBackStack(null)
+                transaction?.commit()
+            }
+        }
     }
 
     private fun setImageGraph() {
-        graphViewModel.graph.observe(viewLifecycleOwner, Observer {
+        when(codeCell){
+            100 ->{
+                graphViewModel.getGraphTCell(idAnalysis.toString())
+                setDataChartTCell()
+            }
+            200 ->{
+                graphViewModel.getGraphBCell(idAnalysis.toString())
+                setDataChartBCell()
+            }
+        }
+    }
+
+    private fun setDataChartBCell() {
+        binding.titleChart.setText(R.string.text_b_cell)
+        binding.titleChart.isSelected = true
+        graphViewModel.graphB.observe(viewLifecycleOwner, Observer {
             binding.pvGraph.setImageBitmap(it)
         })
     }
+
+    private fun setDataChartTCell() {
+        binding.titleChart.setText(R.string.text_t_cell)
+        binding.titleChart.isSelected = true
+        graphViewModel.graphT.observe(viewLifecycleOwner, Observer {
+            binding.pvGraph.setImageBitmap(it)
+        })
+    }
+
+    /*setAnimationText()*/
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -59,5 +96,12 @@ class ChartFragment : Fragment() {
 
     companion object {
         private const val BUNDLE_ANALYSIS_ID = "analysis_id"
+        private const val BUNDLE_CODE = "code_cell"
+        fun newInstanceAnalysisId(id : String) =
+            GraphListFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BUNDLE_ANALYSIS_ID, id)
+                }
+            }
     }
 }

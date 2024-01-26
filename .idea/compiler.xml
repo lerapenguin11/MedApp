@@ -2,8 +2,18 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="MedApp.domain" target="17" />
+      <module name="MedApp.buildSrc" target="17" />
+      <module name="MedApp.buildSrc.main" target="17" />
+      <module name="MedApp.buildSrc.test" target="17" />
+      <module name="MedApp.common.common_utils" target="17" />
+      <module name="MedApp.feature_auth.auth_data" target="17" />
+      <module name="MedApp.feature_auth.auth_domain" target="17" />
+      <module name="MedApp.feature_auth.auth_presentation" target="17" />
+      <module name="MedApp.feature_home.home_data" target="17" />
+      <module name="MedApp.feature_home.home_domain" target="17" />
+      <module name="MedApp.feature_home.home_presentation" target="17" />
       <module name="MedApp.mylibrary" target="17" />
+      <module name="MedApp.navigation" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

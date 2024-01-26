@@ -222,7 +222,7 @@ class DetailsFragment : Fragment() {
             }
 
         fun newInstanceAnalysisId(id : String) =
-            ChartFragment().apply {
+            GraphListFragment().apply {
                 arguments = Bundle().apply {
                     putString(BUNDLE_ANALYSIS_ID, id)
                 }

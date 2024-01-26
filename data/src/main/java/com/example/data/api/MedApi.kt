@@ -91,10 +91,6 @@ interface MedApi {
     @GET("analysis/status/template/cytokine")
     suspend fun getValuesCytokinStatus() : Response<StatusListModel>
 
-    @GET("analysis/{analysisId}/graph")
-    @Streaming
-    suspend fun getGraph(@Path("analysisId") analysisId: String) : Response<ResponseBody>
-
     @PUT("analysis/{id}/status/hematological")
     suspend fun updateHematological(
         @Path("id") analysisId: String,
@@ -117,4 +113,12 @@ interface MedApi {
     suspend fun getAnalysisId(
         @Path("id") analysisId : String
     ) : Response<PatientAnalysisListModelItem>
+
+    @GET("analysis/{analysisId}/graph/t-cell")
+    @Streaming
+    suspend fun getGraphTCell(@Path("analysisId") analysisId: String) : Response<ResponseBody>
+
+    @GET("analysis/{analysisId}/graph/b-cell")
+    @Streaming
+    suspend fun getGraphBCell(@Path("analysisId") analysisId: String) : Response<ResponseBody>
 }

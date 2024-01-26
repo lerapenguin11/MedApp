@@ -14,7 +14,8 @@ import com.example.domain.usecase.analysis.GetUpdateImmuneStatusUseCase
 import com.example.domain.usecase.analysis.GetValuesCytokineStatusUseCase
 import com.example.domain.usecase.analysis.GetValuesHematologicalStatusUseCase
 import com.example.domain.usecase.analysis.GetValuesImmuneStatusUseCase
-import com.example.domain.usecase.graph.GetGraphUseCase
+import com.example.domain.usecase.graph.GetGraphBCellUseCase
+import com.example.domain.usecase.graph.GetGraphTCellUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
 import com.example.domain.usecase.patient.GetPatientListUseCase
@@ -74,7 +75,11 @@ val domainModule = module {
         repository = get()
     ) }
 
-    factory<GetGraphUseCase> { GetGraphUseCase(
+    factory<GetGraphTCellUseCase> { GetGraphTCellUseCase(
+        repository = get()
+    ) }
+
+    factory<GetGraphBCellUseCase> { GetGraphBCellUseCase(
         repository = get()
     ) }
 

@@ -5,5 +5,6 @@ import java.io.InputStream
 
 
 interface GraphRepository {
-    suspend fun getGraph(analysisId : String): ResultMed<InputStream>
+    suspend fun getGraphTCell(analysisId : String): ResultMed<InputStream>
+    suspend fun getGraphBCell(analysisId : String): ResultMed<InputStream>
 }

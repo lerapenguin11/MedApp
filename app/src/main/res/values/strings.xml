@@ -109,7 +109,10 @@
     <string name="title_detail">Подробности</string>
     <string name="cd3_cd4_cd3_cd8">Соотношение CD3+CD4+/CD3+CD8+</string>
     <string name="text_view_charts">Посмотреть графики</string>
-    <string name="chart">График</string>
+    <string name="chart">График T-cell</string>
     <string name="text_shape">Поделиться</string>
     <string name="text_edit">Редактировать</string>
+    <string name="graphs">Графики</string>
+    <string name="text_t_cell">T-клеточное звено иммунитета</string>
+    <string name="text_b_cell">B-клеточное звено иммунитета</string>
 </resources>
