@@ -22,6 +22,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "API_URL", "\"https://svergut.tw1.su/medical-app/api/\"")
+        }
+
+        debug {
+            buildConfigField("String", "API_URL", "\"http://192.168.0.4:3000/\"")
         }
     }
     compileOptions {
@@ -35,10 +40,22 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Deps.core)
+    implementation(Deps.appCompat)
+    implementation(Deps.androidMaterial)
+    implementation(DaggerHilt.hilt)
+    kapt(DaggerHilt.hiltAndroidCompiler)
+    kapt(DaggerHilt.hiltCompiler)
+    implementation(Retrofit.retrofit)
+    implementation(Retrofit.gsonConvertor)
+    implementation(Retrofit.okHttp)
+    implementation(Retrofit.scalersConvertors)
+    implementation(Retrofit.converter_moshi)
+    implementation(Retrofit.moshi)
+    implementation(Retrofit.moshi_adapter)
+    implementation(Retrofit.okhttp_logging)
+    implementation(Retrofit.kotlin_coroutine_adapter)
+    testImplementation(TestImplementation.junit)
+    androidTestImplementation(AndroidTestImplementation.junit)
+    androidTestImplementation(AndroidTestImplementation.espresso)
 }
