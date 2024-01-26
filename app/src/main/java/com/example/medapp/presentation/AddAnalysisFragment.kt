@@ -141,7 +141,7 @@ class AddAnalysisFragment : Fragment() {
     }
 
     private fun saveHematologicalStatus() {
-        idPatient?.let {
+        idPatient.let {
             addAnalysisViewModel.getAddHematologicalStatus(
                 patientId = it,
                 analysisId = idAnalysis.toString(),

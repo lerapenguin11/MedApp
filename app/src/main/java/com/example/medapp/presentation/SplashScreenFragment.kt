@@ -18,7 +18,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
     @Inject
-    lateinit var navigator: Navigator
+    lateinit var navigator : Navigator
     private var _binding : FragmentSplashScreenBinding? = null
     private val binding get() = _binding!!
 
@@ -31,14 +31,14 @@ class SplashScreenFragment : Fragment() {
         //TODO дописать
         Handler(Looper.getMainLooper()).postDelayed({
             navigateToNextFragment()
-            //replaceFragmentMain(AuthorizationFragment())
         }, 3000)
 
         return binding.root
     }
 
     private fun navigateToNextFragment() {
-        navigator.navigateToFragment(HomeFragment())
+        navigator = Navigator(fragmentManager = fragmentManager)
+        navigator.navigateToFragmentAddBackStack(HomeFragment())
     }
 
     override fun onDestroyView() {

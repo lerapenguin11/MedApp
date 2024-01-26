@@ -12,8 +12,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    @Inject
-    lateinit var navigator: Navigator
+    /*@Inject
+    lateinit var navigator: Navigator*/
 
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!

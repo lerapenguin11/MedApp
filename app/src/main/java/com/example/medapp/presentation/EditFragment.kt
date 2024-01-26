@@ -94,14 +94,12 @@ class EditFragment : Fragment() {
                 updateImmuneStatus()
                 //saveDateCompletion()
                 updateCytokineStatus()
-                if (idAnalysis != null){
-                    val transaction = activity?.supportFragmentManager?.beginTransaction()
-                    transaction?.replace(
-                        R.id.main_layout,
-                        newInstanceId(idAnalyzes = idAnalysis.toInt(), idPatient = idPatient)
-                    )?.addToBackStack(null)
-                    transaction?.commit()
-                }
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(
+                    R.id.main_layout,
+                    newInstanceId(idAnalyzes = idAnalysis.toInt(), idPatient = idPatient)
+                )?.addToBackStack(null)
+                transaction?.commit()
             }
         }
         binding.icExit.setOnClickListener { replaceFragmentMain(DetailsFragment()) }

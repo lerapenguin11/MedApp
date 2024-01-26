@@ -73,7 +73,7 @@ class DetailedInformationFragment : Fragment() {
         })
         detailedInfoViewModel.analysisList.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                if (it?.last()?.executionDateStr == null || it.isEmpty()){
+                if (it.last().executionDateStr == null || it.isEmpty()){
                     binding.tvDateLastAnalysis.text = CONST_DATE_LAST_ANALYSIS
                 } else{
                     binding.tvDateLastAnalysis.text = it.last().executionDateStr
