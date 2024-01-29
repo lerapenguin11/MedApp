@@ -43,4 +43,7 @@ dependencies {
     testImplementation TestImplementation.junit
     androidTestImplementation AndroidTestImplementation.junit
     androidTestImplementation AndroidTestImplementation.espresso
+    testImplementation AndroidTestImplementation.test_junit
+    testImplementation AndroidTestImplementation.mockito_core
+    testImplementation AndroidTestImplementation.mockito_kotlin
 }

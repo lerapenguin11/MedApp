@@ -30,6 +30,9 @@ object Versions {
     const val photoView = "2.3.0"
     const val zoomage = "1.3.1"
     const val kotlin_bom = "1.8.0"
+    const val test_junit = "5.8.2"
+    const val mockito_core = "4.0.0"
+    const val mockito_kotlin = "4.0.0"
 }
 
 object Libraries{
@@ -60,6 +63,13 @@ object AndroidTestImplementation {
 
     const val junit = "androidx.test.ext:junit:${Versions.androidTestImplJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.androidTestEspresso}"
+    const val test_junit = "org.junit.jupiter:junit-jupiter:${Versions.test_junit}"
+    const val mockito_core = "org.mockito:mockito-core:${Versions.mockito_core}"
+    const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito_kotlin}"
+
+    /*testImplementation()
+    testImplementation
+    testImplementation */
 
 }
 
