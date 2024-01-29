@@ -33,6 +33,7 @@ object Versions {
     const val test_junit = "5.8.2"
     const val mockito_core = "4.0.0"
     const val mockito_kotlin = "4.0.0"
+    const val mockito_inline = "3.11.2"
 }
 
 object Libraries{
@@ -66,11 +67,7 @@ object AndroidTestImplementation {
     const val test_junit = "org.junit.jupiter:junit-jupiter:${Versions.test_junit}"
     const val mockito_core = "org.mockito:mockito-core:${Versions.mockito_core}"
     const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito_kotlin}"
-
-    /*testImplementation()
-    testImplementation
-    testImplementation */
-
+    const val mockito_inline = "org.mockito:mockito-inline:${Versions.mockito_inline}"
 }
 
 
@@ -85,6 +82,7 @@ object Retrofit {
     const val moshi_adapter = "com.squareup.moshi:moshi-adapters:${Versions.moshi}"
     const val okhttp_logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val kotlin_coroutine_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.kotlin_coroutines_adapter}"
+    const val okhttp_bom = "com.squareup.okhttp3:okhttp-bom:${Versions.okHttp}"
 }
 
 object Coroutines {

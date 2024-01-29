@@ -11,7 +11,7 @@ import com.example.data.api.model.analysis.PatientIdRequest
 import com.example.data.api.model.analysis.StatusListModel
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
-import com.example.data.api.model.patient.PatientModel
+import com.example.data.api.model.patient.PatientModelOld
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
@@ -39,7 +39,7 @@ interface MedApi {
 */
 
     @GET("patient")
-    suspend fun getAllPatient(): Response<PatientModel> //получение всех пациентов
+    suspend fun getAllPatient(): Response<PatientModelOld> //получение всех пациентов
 
     @POST("patient")
     suspend fun getAddPatient(@Body requestBody: PatientAdd) : Response<NewPatientIdModel> // создание пациента

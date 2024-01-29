@@ -2,13 +2,13 @@ package com.example.data.mappers
 
 import com.example.data.api.model.patient.NewPatientIdModel
 import com.example.data.api.model.patient.PatientAdd
-import com.example.data.api.model.patient.PatientModel
+import com.example.data.api.model.patient.PatientModelOld
 import com.example.domain.entity.patient.AddPatient
 import com.example.domain.entity.patient.NewPatientId
 import com.example.domain.entity.patient.Patients
 
 class PatientApiResponseMapper {
-    fun toPatientList(response: PatientModel): List<Patients> {
+    fun toPatientList(response: PatientModelOld): List<Patients> {
         var list = arrayListOf<Patients>()
         for (i in response){
             val age = i.birthDateStr

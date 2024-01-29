@@ -1,4 +1,4 @@
-package com.example.data.api.model.patient
+package com.example.home_data.models
 
 class PatientModel : ArrayList<PatientModelItem>()
 
