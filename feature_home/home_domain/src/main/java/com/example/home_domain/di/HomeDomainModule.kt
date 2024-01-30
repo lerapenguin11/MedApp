@@ -9,10 +9,12 @@ import dagger.hilt.components.SingletonComponent
 
 @InstallIn(SingletonComponent::class)
 @Module
-class HomeDomainModule
-{
+object HomeDomainModule {
+
     @Provides
-    fun provideGetPatientListUseCase(repository: HomeRepository) : GetPatientListUseCase{
+    fun provideGetPatientListUseCase(repository: HomeRepository) : GetPatientListUseCase {
         return GetPatientListUseCase(repository)
     }
 }
+
+

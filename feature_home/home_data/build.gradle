@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -61,6 +63,6 @@ dependencies {
     implementation Coroutines.coroutineAndroid
     implementation Retrofit.kotlin_coroutine_adapter
     implementation DaggerHilt.hilt
-    implementation DaggerHilt.hiltAndroidCompiler
-    implementation DaggerHilt.hiltCompiler
+    kapt DaggerHilt.hiltAndroidCompiler
+    kapt DaggerHilt.hiltCompiler
 }

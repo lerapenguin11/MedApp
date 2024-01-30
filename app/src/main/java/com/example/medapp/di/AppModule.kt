@@ -17,15 +17,15 @@ import com.example.domain.usecase.analysis.GetValuesImmuneStatusUseCase
 import com.example.domain.usecase.graph.GetGraphUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
-import com.example.domain.usecase.patient.GetPatientListUseCase
+import com.example.domain.usecase.patient.GetPatientListUseCaseOld
 import com.example.medapp.viewmodel.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
-    viewModel<HomeViewModel> {
-        HomeViewModel(
-            getPatientListUseCase = GetPatientListUseCase(get())
+    viewModel<HomeViewModelOld> {
+        HomeViewModelOld(
+            getPatientListUseCaseOld = GetPatientListUseCaseOld(get())
         )
     }
 

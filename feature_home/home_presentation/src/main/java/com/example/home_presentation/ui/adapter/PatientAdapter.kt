@@ -1,16 +1,17 @@
-package com.example.medapp.presentation.adapter
+package com.example.home_presentation.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.domain.entity.patient.Patients
-import com.example.medapp.presentation.adapter.diffCallback.PatientItemDiffCallback
-import com.example.medapp.presentation.adapter.viewholder.PatientViewHolder
 import androidx.recyclerview.widget.ListAdapter
-import com.example.medapp.R
+import com.example.home_domain.entity.Patients
+import com.example.home_presentation.R
+import com.example.home_presentation.ui.adapter.itemDiffCallback.PatientItemDiffCallback
+import com.example.home_presentation.ui.adapter.viewHolder.PatientViewHolder
 
 class PatientAdapter : ListAdapter<Patients, PatientViewHolder>(
-    PatientItemDiffCallback())
+    PatientItemDiffCallback()
+)
 {
     var onPatientClickListener : ((Patients) -> Unit)? = null
 

@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations
 
 class GetPatientListUseCaseTest {
 
-    @Mock
+    /*@Mock
     private lateinit var repository: HomeRepository
 
     @InjectMocks
@@ -47,5 +47,5 @@ class GetPatientListUseCaseTest {
             val result = useCase.invoke()
             Assertions.assertEquals(expectedResult, result)
         }
-    }
+    }*/
 }

@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.home_presentation.databinding.FragmentHomeBinding
+import com.example.home_presentation.ui.adapter.PatientAdapter
+import com.example.home_presentation.viewmodel.HomeViewModel
 import com.example.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -17,8 +21,9 @@ class HomeFragment : Fragment() {
 
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    //private val homeViewModel by viewModel<HomeViewModel>()
-    //private lateinit var adapter :  PatientAdapter
+
+    private val homeViewModel : HomeViewModel by viewModels()
+    private lateinit var adapter : PatientAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +42,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         shimmerEffectPlaceholder()
         setOnClickListenerAddPatient()
-        //setPatientRecyclerView()
+        setPatientRecyclerView()
         //setOnClickListenerPatient()
     }
 
@@ -56,10 +61,10 @@ class HomeFragment : Fragment() {
         }
     }*/
 
-    /*private fun setPatientRecyclerView() {
+    private fun setPatientRecyclerView() {
         adapter =  PatientAdapter()
-        val bottomSpaceItemDecoration =
-            BottomSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.bottom_space))
+        /*val bottomSpaceItemDecoration =
+            BottomSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.bottom_space))*/
         homeViewModel.patients.observe(viewLifecycleOwner, Observer { patient ->
             adapter.submitList(patient)
             binding.shimmerLayout.stopShimmer()
@@ -68,8 +73,8 @@ class HomeFragment : Fragment() {
 
         })
         binding.rvPatients.adapter = adapter
-        binding.rvPatients.addItemDecoration(bottomSpaceItemDecoration)
-    }*/
+        //binding.rvPatients.addItemDecoration(bottomSpaceItemDecoration)
+    }
 
     private fun setOnClickListenerAddPatient() {
         binding.btAddPatient.setOnClickListener {

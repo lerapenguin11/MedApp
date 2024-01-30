@@ -7,13 +7,17 @@ import com.example.home_domain.entity.Patients
 import com.example.home_domain.repository.HomeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class PatientsRepositoryImpl(
-    private val service : HomeApi,
-    private val mapper : PatientApiResponseMapper
+    private val service : HomeApi
+
 ) : HomeRepository{
-    override suspend fun getPatientList(): ResultMed<List<Patients>> =
-        withContext(Dispatchers.IO) {
+    private val mapper = PatientApiResponseMapper()
+    override suspend fun getPatientList() : ResultMed<List<Patients>> =
+        withContext(Dispatchers.IO){
             try {
                 val response = service.getAllPatient()
                 if (response.isSuccessful) {
@@ -26,4 +30,5 @@ class PatientsRepositoryImpl(
                 return@withContext ResultMed.Error(e)
             }
         }
+
 }

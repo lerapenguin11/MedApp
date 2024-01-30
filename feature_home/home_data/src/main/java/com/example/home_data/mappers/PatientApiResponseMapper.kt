@@ -6,7 +6,7 @@ import com.example.home_domain.entity.Patients
 class PatientApiResponseMapper
 {
     fun toPatientList(response: PatientModel): List<Patients> {
-        var list = arrayListOf<Patients>()
+        val list = arrayListOf<Patients>()
         for (i in response){
             val age = i.birthDateStr
             val createdAt = i.createdAt

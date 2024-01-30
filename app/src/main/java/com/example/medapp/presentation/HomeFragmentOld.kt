@@ -9,20 +9,20 @@ import androidx.lifecycle.Observer
 import com.example.medapp.R
 import com.example.medapp.databinding.FragmentHomeBinding
 import com.example.medapp.presentation.adapter.BottomSpaceItemDecoration
-import com.example.medapp.presentation.adapter.PatientAdapter
+import com.example.medapp.presentation.adapter.PatientAdapterOld
 import com.example.medapp.utilits.replaceFragmentMain
-import com.example.medapp.viewmodel.HomeViewModel
+import com.example.medapp.viewmodel.HomeViewModelOld
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragmentOld : Fragment() {
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val homeViewModel by viewModel<HomeViewModel>()
-    private lateinit var adapter :  PatientAdapter
+    private val homeViewModelOld by viewModel<HomeViewModelOld>()
+    private lateinit var adapter :  PatientAdapterOld
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        homeViewModel.getPatient()
+        homeViewModelOld.getPatient()
     }
 
     override fun onCreateView(
@@ -57,10 +57,10 @@ class HomeFragmentOld : Fragment() {
     }
 
     private fun setPatientRecyclerView() {
-        adapter =  PatientAdapter()
+        adapter =  PatientAdapterOld()
         val bottomSpaceItemDecoration =
             BottomSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.bottom_space))
-        homeViewModel.patients.observe(viewLifecycleOwner, Observer { patient ->
+        homeViewModelOld.patients.observe(viewLifecycleOwner, Observer { patient ->
             adapter.submitList(patient)
             binding.shimmerLayout.stopShimmer()
             binding.shimmerLayout.visibility = View.GONE

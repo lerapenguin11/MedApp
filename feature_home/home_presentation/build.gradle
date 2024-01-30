@@ -32,14 +32,21 @@ android {
     buildFeatures{
         viewBinding true
     }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
     implementation project(":common:common_utils")
     implementation project(':navigation')
+    implementation project(':feature_home:home_domain')
+    implementation project(':feature_home:home_data')
 
     implementation Deps.core
-    implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
+    implementation platform(Deps.kotlin_bom)
     implementation Deps.appCompat
     implementation Deps.androidMaterial
     testImplementation TestImplementation.junit
@@ -51,4 +58,24 @@ dependencies {
     implementation DaggerHilt.hilt
     kapt DaggerHilt.hiltAndroidCompiler
     kapt DaggerHilt.hiltCompiler
+    testImplementation AndroidTestImplementation.test_junit
+    testImplementation AndroidTestImplementation.mockito_core
+    testImplementation AndroidTestImplementation.mockito_kotlin
+    implementation Coroutines.lifecycle_viewmodel
+    implementation Coroutines.lifecycle_livedata
+    constraints {
+        implementation(Coroutines.kotlin_stdlib_jdk7) {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation(Coroutines.kotlin_stdlib_jdk8) {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
+
+    implementation(Coroutines.coroutineCore)
+    implementation(Coroutines.coroutineAndroid)
+    implementation(CoroutinesLifecycleScope.lifecycleViewModel)
+    implementation(CoroutinesLifecycleScope.lifeCycleRuntime)
+    implementation (ViewModelDelegate.viewModelDeligate)
+
 }

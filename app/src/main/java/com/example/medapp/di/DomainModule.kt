@@ -17,12 +17,12 @@ import com.example.domain.usecase.analysis.GetValuesImmuneStatusUseCase
 import com.example.domain.usecase.graph.GetGraphUseCase
 import com.example.domain.usecase.patient.GetAddPatientUseCase
 import com.example.domain.usecase.patient.GetPatientIdUseCase
-import com.example.domain.usecase.patient.GetPatientListUseCase
+import com.example.domain.usecase.patient.GetPatientListUseCaseOld
 import org.koin.dsl.module
 
 val domainModule = module {
 
-    factory<GetPatientListUseCase> { GetPatientListUseCase(
+    factory<GetPatientListUseCaseOld> { GetPatientListUseCaseOld(
         repository = get()
     ) }
 
